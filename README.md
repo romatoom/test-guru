@@ -21,4 +21,10 @@ Things you may want to cover:
 
 * Deployment instructions
 
-* ...
+* Entity list
+- Auth
+- Role
+- Test
+- QuestionList
+- Question
+- TestResult
