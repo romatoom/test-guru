@@ -22,9 +22,8 @@ Things you may want to cover:
 * Deployment instructions
 
 * Entity list
-- Auth
-- Role
+- User
+- Category
 - Test
-- QuestionList
 - Question
-- TestResult
+- Answer
