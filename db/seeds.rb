@@ -13,39 +13,36 @@ end
 
 category = Category.create(title: "Frontend")
 
-test = Test.create(title: "HTML", category_id: category.id)
+test = category.tests.create(title: "HTML")
 
-question = Question.create(body: "Как оформляется комментарий в HTML?", test_id: test.id)
+question = test.questions.create(body: "Как оформляется комментарий в HTML?")
 wrong_answers = ["/* комментарий */", "// комментарий"]
 add_answers_for_question(wrong_answers, "<!—- комментарий -->", question.id)
 
-question = Question.create(
-  body: "С помощью какого атрибута можно задать текст для картинки, который будет отображен, если её не удастся загрузить?",
-  test_id: test.id
-)
+question = test.questions.create(body: "С помощью какого атрибута можно задать текст для картинки, который будет отображен, если её не удастся загрузить?")
 add_answers_for_question(%w(popup title caption), "alt", question.id)
 
-question = Question.create(body: "Каким является следующий адрес ссылки: ./pages/page2.html?", test_id: test.id)
+question = test.questions.create(body: "Каким является следующий адрес ссылки: ./pages/page2.html?")
 add_answers_for_question(["Абсолютным"], "Относительным", question.id)
 
-question = Question.create(body: "С помощью какого тега нужно задавать подписи к полям формы?", test_id: test.id)
+question = test.questions.create(body: "С помощью какого тега нужно задавать подписи к полям формы?")
 add_answers_for_question(%w(type id field), "label", question.id)
 
-test = Test.create(title: "CSS", category_id: category.id)
+test = category.tests.create(title: "CSS")
 
-question = Question.create(body: "Какое свойство CSS определяет размер текста?", test_id: test.id)
+question = test.questions.create(body: "Какое свойство CSS определяет размер текста?")
 add_answers_for_question(%w(text-size font-style text-style), "font-size", question.id)
 
-question = Question.create(body: "Какой атрибут используется для определения встроенных стилей?", test_id: test.id)
+question = test.questions.create(body: "Какой атрибут используется для определения встроенных стилей?")
 add_answers_for_question(%w(class styles font), "style", question.id)
 
-question = Question.create(body: "Каков правильный синтаксис CSS?", test_id: test.id)
+question = test.questions.create(body: "Каков правильный синтаксис CSS?")
 wrong_answers = ["{body:color=black;}", "{body;color:black;}", "body:color=black;"]
 add_answers_for_question(wrong_answers, "body {color: black;}", question.id)
 
-test = Test.create(title: "Javascript", category_id: category.id)
+test = category.tests.create(title: "Javascript")
 
-question = Question.create(body: "Какие циклы есть в языке JavaScript?", test_id: test.id)
+question = test.questions.create(body: "Какие циклы есть в языке JavaScript?")
 wrong_answers = [
   "for, forMap, foreach, while",
   "for, forMap, foreach, while, do while",
@@ -53,7 +50,7 @@ wrong_answers = [
 ]
 add_answers_for_question(wrong_answers, "for, while, do while", question.id)
 
-question = Question.create(body: "Какие значения можно хранить в переменных?", test_id: test.id)
+question = test.questions.create(body: "Какие значения можно хранить в переменных?")
 wrong_answers = ["Только числа и строки", "Строки, числа с точкой и простые числа"]
 add_answers_for_question(wrong_answers, "Строки, числа с точкой, простые числа и булевые выражения", question.id)
 
@@ -61,15 +58,12 @@ add_answers_for_question(wrong_answers, "Строки, числа с точко�
 
 category = Category.create(title: "Backend")
 
-test = Test.create(title: "Ruby", level: 1, category_id: category.id)
+test = category.tests.create(title: "Ruby", level: 1)
 
-question = Question.create(body: "Как называется самый популярный фреймворк языка Ruby для веба?", test_id: test.id)
-Answer.create(body: "Rails", question_id: question.id)
-Answer.create(body: "Ruby Framework", question_id: question.id)
-Answer.create(body: "Ruby On Rails", correct: true, question_id: question.id)
-Answer.create(body: "Ruby Web", question_id: question.id)
+wrong_answers = ["Rails", "Ruby Framework", "Ruby Web"]
+add_answers_for_question(wrong_answers, "Ruby On Rails", question.id)
 
-test = Test.create(title: "Ruby On Rails", level: 2, category_id: category.id)
+test = category.tests.create(title: "Ruby On Rails", level: 2)
 
 # # #
 
