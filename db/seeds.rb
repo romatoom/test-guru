@@ -74,17 +74,17 @@ test_ruby_1 = Test.find_by(title: "Ruby", level: 1)
 test_rails_2 = Test.find_by(title: "Ruby On Rails", level: 2)
 
 user = User.create(name: "Виталий Черепанов", email: "vitalya123@gmail.com")
-UserTest.create([
+UsersTest.create([
   { user_id: user.id, test_id: test_html_0.id },
   { user_id: user.id, test_id: test_css_0.id },
   { user_id: user.id, test_id: test_ruby_1.id }
 ])
 
 user = User.create(name: "Анна Сидорова", email: "belka-14@mail.ru")
-UserTest.create([
+UsersTest.create([
   { user_id: user.id, test_id: test_html_0.id },
   { user_id: user.id, test_id: test_css_0.id }
 ])
 
 user = User.create(name: "Артём Михайлов", email: "ttt777@gmail.com")
-UserTest.create(user_id: user.id, test_id: test_html_0.id)
+UsersTest.create(user_id: user.id, test_id: test_html_0.id)
