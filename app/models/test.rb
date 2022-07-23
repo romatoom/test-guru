@@ -25,4 +25,8 @@ class Test < ApplicationRecord
     return [] if category.nil?
     where(category_id: category.id).order(title: :desc).pluck(:title)
   end
+
+  validates :title, presence: true,
+                    uniqueness: { scope: :level, message: "There can only be one test with this title and level" }
+  validates :level, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
 end

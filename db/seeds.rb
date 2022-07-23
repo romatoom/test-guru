@@ -17,8 +17,6 @@ category = Category.create!(title: "Frontend")
 
 admin = User.create!(name: "Алексей Алексеев", email: "first_admin@gmail.com")
 
-# binding.pry
-
 test = category.tests.create!(title: "HTML", author_id: admin.id)
 
 question = test.questions.create!(body: "Как оформляется комментарий в HTML?")
@@ -65,6 +63,8 @@ add_answers_for_question(wrong_answers, "Строки, числа с точко�
 category = Category.create!(title: "Backend")
 
 test = category.tests.create!(title: "Ruby", level: 1, author_id: admin.id)
+
+question = test.questions.create!(body: "Название самого пополярного фреймворка Ruby?")
 
 wrong_answers = ["Rails", "Ruby Framework", "Ruby Web"]
 add_answers_for_question(wrong_answers, "Ruby On Rails", question)

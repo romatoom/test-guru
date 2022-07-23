@@ -5,6 +5,9 @@ class User < ApplicationRecord
 
   scope :tests_for_user_by_level, ->(user, level) { user.tests.where(level: level) }
 
+  validates :email, presence: true
+  validates :name, presence: true
+
   def tests_by_level(level)
     User.tests_for_user_by_level(self, level)
   end
