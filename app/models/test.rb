@@ -20,13 +20,17 @@ class Test < ApplicationRecord
     where(level: DIFFICULTY_LEVEL_RANGES[difficulty])
   end
 
-  scope :tests_titles_by_category_title_desc, ->(category_title) do
-    category = Category.find_by(title: category_title)
-    return [] if category.nil?
-    where(category_id: category.id).order(title: :desc).pluck(:title)
-  end
+  scope :tests_by_category_id, ->(category_id) { where(category_id: category_id) }
 
   validates :title, presence: true,
                     uniqueness: { scope: :level, message: "There can only be one test with this title and level" }
   validates :level, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
+
+  class << self
+    def tests_titles_by_category_title_desc(category_title)
+      category = Category.find_by(title: category_title)
+      return [] if category.nil?
+      tests_by_category_id(category.id).order(title: :desc).pluck(:title)
+    end
+  end
 end

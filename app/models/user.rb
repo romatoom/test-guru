@@ -3,12 +3,10 @@ class User < ApplicationRecord
   has_many :tests, through: :users_tests
   has_many :created_tests, class_name: "Test", foreign_key: "author_id"
 
-  scope :tests_for_user_by_level, ->(user, level) { user.tests.where(level: level) }
-
   validates :email, presence: true
   validates :name, presence: true
 
   def tests_by_level(level)
-    User.tests_for_user_by_level(self, level)
+    tests.where(level: level)
   end
 end
