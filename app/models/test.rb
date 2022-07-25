@@ -20,7 +20,7 @@ class Test < ApplicationRecord
     where(level: DIFFICULTY_LEVEL_RANGES[difficulty])
   end
 
-  scope :tests_by_category_id, ->(category_id) { where(category_id: category_id) }
+  scope :tests_by_category_title, ->(category_title) { joins(:category).where(category: { title: category_title}) }
 
   validates :title, presence: true,
                     uniqueness: { scope: :level, message: "There can only be one test with this title and level" }
@@ -28,9 +28,7 @@ class Test < ApplicationRecord
 
   class << self
     def tests_titles_by_category_title_desc(category_title)
-      category = Category.find_by(title: category_title)
-      return [] if category.nil?
-      tests_by_category_id(category.id).order(title: :desc).pluck(:title)
+      tests_by_category_title(category_title).order(title: :desc).pluck(:title)
     end
   end
 end
