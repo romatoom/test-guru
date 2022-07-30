@@ -3,6 +3,4 @@ Rails.application.routes.draw do
   resources :tests do
     resources :questions, shallow: true
   end
-
-  post 'delete_questions/:id', to: 'questions#delete'
 end
