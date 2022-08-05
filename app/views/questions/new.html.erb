@@ -1,16 +1,2 @@
-<h1>Создание вопроса для теста "<%= @test.title %>" с уровнем сложности <%= @test.level %></h1>
-<form action="/tests/<%= params[:test_id] %>/questions" method="post">
-  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-
-  <div class="form__item">
-    <label for="question-body">
-      Текст вопроса
-    </label>
-
-    <input type="text" name="question[body]" id="question-body" class="form__field">
-  </p>
-
-  <button type="submit" class="button">
-    Создать
-  </button>
-</form>
+<h1><%= question_header(@test) %></h1>
+<%= render 'form', model: [@test, @question], submit_text: "Создать" %>

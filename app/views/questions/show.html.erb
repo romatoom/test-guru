@@ -1,3 +1,2 @@
-<h1>
-  Список вопросов теста "<%= @test.title %>" с уровнем сложности <%= @test.level %>
-</h1>
+<h1><%= @question.body %></h1>
+<%= link_to "Вернуться", test_questions_path(@test), class: "button" %>

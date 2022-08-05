@@ -1,0 +1,11 @@
+<% if error %>
+  <h2>Внутренняя ошибка</h2>
+  <p><%= error %></p>
+<% end %>
+
+<% if resource.errors.present? %>
+  <h2>Ошибки валидации</h2>
+  <% resource.errors.full_messages.each do |error| %>
+    <p><%= error %></p>
+  <% end %>
+<% end %>
