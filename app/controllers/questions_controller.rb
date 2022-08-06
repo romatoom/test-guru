@@ -55,7 +55,7 @@ class QuestionsController < ApplicationController
   end
 
   def rescue_with_unique_failed(e)
-    @error = "Такой вопрос уже существует в этом тесте"
+    @error = "Такой вопрос уже существует в этом тесте. (#{e.message})"
 
     if action_name == "create"
       render :new
