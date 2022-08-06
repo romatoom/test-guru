@@ -1,7 +1,6 @@
 class QuestionsController < ApplicationController
   before_action :find_test, only: %i(index new create)
   before_action :find_question, only: %i(show edit update destroy)
-  before_action :question_test, only: %i(show edit)
 
   rescue_from ActiveRecord::RecordNotFound, with: :rescue_with_test_not_found
   rescue_from SQLite3::ConstraintException, with: :rescue_with_unique_failed
@@ -51,12 +50,8 @@ class QuestionsController < ApplicationController
     @question = Question.find(params[:id])
   end
 
-  def question_test
-    @test = @question.test
-  end
-
   def rescue_with_test_not_found
-    render html: "<h1>404 - Запрашиваемая страница не найдена.</h1>".html_safe
+    render file: "public/404.html"
   end
 
   def rescue_with_unique_failed(e)
