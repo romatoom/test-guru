@@ -11,8 +11,12 @@
   </head>
 
   <body>
-    <div class="container">
-      <%= yield %>
-    </div>
+    <section>
+      <div class="container">
+        <%= yield %>
+      </div>
+    </section>
+
+    <%= render 'shared/footer' %>
   </body>
 </html>

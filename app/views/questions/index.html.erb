@@ -1,0 +1,46 @@
+<h1>Тест "<%= @test.title %>"</h1>
+<p>Уровнень сложности: <%= @test.level %></p>
+
+<table class="questions-grid mb">
+  <thead>
+    <tr>
+      <th class="text-align-right">
+        ID
+      </th>
+      <th>
+        Название
+      </th>
+      <th colspan="3" class="text-align-center">
+        Действия
+        </th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @test.questions.each do |question| %>
+      <tr>
+        <td class="text-align-right">
+          <%= question.id %>
+        </td>
+        <td>
+          <%= question.body %>
+        </td>
+        <td>
+          <%= link_to "Редактировать", edit_question_path(question), class: "button small" %>
+        </td>
+        <td>
+          <%= link_to "Смотреть", question_path(question), class: "button small" %>
+        </td>
+        <td>
+          <%= link_to "Удалить",
+                      question_path(question),
+                      method: :delete,
+                      class: "button small danger",
+                      data: { confirm: "Вы действительно хотите удалить вопрос?" } %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to "Создать вопрос", new_test_question_path(@test), class: "button primary" %>
+
