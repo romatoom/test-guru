@@ -1,2 +1,4 @@
-<h1><%= @question.body %></h1>
+<h1 class="mb"><%= @question.body %></h1>
+
 <%= link_to "Вернуться", test_questions_path(@question.test), class: "button" %>
+<%= link_to 'Редактировать', edit_question_path(@question), class: "button primary" %>
