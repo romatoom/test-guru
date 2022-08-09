@@ -35,6 +35,10 @@ h1 {
   font-size: 1.5em !important;
 }
 
+h2 {
+  font-size: 1.3em !important;
+}
+
 a {
   color: #5c3cfd;
   text-decoration: none;
@@ -53,7 +57,7 @@ ol>li:not(:last-child){
 }
 
 .form__item label {
-  display: inline-block;
+  display: block;
   font-size: 14px;
   color: #888;
   margin-bottom: 2px;
@@ -65,7 +69,22 @@ ol>li:not(:last-child){
   width: 100%;
 }
 
+.form__item .form__select {
+  box-sizing: border-box;
+  padding: 6px 12px;
+  width: auto;
+}
+
+.form__item.checkbox>label {
+  display: inline-block;
+}
+
+.form__item.checkbox>input[type="checkbox"] {
+  vertical-align: middle;
+}
+
 .button {
+  display: inline-block;
   font-size: 16px;
   cursor: pointer;
   border: 0;
@@ -104,12 +123,21 @@ ol>li:not(:last-child){
   background-color: #c00;
 }
 
+.button.success {
+  color: #fff;
+  background-color: #4d8;
+}
+
+.button.success:hover {
+  background-color: #2a6;
+}
+
 .container {
   padding: 0 20px;
 }
 
 .mb {
-  margin-bottom: 40px;
+  margin-bottom: 20px;
 }
 
 .mr {
@@ -149,3 +177,5 @@ table td {
 .text-small {
   font-size: 12px;
 }
+
+
