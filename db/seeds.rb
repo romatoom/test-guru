@@ -64,7 +64,7 @@ category = Category.create!(title: "Backend")
 
 test = category.tests.create!(title: "Ruby", level: 1, author_id: admin.id)
 
-question = test.questions.create!(body: "Название самого пополярного фреймворка Ruby?")
+question = test.questions.create!(body: "Название самого популярного фреймворка Ruby?")
 
 wrong_answers = ["Rails", "Ruby Framework", "Ruby Web"]
 add_answers_for_question(wrong_answers, "Ruby On Rails", question)
