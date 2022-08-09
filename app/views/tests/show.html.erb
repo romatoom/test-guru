@@ -1,0 +1,80 @@
+<h1>Тест "<%= @test.title %>"</h1>
+
+<div class="mb">
+  <p>
+    <strong>Уровень сложности:</strong>
+    <%= @test.level %>
+  </p>
+
+  <p>
+    <strong>Количество вопросов:</strong>
+    <%= @test.questions.count %>
+  </p>
+
+  <p>
+    <strong>Категория:</strong>
+    <%= @test.category.title %>
+  </p>
+
+  <p>
+    <strong>Автор:</strong>
+    <%= @test.author.name %>
+  </p>
+</div>
+
+<h2>Вопросы теста</h2>
+
+<% if @test.questions.any? %>
+<table class="mb">
+  <thead>
+    <tr>
+      <th class="text-align-right">
+        ID
+      </th>
+      <th>
+        Название
+      </th>
+      <th colspan="3" class="text-align-center">
+        Действия
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @test.questions.each do |question| %>
+      <tr>
+        <td class="text-align-right">
+          <%= question.id %>
+        </td>
+        <td>
+          <%= question.body %>
+        </td>
+        <td>
+          <%= link_to "Просмотр", question_path(question), class: "button small" %>
+        </td>
+        <td>
+          <%= link_to "Редактировать", edit_question_path(question), class: "button primary small" %>
+        </td>
+        <td>
+          <%= link_to "Удалить",
+                      question_path(question),
+                      method: :delete,
+                      disabled: question.answers.any?,
+                      class: "button small danger",
+                      data: { confirm: "Вы действительно хотите удалить вопрос?" } %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<% else %>
+<p class="mb">В тесте пока нет вопросов</p>
+<% end %>
+
+<div>
+  <%= link_to "Добавить вопрос", new_test_question_path(@test), class: "button success mb" %>
+</div>
+
+<div>
+  <%= link_to 'Вернуться', tests_path, class: "button" %>
+  <%= link_to 'Редактировать', edit_test_path(@test), class: "button primary" %>
+</div>

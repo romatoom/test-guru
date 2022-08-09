@@ -11,7 +11,7 @@
     <%= form.check_box :correct, id: :answer_correct %>
   </div>
 
-  <%= link_to "Вернуться", question_answers_path(@answer.question), class: "button" %>
+  <%= link_to "Вернуться", question_path(@answer.question), class: "button" %>
   <%= form.submit submit_text, class: "button primary" %>
 <% end %>
 

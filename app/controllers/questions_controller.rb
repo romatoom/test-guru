@@ -1,15 +1,11 @@
 class QuestionsController < ApplicationController
-  before_action :find_test, only: %i(index new create)
+  before_action :find_test, only: %i(new create)
   before_action :find_question, only: %i(show edit update destroy)
 
   rescue_from ActiveRecord::RecordNotFound, with: :rescue_with_test_not_found
   rescue_from SQLite3::ConstraintException, with: :rescue_with_constraint_error
 
-  def index
-  end
-
   def show
-    redirect_to question_answers_path(@question)
   end
 
   def new
@@ -22,7 +18,7 @@ class QuestionsController < ApplicationController
   def create
     @question = @test.questions.new(question_params)
     if @question.save
-      redirect_to test_questions_url(@test)
+      redirect_to test_path(@test)
     else
       render :new
     end
@@ -30,7 +26,7 @@ class QuestionsController < ApplicationController
 
   def update
     if @question.update(question_params)
-      redirect_to test_questions_url(@question.test)
+      redirect_to test_path(@question.test)
     else
       render :edit
     end
@@ -38,7 +34,7 @@ class QuestionsController < ApplicationController
 
   def destroy
     @question.delete
-    redirect_to test_questions_url(@question.test)
+    redirect_to test_path(@question.test)
   end
 
   private

@@ -8,7 +8,6 @@ class TestsController < ApplicationController
   end
 
   def show
-    redirect_to test_questions_url(@test)
   end
 
   def new
