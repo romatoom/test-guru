@@ -1,0 +1,30 @@
+<h1><%= test_header(@test) %></h1>
+
+<%= form_with model: @test, local: true do |form| %>
+  <div class="form__item">
+    <%= form.label :title, "Название" %>
+    <%= form.text_field :title, id: :test_title, class: "form__field" %>
+  </div>
+
+  <div class="form__item">
+    <%= form.label :level, "Уровнень сложности" %>
+    <%= form.number_field :level, id: :test_level, class: "form__field" %>
+  </div>
+
+  <div class="form__item">
+    <%= form.label :category, "Категория" %>
+    <%= form.collection_select :category_id, Category.order(:title), :id, :title, {}, { id: :test_category, class: "form__select" } %>
+  </div>
+
+  <!--<div class="form__item">
+    <%= form.label :author, "Автор" %>
+    <% if @test.new_record? %>
+    <%= form.collection_select :author_id, User.order(:name), :id, :name, {}, { id: :test_author, class: "form__select" } %>
+    <% end %>
+  </div>-->
+
+  <%= link_to "Вернуться", tests_path, class: "button" %>
+  <%= form.submit submit_text, class: "button primary" %>
+<% end %>
+
+<%= render 'shared/errors', error: @error, resource: @test %>
