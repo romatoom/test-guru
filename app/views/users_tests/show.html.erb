@@ -1,7 +1,5 @@
 <h1>Прохождение теста "<%= @user_test.test.title %>", уроверь сложности <%= @user_test.test.level %></h1>
 
-<p>Правильных ответов: <%= @user_test.correct_answers %></p>
-
 <p><strong>Вопрос <%= @user_test.current_question.position %> из <%= @user_test.questions_count %>:</strong></p>
 
 <p><%= @user_test.current_question.body %></p>

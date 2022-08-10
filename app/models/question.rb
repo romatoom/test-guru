@@ -6,7 +6,11 @@ class Question < ApplicationRecord
   validates :body, presence: true
 
   def position
-    questions_ids_in_test = self.test.questions.pluck(:id).sort
-    questions_ids_in_test.find_index(self.id) + 1
+    questions_ids_in_test = test.questions.pluck(:id).sort
+    questions_ids_in_test.find_index(id) + 1
+  end
+
+  def next
+    test.questions.order(:id).where("id > ?", id).first
   end
 end

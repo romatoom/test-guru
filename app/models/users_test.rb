@@ -33,6 +33,6 @@ class UsersTest < ApplicationRecord
   end
 
   def before_update_set_current_question
-    self.current_question = test.questions.order(:id).where("id > ?", current_question.id).first
+    self.current_question = current_question.next
   end
 end
