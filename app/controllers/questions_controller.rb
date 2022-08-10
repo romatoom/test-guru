@@ -33,7 +33,7 @@ class QuestionsController < ApplicationController
   end
 
   def destroy
-    @question.delete
+    @question.destroy
     redirect_to test_path(@question.test)
   end
 
@@ -59,10 +59,10 @@ class QuestionsController < ApplicationController
       "update" => :edit
     }
 
-    if !actions[action_name].nil?
-      render actions[action_name]
+    if actions[action_name].nil?
+      redirect_to test_path(@question.test)
     else
-      redirect_to test_questions_url(@question.test)
+      render actions[action_name]
     end
   end
 

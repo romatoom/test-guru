@@ -1,5 +1,6 @@
 class TestsController < ApplicationController
-  before_action :set_test, only: %i(show edit update destroy)
+  before_action :set_test, only: %i(show edit update destroy start)
+  before_action :set_user, only: :start
 
   rescue_from SQLite3::ConstraintException, with: :rescue_with_constraint_error
 
@@ -21,7 +22,7 @@ class TestsController < ApplicationController
     @test = Test.new(test_params)
 
     if @test.save
-      redirect_to tests_url
+      redirect_to tests_path
     else
       render :new
     end
@@ -29,7 +30,7 @@ class TestsController < ApplicationController
 
   def update
     if @test.update(test_params)
-      redirect_to tests_url
+      redirect_to tests_path
     else
       render :edit
     end
@@ -38,12 +39,21 @@ class TestsController < ApplicationController
   def destroy
     @test.destroy
 
-    redirect_to tests_url
+    redirect_to tests_path
+  end
+
+  def start
+    @user.tests.push(@test)
+    redirect_to @user.user_test(@test)
   end
 
   private
     def set_test
       @test = Test.find(params[:id])
+    end
+
+    def set_user
+      @user = User.first
     end
 
     def rescue_with_constraint_error(e)
@@ -54,10 +64,10 @@ class TestsController < ApplicationController
         "update" => :edit
       }
 
-      if !actions[action_name].nil?
-        render actions[action_name]
+      if actions[action_name].nil?
+        render :index
       else
-        redirect_to tests_url
+        render actions[action_name]
       end
     end
 

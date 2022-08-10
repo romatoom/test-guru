@@ -1,3 +1,16 @@
 // Place all the styles related to the UsersTests controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+
+.test-result {
+  font-size: 20px;
+  font-weight: bold;
+
+  &.passed {
+    color: #2a5
+  }
+
+  &.failed {
+    color: #f44
+  }
+}
