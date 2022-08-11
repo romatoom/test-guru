@@ -38,8 +38,6 @@ class UsersTest < ApplicationRecord
   end
 
   def before_validation_set_сurrent_question
-    return unless test.present?
-
     self.current_question = current_question.nil? ? test.questions.first : current_question.next
   end
 end
