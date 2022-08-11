@@ -9,7 +9,7 @@
 
 <h2>Варианты ответов</h2>
 
-<% if @question.answers.any? %>
+<% if @answers.any? %>
 <table class="mb">
   <thead>
     <tr>
@@ -20,7 +20,7 @@
   </thead>
 
   <tbody>
-    <% @question.answers.each do |answer| %>
+    <% @answers.each do |answer| %>
       <tr>
         <td><%= answer.body %></td>
         <td><%= boolean_readable(answer.correct) %></td>
@@ -37,5 +37,5 @@
 
 <br>
 
-<%= link_to 'Вернуться', test_path(@question.test), class: "button" %>
-<%= link_to 'Добавить вариант ответа', new_question_answer_path(@question), class: "button success" %>
+<%= link_to 'Вернуться', test_questions_path(@question.test), class: "button" %>
+<%= link_to 'Добавить вариант ответа', new_question_answer_path, class: "button success" %>

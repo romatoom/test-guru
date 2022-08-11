@@ -1,12 +1,9 @@
 class QuestionsController < ApplicationController
-  before_action :find_test, only: %i(index new create)
+  before_action :find_test, only: %i(new create)
   before_action :find_question, only: %i(show edit update destroy)
 
   rescue_from ActiveRecord::RecordNotFound, with: :rescue_with_test_not_found
-  rescue_from SQLite3::ConstraintException, with: :rescue_with_unique_failed
-
-  def index
-  end
+  rescue_from SQLite3::ConstraintException, with: :rescue_with_constraint_error
 
   def show
   end
@@ -21,7 +18,7 @@ class QuestionsController < ApplicationController
   def create
     @question = @test.questions.new(question_params)
     if @question.save
-      redirect_to test_questions_url(@test)
+      redirect_to test_path(@test)
     else
       render :new
     end
@@ -29,15 +26,15 @@ class QuestionsController < ApplicationController
 
   def update
     if @question.update(question_params)
-      redirect_to test_questions_url(@question.test)
+      redirect_to test_path(@question.test)
     else
       render :edit
     end
   end
 
   def destroy
-    @question.delete
-    redirect_to test_questions_url(@question.test)
+    @question.destroy
+    redirect_to test_path(@question.test)
   end
 
   private
@@ -54,13 +51,18 @@ class QuestionsController < ApplicationController
     render file: "public/404.html"
   end
 
-  def rescue_with_unique_failed(e)
-    @error = "Такой вопрос уже существует в этом тесте. (#{e.message})"
+  def rescue_with_constraint_error(e)
+    @error = "#{e.message}"
 
-    if action_name == "create"
-      render :new
+    actions = {
+      "create" => :new,
+      "update" => :edit
+    }
+
+    if actions[action_name].nil?
+      redirect_to test_path(@question.test)
     else
-      render :edit
+      render actions[action_name]
     end
   end
 

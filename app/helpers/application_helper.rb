@@ -6,4 +6,8 @@ module ApplicationHelper
   def github_url(link_title, author, repo, options = {})
     link_to link_title, "https://github.com/#{author}/#{repo}", options
   end
+
+  def boolean_readable(bool)
+    bool ? "Да" : "Нет"
+  end
 end
