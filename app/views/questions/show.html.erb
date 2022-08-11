@@ -23,7 +23,7 @@
     <% @question.answers.each do |answer| %>
       <tr>
         <td><%= answer.body %></td>
-        <td><%= boolean_to_yes_no(answer.correct) %></td>
+        <td><%= boolean_readable(answer.correct) %></td>
         <td><%= link_to 'Просмотр', answer, class: "button small" %></td>
         <td><%= link_to 'Редактировать', edit_answer_path(answer), class: "button primary small" %></td>
         <td><%= link_to 'Удалить', answer, method: :delete, class: "button danger small", data: { confirm: 'Вы действительно хотите удалить ответ?' } %></td>

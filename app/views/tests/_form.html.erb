@@ -16,13 +16,6 @@
     <%= form.collection_select :category_id, Category.order(:title), :id, :title, {}, { id: :test_category, class: "form__select" } %>
   </div>
 
-  <!--<div class="form__item">
-    <%= form.label :author, "Автор" %>
-    <% if @test.new_record? %>
-    <%= form.collection_select :author_id, User.order(:name), :id, :name, {}, { id: :test_author, class: "form__select" } %>
-    <% end %>
-  </div>-->
-
   <%= link_to "Вернуться", tests_path, class: "button" %>
   <%= form.submit submit_text, class: "button primary" %>
 <% end %>

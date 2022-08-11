@@ -178,4 +178,9 @@ table td {
   font-size: 12px;
 }
 
-
+.button:disabled {
+  opacity: 0.5;
+  pointer-events: none;
+  cursor: default;
+  text-decoration: none;
+}

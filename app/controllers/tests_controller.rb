@@ -1,6 +1,6 @@
 class TestsController < ApplicationController
   before_action :set_test, only: %i(show edit update destroy start)
-  before_action :set_user, only: :start
+  before_action :set_user, only: %i(new create start)
 
   rescue_from SQLite3::ConstraintException, with: :rescue_with_constraint_error
 
@@ -12,14 +12,14 @@ class TestsController < ApplicationController
   end
 
   def new
-    @test = Test.new
+    @test = @user.created_tests.new
   end
 
   def edit
   end
 
   def create
-    @test = Test.new(test_params)
+    @test = @user.created_tests.new(test_params)
 
     if @test.save
       redirect_to tests_path
@@ -52,6 +52,7 @@ class TestsController < ApplicationController
       @test = Test.find(params[:id])
     end
 
+    # Получение пользователя, который создаёт тест. Пока не сделали авторизацию, будем возвращать первого пользователя
     def set_user
       @user = User.first
     end
@@ -71,14 +72,7 @@ class TestsController < ApplicationController
       end
     end
 
-    # Получение пользователя, который создаёт тест. Пока не сделали авторизацию, будем возвращать первого пользователя
-    def author
-      User.first
-    end
-
     def test_params
-      t_params = params.require(:test).permit(:title, :level, :category_id)
-      t_params[:author_id] = @test.nil? ? author.id : @test.author.id
-      t_params
+      params.require(:test).permit(:title, :level, :category_id)
     end
 end

@@ -7,7 +7,7 @@ module ApplicationHelper
     link_to link_title, "https://github.com/#{author}/#{repo}", options
   end
 
-  def boolean_to_yes_no(bool)
+  def boolean_readable(bool)
     bool ? "Да" : "Нет"
   end
 end

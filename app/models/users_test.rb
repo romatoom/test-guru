@@ -3,8 +3,9 @@ class UsersTest < ApplicationRecord
   belongs_to :test
   belongs_to :current_question, class_name: 'Question', optional: true
 
-  before_validation :before_validation_set_first_question, on: :create
-  before_update :before_update_set_current_question
+  before_validation :before_validation_set_сurrent_question
+
+  MIN_PERCENT_SUCCESS_PASSED_TEST = 85
 
   def accept!(answers_ids)
     if correct_all_answers?(answers_ids)
@@ -22,17 +23,23 @@ class UsersTest < ApplicationRecord
     test.questions.count
   end
 
+  def result_in_persent
+    (correct_answers.to_f / questions_count * 100).round
+  end
+
+  def success?
+    result_in_persent >= MIN_PERCENT_SUCCESS_PASSED_TEST
+  end
+
   private
 
   def correct_all_answers?(answers_ids)
     current_question.answers.right_answers.ids.sort == (answers_ids || []).map(&:to_i).sort
   end
 
-  def before_validation_set_first_question
-    self.current_question = test.questions.first if test.present?
-  end
+  def before_validation_set_сurrent_question
+    return unless test.present?
 
-  def before_update_set_current_question
-    self.current_question = current_question.next
+    self.current_question = current_question.nil? ? test.questions.first : current_question.next
   end
 end

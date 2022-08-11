@@ -1,15 +1,9 @@
 module UsersTestsHelper
-  def test_result_in_persent(user_test)
-    result = (user_test.correct_answers.to_f / user_test.questions_count * 100).round
-
-    if test_passed?(result)
-      "<p class='test-result passed'>#{result}% - вы прошли тест</p>".html_safe
+  def paragraph_for_test_result(user_test)
+    if user_test.success?
+      "<p class='test-result passed'>#{user_test.result_in_persent}% - вы прошли тест</p>".html_safe
     else
-      "<p class='test-result failed'>#{result}% - вы не прошли тест</p>".html_safe
+      "<p class='test-result failed'>#{user_test.result_in_persent}% - вы не прошли тест</p>".html_safe
     end
-  end
-
-  def test_passed?(result_in_percent)
-    result_in_percent >= 85
   end
 end
