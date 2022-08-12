@@ -16,4 +16,8 @@ Rails.application.routes.draw do
       get :result
     end
   end
+
+  resources :users, only: :create
+
+  get :register, to: "users#new"
 end
