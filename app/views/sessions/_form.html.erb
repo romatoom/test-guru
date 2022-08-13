@@ -1,10 +1,6 @@
 <h1>Вход</h1>
 
 <%= form_with url: sessions_path, local: true do |form| %>
-  <% if flash[:alert] %>
-    <%= content_tag :p, flash[:alert], class: "flash alert"%>
-  <% end %>
-
   <div class="form__item">
     <%= form.label :email, "Email" %>
     <%= form.text_field :email, id: :email, class: "form__field" %>

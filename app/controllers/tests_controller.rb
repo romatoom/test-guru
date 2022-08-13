@@ -59,7 +59,7 @@ class TestsController < ApplicationController
     end
 
     def rescue_with_constraint_error(e)
-      @error = "#{e.message}"
+      flash.now[:danger] = "Произошла ошибка: #{e.message}"
 
       actions = {
         "create" => :new,

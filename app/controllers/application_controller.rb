@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
 
   def authenticate_user!
     unless current_user
-      redirect_to login_path, alert: 'Вы не вошли в систему. Пожалуйста, введите свой email и пароль'
+      redirect_to login_path, flash: { warning: 'Вы не вошли в систему. Пожалуйста, введите свой email и пароль' }
     end
   end
 
