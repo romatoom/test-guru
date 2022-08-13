@@ -1,0 +1,18 @@
+header {
+  padding: 20px 0;
+  color: #fff;
+  background-color: #369;
+
+  &>div.container {
+    display: flex;
+
+    &>div.space {
+      width: 100%;
+    }
+
+    &>span.login-at {
+      white-space: nowrap;
+      text-align: right;
+    }
+  }
+}

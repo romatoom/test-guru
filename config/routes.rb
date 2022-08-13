@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'sessions/new'
   root "tests#index"
 
   resources :tests do
@@ -19,5 +20,9 @@ Rails.application.routes.draw do
 
   resources :users, only: :create
 
-  get :register, to: "users#new"
+  get :signup, to: "users#new"
+
+  get :login, to: "sessions#new"
+
+  resources :sessions, only: :create
 end

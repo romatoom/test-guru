@@ -1,0 +1,11 @@
+.flash {
+  padding: 20px;
+  border-radius: 4px;
+  border: 1px solid;
+
+  &.alert {
+    border-color: #c24;
+    color: #c24;
+    background-color: #fdd;
+  }
+}
