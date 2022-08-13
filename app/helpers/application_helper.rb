@@ -15,7 +15,6 @@ module ApplicationHelper
 
   def flash_block
     FLASH_BLOCK_KEYS.each do |key|
-      puts key, flash[key]
       return content_tag :p, flash[key], class: "flash #{key.to_s}" if flash[key]
     end
 
