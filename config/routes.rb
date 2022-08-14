@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
-  get 'sessions/new'
-  root "tests#index"
+  root "main#index"
 
   resources :tests do
     resources :questions, shallow: true, except: :index do

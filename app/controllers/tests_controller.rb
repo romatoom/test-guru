@@ -1,5 +1,4 @@
 class TestsController < ApplicationController
-  before_action :authenticate_user!
   before_action :set_test, only: %i(show edit update destroy start)
   before_action :set_user, only: %i(new create start)
 
@@ -53,9 +52,8 @@ class TestsController < ApplicationController
       @test = Test.find(params[:id])
     end
 
-    # Получение пользователя, который создаёт тест. Пока не сделали авторизацию, будем возвращать первого пользователя
     def set_user
-      @user = User.first
+      @user = current_user
     end
 
     def rescue_with_constraint_error(e)

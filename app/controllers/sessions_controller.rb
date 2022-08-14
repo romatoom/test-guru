@@ -1,4 +1,6 @@
 class SessionsController < ApplicationController
+  skip_before_action :authenticate_user!
+
   def new
   end
 
@@ -17,7 +19,9 @@ class SessionsController < ApplicationController
   end
 
   def destroy
-    session.delete(:user_id)
+    # session.delete(:user_id) - или так правильней?
+    session[:user_id] = nil
+
     redirect_to root_path, flash: { success: "Вы успешно вышли из системы" }
   end
 end
