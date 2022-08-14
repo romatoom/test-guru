@@ -10,7 +10,12 @@ class SessionsController < ApplicationController
     if user&.authenticate(params[:password])
       session[:user_id] = user.id
 
-      redirect_to tests_path, flash: { success: "Вы успешно вошли в систему" }
+      if cookies[:target_path].present?
+        redirect_to cookies[:target_path], flash: { success: "Вы успешно вошли в систему" }
+        cookies[:target_path] = nil
+      else
+        redirect_to root_path, flash: { success: "Вы успешно вошли в систему" }
+      end
     else
       flash.now[:danger] = "Вы ввели неверные данные для входа"
 

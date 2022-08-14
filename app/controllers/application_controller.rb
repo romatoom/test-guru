@@ -8,6 +8,7 @@ class ApplicationController < ActionController::Base
 
   def authenticate_user!
     unless current_user
+      cookies[:target_path] = request.original_fullpath
       redirect_to login_path, flash: { warning: 'Вы не вошли в систему. Пожалуйста, введите свой email и пароль' }
     end
   end
