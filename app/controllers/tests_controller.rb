@@ -1,6 +1,6 @@
 class TestsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_test, only: %i(show edit update destroy start)
-  before_action :set_user, only: %i(new create start)
 
   rescue_from SQLite3::ConstraintException, with: :rescue_with_constraint_error
 
@@ -12,14 +12,14 @@ class TestsController < ApplicationController
   end
 
   def new
-    @test = @user.created_tests.new
+    @test = current_user.created_tests.new
   end
 
   def edit
   end
 
   def create
-    @test = @user.created_tests.new(test_params)
+    @test = current_user.created_tests.new(test_params)
 
     if @test.save
       redirect_to tests_path
@@ -43,8 +43,8 @@ class TestsController < ApplicationController
   end
 
   def start
-    @user.tests.push(@test)
-    redirect_to @user.user_test(@test)
+    current_user.tests.push(@test)
+    redirect_to current_user.user_test(@test)
   end
 
   private
@@ -52,13 +52,8 @@ class TestsController < ApplicationController
       @test = Test.find(params[:id])
     end
 
-    # Получение пользователя, который создаёт тест. Пока не сделали авторизацию, будем возвращать первого пользователя
-    def set_user
-      @user = User.first
-    end
-
     def rescue_with_constraint_error(e)
-      @error = "#{e.message}"
+      flash.now[:danger] = "Произошла ошибка: #{e.message}"
 
       actions = {
         "create" => :new,

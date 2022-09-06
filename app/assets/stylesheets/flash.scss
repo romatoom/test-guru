@@ -1,0 +1,30 @@
+.flash {
+  padding: 10px 20px;
+  font-size: 12px;
+  margin: 0;
+  border: 1px solid;
+
+  &.warning {
+    border-color: #ea3;
+    color: #ea3;
+    background-color: #fec;
+  }
+
+  &.danger {
+    border-color: #c24;
+    color: #c24;
+    background-color: #fdc;
+  }
+
+  &.success {
+    border-color: #2c4;
+    color: #2c4;
+    background-color: #dfd;
+  }
+
+  &.info {
+    border-color: #555;
+    color: #555;
+    background-color: #ccc;
+  }
+}

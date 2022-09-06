@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root "tests#index"
+  root "main#index"
 
   resources :tests do
     resources :questions, shallow: true, except: :index do
@@ -16,4 +16,14 @@ Rails.application.routes.draw do
       get :result
     end
   end
+
+  resources :users, only: :create
+
+  get :signup, to: "users#new"
+
+  get :login, to: "sessions#new"
+
+  get :logout, to: "sessions#destroy"
+
+  resources :sessions, only: :create
 end

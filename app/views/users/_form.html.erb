@@ -1,0 +1,29 @@
+<h1>Регистрация нового пользователя</h1>
+
+<%= form_with model: @user, local: true do |form| %>
+  <div class="form__item">
+    <%= form.label :name, "Имя" %>
+    <%= form.text_field :name, id: :user_name, class: "form__field" %>
+  </div>
+
+  <div class="form__item">
+    <%= form.label :email, "Email" %>
+    <%= form.text_field :email, id: :user_email, class: "form__field" %>
+  </div>
+
+  <div class="form__item">
+    <%= form.label :password, "Пароль" %>
+    <%= form.password_field :password, id: :user_password, class: "form__field" %>
+  </div>
+
+  <div class="form__item">
+    <%= form.label :password_confirmation, "Подтверждение пароля" %>
+    <%= form.password_field :password_confirmation, id: :user_password_confirmation, class: "form__field" %>
+  </div>
+
+  <%= form.submit submit_text, class: "button primary"%>
+
+  <%= link_to 'На главную', root_path, class: "button" %>
+<% end %>
+
+<%= render 'shared/errors', resource: @user %>

@@ -10,4 +10,13 @@ module ApplicationHelper
   def boolean_readable(bool)
     bool ? "Да" : "Нет"
   end
+
+  def flash_block
+    p flash.keys
+    flash.keys.each do |key|
+      return content_tag :p, flash[key], class: "flash #{key.to_s}" if flash[key]
+    end
+
+    return
+  end
 end
