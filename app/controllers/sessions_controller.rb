@@ -10,12 +10,8 @@ class SessionsController < ApplicationController
     if user&.authenticate(params[:password])
       session[:user_id] = user.id
 
-      if cookies[:target_path].present?
-        redirect_to cookies[:target_path], flash: { success: "Вы успешно вошли в систему" }
-        cookies[:target_path] = nil
-      else
-        redirect_to root_path, flash: { success: "Вы успешно вошли в систему" }
-      end
+      redirect_to cookies[:target_path] || root_path, flash: { success: "Вы успешно вошли в систему" }
+      cookies[:target_path] = nil
     else
       flash.now[:danger] = "Вы ввели неверные данные для входа"
 
@@ -24,7 +20,6 @@ class SessionsController < ApplicationController
   end
 
   def destroy
-    # session.delete(:user_id) - или так правильней?
     session[:user_id] = nil
 
     redirect_to root_path, flash: { success: "Вы успешно вышли из системы" }

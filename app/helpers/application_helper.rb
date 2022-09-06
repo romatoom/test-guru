@@ -1,6 +1,4 @@
 module ApplicationHelper
-  FLASH_BLOCK_KEYS = %i(info success warning danger).freeze
-
   def current_year
     Date.today.year
   end
@@ -14,7 +12,8 @@ module ApplicationHelper
   end
 
   def flash_block
-    FLASH_BLOCK_KEYS.each do |key|
+    p flash.keys
+    flash.keys.each do |key|
       return content_tag :p, flash[key], class: "flash #{key.to_s}" if flash[key]
     end
 
