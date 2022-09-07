@@ -1,3 +1,5 @@
+@import 'vars';
+
 .flash {
   padding: 10px 20px;
   font-size: 12px;
@@ -5,26 +7,26 @@
   border: 1px solid;
 
   &.warning {
-    border-color: #ea3;
-    color: #ea3;
-    background-color: #fec;
+    border-color: $warning-color;
+    color: $warning-color;
+    background-color: $warning-light-color;
   }
 
-  &.danger {
-    border-color: #c24;
-    color: #c24;
-    background-color: #fdc;
+  &.alert {
+    border-color: $danger-color;
+    color: $danger-color;
+    background-color: $danger-light-color;
   }
 
   &.success {
-    border-color: #2c4;
-    color: #2c4;
-    background-color: #dfd;
+    border-color: $success-color;
+    color: $success-color;
+    background-color: $success-light-color;
   }
 
-  &.info {
-    border-color: #555;
-    color: #555;
-    background-color: #ccc;
+  &.notice {
+    border-color: $info-color;
+    color: $info-color;
+    background-color: $info-light-color;
   }
 }

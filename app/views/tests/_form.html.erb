@@ -1,19 +1,19 @@
 <h1><%= test_header(@test) %></h1>
 
 <%= form_with model: @test, local: true do |form| %>
-  <div class="form__item">
+  <div class="field">
     <%= form.label :title, "Название" %>
-    <%= form.text_field :title, id: :test_title, class: "form__field" %>
+    <%= form.text_field :title, id: :test_title %>
   </div>
 
-  <div class="form__item">
+  <div class="field">
     <%= form.label :level, "Уровнень сложности" %>
-    <%= form.number_field :level, id: :test_level, class: "form__field" %>
+    <%= form.number_field :level, id: :test_level %>
   </div>
 
-  <div class="form__item">
+  <div class="field">
     <%= form.label :category, "Категория" %>
-    <%= form.collection_select :category_id, Category.order(:title), :id, :title, {}, { id: :test_category, class: "form__select" } %>
+    <%= form.collection_select :category_id, Category.order(:title), :id, :title, {}, { id: :test_category } %>
   </div>
 
   <%= link_to "Вернуться", tests_path, class: "button" %>

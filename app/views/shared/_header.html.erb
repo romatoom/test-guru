@@ -5,12 +5,12 @@
         <div class="space"></div>
 
         <div class="auth_block">
-        <% if logged_in? %>
+        <% if user_signed_in? %>
           <span class="login-at">Вы вошли, как <strong><%= current_user.name %></strong></span>
-          <a href="<%= logout_path %>" class="button small">Выйти</a>
+          <%= link_to "Выйти", destroy_user_session_path, class: "button small", method: "delete" %>
         <% else %>
-          <a href="<%= login_path %>" class="button small">Войти</a>
-          <a href="<%= signup_path %>" class="button small">Зарегистрироваться</a>
+          <%= link_to "Войти", new_user_session_path, class: "button small" %>
+          <%= link_to "Зарегистрироваться", new_user_registration_path, class: "button small" %>
         <% end %>
         </div>
       </div>

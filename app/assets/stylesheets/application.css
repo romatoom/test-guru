@@ -16,7 +16,7 @@
  */
 
 body {
-  font-family: Arial,sans-serif;
+  font-family: Arial, sans-serif;
   color: #2E2F30;
 }
 
@@ -41,46 +41,55 @@ h2 {
 
 a {
   color: #5c3cfd;
+  transition: color .2s ease-in-out;
   text-decoration: none;
+  cursor: pointer;
+}
+
+a:hover {
+  color: #7c5cfd;
 }
 
 ol {
   padding-left: 30px;
 }
 
-ol>li:not(:last-child){
+ol>li:not(:last-child) {
   margin-bottom: 6px
 }
 
-.form__item {
+.field {
   margin-bottom: 16px;
 }
 
-.form__item label {
-  display: block;
+.field label {
+  display: inline-block;
   font-size: 14px;
   color: #888;
   margin-bottom: 2px;
 }
 
-.form__item .form__field {
+.field input {
   box-sizing: border-box;
   padding: 6px 12px;
   width: 100%;
 }
 
-.form__item .form__select {
+.field input[type="checkbox"] {
   box-sizing: border-box;
   padding: 6px 12px;
   width: auto;
 }
 
-.form__item.checkbox>label {
-  display: inline-block;
+.field input[type="checkbox"] {
+  vertical-align: middle;
 }
 
-.form__item.checkbox>input[type="checkbox"] {
-  vertical-align: middle;
+.field em {
+  display: block;
+  font-size: 10px;
+  margin-bottom: 2px;
+  color: #888;
 }
 
 .button {
@@ -102,7 +111,9 @@ ol>li:not(:last-child){
 }
 
 .button:hover {
+  transition: background-color 0.2s ease-in-out;
   background-color: #cacaca;
+  color: #333;
 }
 
 .button.primary {
@@ -138,6 +149,10 @@ ol>li:not(:last-child){
 
 .mb {
   margin-bottom: 20px;
+}
+
+.mt {
+  margin-top: 20px;
 }
 
 .mr {

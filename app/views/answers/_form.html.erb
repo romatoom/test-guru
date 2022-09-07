@@ -1,12 +1,12 @@
 <h1><%= answer_header(@answer) %></h1>
 
 <%= form_with model: [@question, @answer], local: true do |form| %>
-  <div class="form__item">
+  <div class="field">
     <%= form.label :body, "Текст ответа" %>
-    <%= form.text_area :body, id: :answer_body, rows: 10, class: "form__field" %>
+    <%= form.text_area :body, id: :answer_body, rows: 10 %>
   </div>
 
-  <div class="form__item checkbox">
+  <div class="field checkbox">
     <%= form.label :correct, "Правильный ответ?" %>
     <%= form.check_box :correct, id: :answer_correct %>
   </div>
