@@ -15,7 +15,18 @@ puts "Create seeds..."
 
 category = Category.create!(title: "Frontend")
 
-admin = User.create!(name: "Алексей Алексеев", email: "first_admin@gmail.com")
+adminPassword = "Admin123"
+
+admin = Admin.new(
+  nickname: "alex",
+  first_name: "Алексей",
+  last_name: "Алексеев",
+  email: "first_admin@gmail.com",
+  password: adminPassword,
+  password_confirmation: adminPassword
+)
+admin.skip_confirmation!
+admin.save!
 
 test = category.tests.create!(title: "HTML", author_id: admin.id)
 
@@ -79,16 +90,42 @@ test_js_0 = Test.find_by(title: "Javascript", level: 0)
 test_ruby_1 = Test.find_by(title: "Ruby", level: 1)
 test_rails_2 = Test.find_by(title: "Ruby On Rails", level: 2)
 
-user = User.create!(name: "Виталий Черепанов", email: "vitalya123@gmail.com")
+userPassword = "User123"
+
+user = User.new(
+  nickname: "Виталий Черепанов",
+  email: "vitalya123@gmail.com",
+  password: userPassword,
+  password_confirmation: userPassword
+)
+user.skip_confirmation!
+user.save!
+
 user.tests.push(test_html_0)
 user.tests.push(test_css_0)
 user.tests.push(test_ruby_1)
 
-user = User.create!(name: "Анна Сидорова", email: "belka-14@mail.ru")
+user = User.new(
+  nickname: "Анна Сидорова",
+  email: "belka-14@mail.ru",
+  password: userPassword,
+  password_confirmation: userPassword
+)
+user.skip_confirmation!
+user.save!
+
 user.tests.push(test_html_0)
 user.tests.push(test_css_0)
 
-user = User.create!(name: "Артём Михайлов", email: "ttt777@gmail.com")
+user = User.new(
+  nickname: "Артём Михайлов",
+  email: "ttt777@gmail.com",
+  password: userPassword,
+  password_confirmation: userPassword
+)
+user.skip_confirmation!
+user.save!
+
 user.tests.push(test_html_0)
 
 puts "Seeds has been created successfully!"
