@@ -6,7 +6,7 @@
     <%= form.text_field :body, id: :question_body %>
   </div>
 
-  <%= link_to "Вернуться", test_path(@question.test), class: "button" %>
+  <%= link_to "Вернуться", admin_test_path(@question.test), class: "button" %>
   <%= form.submit submit_text, class: "button primary" %>
 <% end %>
 

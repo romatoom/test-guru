@@ -77,12 +77,13 @@ ol>li:not(:last-child) {
 
 .field input[type="checkbox"] {
   box-sizing: border-box;
+  vertical-align: middle;
   padding: 6px 12px;
   width: auto;
 }
 
-.field input[type="checkbox"] {
-  vertical-align: middle;
+.field textarea {
+  width: 100%;
 }
 
 .field em {
@@ -166,6 +167,12 @@ table tr {
 
 tr:nth-child(2n+1) {
   background: #fafafa;
+}
+
+table {
+  display: block;
+  width: 100%;
+  overflow-x: auto;
 }
 
 table th,

@@ -1,0 +1,9 @@
+<tr>
+  <td><%= test.id %></td>
+  <td><%= test.title %></td>
+  <td class="text-align-center"><%= test.level %></td>
+  <td><%= test.category.title %></td>
+  <td><%= test.author.nickname %></td>
+  <td class="text-align-center"><%= test.questions.count %></td>
+  <td><%= button_to 'Пройти', start_test_path(test), class: "button small", disabled: test.questions.count == 0 %></td>
+</tr>

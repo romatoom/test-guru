@@ -1,6 +1,6 @@
 <h1><%= test_header(@test) %></h1>
 
-<%= form_with model: @test, local: true do |form| %>
+<%= form_with model: [:admin, @test], local: true do |form| %>
   <div class="field">
     <%= form.label :title, "Название" %>
     <%= form.text_field :title, id: :test_title %>
@@ -16,7 +16,7 @@
     <%= form.collection_select :category_id, Category.order(:title), :id, :title, {}, { id: :test_category } %>
   </div>
 
-  <%= link_to "Вернуться", tests_path, class: "button" %>
+  <%= link_to "Вернуться", admin_tests_path, class: "button" %>
   <%= form.submit submit_text, class: "button primary" %>
 <% end %>
 
