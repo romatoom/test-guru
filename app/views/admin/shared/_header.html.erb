@@ -1,0 +1,14 @@
+    <header class="admin">
+      <div class="container">
+        <a class="logo" href="<%= root_path %>">TestGuru - панель администратора</a>
+
+        <div class="space"></div>
+
+        <div class="auth_block">
+
+        <span class="login-at">Вы вошли, как <strong><%= current_user.nickname %></strong></span>
+        <%= link_to "Выйти", destroy_user_session_path, class: "button small", method: "delete" %>
+
+        </div>
+      </div>
+    </header>
