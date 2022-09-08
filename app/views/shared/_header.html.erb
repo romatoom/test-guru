@@ -6,7 +6,7 @@
 
         <div class="auth_block">
         <% if user_signed_in? %>
-          <span class="login-at">Вы вошли, как <strong><%= current_user.name %></strong></span>
+          <span class="login-at">Вы вошли, как <strong><%= current_user.nickname %></strong></span>
           <%= link_to "Выйти", destroy_user_session_path, class: "button small", method: "delete" %>
         <% else %>
           <%= link_to "Войти", new_user_session_path, class: "button small" %>
