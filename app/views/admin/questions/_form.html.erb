@@ -1,6 +1,6 @@
 <h1><%= question_header(@question) %></h1>
 
-<%= form_with model: [@test, @question], local: true do |form| %>
+<%= form_with model: [:admin, @test, @question], local: true do |form| %>
   <div class="field">
     <%= form.label :body, "Текст вопроса" %>
     <%= form.text_field :body, id: :question_body %>

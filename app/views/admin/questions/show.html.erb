@@ -24,9 +24,9 @@
       <tr>
         <td><%= answer.body %></td>
         <td><%= boolean_readable(answer.correct) %></td>
-        <td><%= link_to 'Просмотр', answer, class: "button small" %></td>
-        <td><%= link_to 'Редактировать', edit_answer_path(answer), class: "button primary small" %></td>
-        <td><%= link_to 'Удалить', answer, method: :delete, class: "button danger small", data: { confirm: 'Вы действительно хотите удалить ответ?' } %></td>
+        <td><%= link_to 'Просмотр', admin_answer_path(answer), class: "button small" %></td>
+        <td><%= link_to 'Редактировать', edit_admin_answer_path(answer), class: "button primary small" %></td>
+        <td><%= link_to 'Удалить', admin_answer_path(answer), method: :delete, class: "button danger small", data: { confirm: 'Вы действительно хотите удалить ответ?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -38,4 +38,4 @@
 <br>
 
 <%= link_to 'Вернуться', admin_test_path(@question.test), class: "button" %>
-<%= link_to 'Добавить вариант ответа', new_question_answer_path(@question), class: "button success" %>
+<%= link_to 'Добавить вариант ответа', new_admin_question_answer_path(@question), class: "button success" %>

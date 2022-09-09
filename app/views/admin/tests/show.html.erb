@@ -40,7 +40,7 @@
     </tr>
   </thead>
   <tbody>
-    <%= render partial: 'questions/question', collection: @test.questions %>
+    <%= render partial: 'admin/questions/question', collection: @test.questions %>
   </tbody>
 </table>
 <% else %>
@@ -48,7 +48,7 @@
 <% end %>
 
 <div>
-  <%= link_to "Добавить вопрос", new_test_question_path(@test), class: "button success mb" %>
+  <%= link_to "Добавить вопрос", new_admin_test_question_path(@test), class: "button success mb" %>
 </div>
 
 <div>
