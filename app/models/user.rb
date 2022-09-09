@@ -11,7 +11,8 @@ class User < ApplicationRecord
   has_many :tests, through: :users_tests
   has_many :created_tests, class_name: "Test", foreign_key: "author_id"
 
-  validates :nickname, presence: true
+  validates :first_name, presence: true
+  validates :last_name, presence: true
 
   def tests_by_level(level)
     tests.where(level: level)
@@ -19,5 +20,9 @@ class User < ApplicationRecord
 
   def user_test(test)
     users_tests.order(id: :desc).find_by(test_id: test.id)
+  end
+
+  def fullname
+    "#{first_name} #{last_name}"
   end
 end

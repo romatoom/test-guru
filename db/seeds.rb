@@ -18,7 +18,6 @@ category = Category.create!(title: "Frontend")
 adminPassword = "Admin123"
 
 admin = Admin.new(
-  nickname: "alex",
   first_name: "Алексей",
   last_name: "Алексеев",
   email: "first_admin@gmail.com",
@@ -93,7 +92,8 @@ test_rails_2 = Test.find_by(title: "Ruby On Rails", level: 2)
 userPassword = "User123"
 
 user = User.new(
-  nickname: "Виталий Черепанов",
+  first_name: "Виталий",
+  last_name: "Черепанов",
   email: "vitalya123@gmail.com",
   password: userPassword,
   password_confirmation: userPassword
@@ -106,7 +106,8 @@ user.tests.push(test_css_0)
 user.tests.push(test_ruby_1)
 
 user = User.new(
-  nickname: "Анна Сидорова",
+  first_name: "Анна",
+  last_name: "Сидорова",
   email: "belka-14@mail.ru",
   password: userPassword,
   password_confirmation: userPassword
@@ -118,7 +119,8 @@ user.tests.push(test_html_0)
 user.tests.push(test_css_0)
 
 user = User.new(
-  nickname: "Артём Михайлов",
+  first_name: "Артём",
+  last_name: "Михайлов",
   email: "ttt777@gmail.com",
   password: userPassword,
   password_confirmation: userPassword
