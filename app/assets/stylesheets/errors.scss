@@ -1,0 +1,28 @@
+@import 'vars';
+
+#error_explanation {
+  border: 1px solid $danger-color;
+  font-size: 12px;
+
+  &>h2 {
+    background-color: $danger-color;
+    color: $white-color;
+    padding: 15px 10px;
+    margin: 0;
+  }
+
+  &>ul {
+    padding-left: 20px;
+  }
+}
+
+.field {
+  &>.field_with_errors label {
+    color: $danger-color;
+  }
+
+  &>.field_with_errors input {
+    border-color: $danger-color;
+    background-color: $danger-light-color;
+  }
+}

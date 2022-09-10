@@ -1,23 +1,28 @@
 class ApplicationController < ActionController::Base
   before_action :authenticate_user!
 
-  helper_method :current_user,
-                :logged_in?
+  before_action :configure_permitted_parameters, if: :devise_controller?
 
-  private
+  protected
 
-  def authenticate_user!
-    unless current_user
-      cookies[:target_path] = request.original_fullpath
-      redirect_to login_path, flash: { warning: 'Вы не вошли в систему. Пожалуйста, введите свой email и пароль' }
+  def configure_permitted_parameters
+    devise_parameter_sanitizer.permit(:sign_up) do |u|
+      u.permit(
+        :email,
+        :first_name,
+        :last_name,
+        :password)
     end
   end
 
-  def current_user
-    @current_user ||= User.find(session[:user_id]) if session[:user_id]
-  end
+  private
 
-  def logged_in?
-    current_user.present?
+  def after_sign_in_path_for(resource)
+    stored_location_for(resource) ||
+      if resource.admin?
+        admin_tests_path
+      else
+        super
+      end
   end
 end

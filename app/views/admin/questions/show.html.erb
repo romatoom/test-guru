@@ -1,0 +1,41 @@
+<h1>Вопрос "<%= @question.body %>"</h1>
+
+<div class="mb">
+  <p>
+    <strong>Тест:</strong>
+    <%= @question.test.title %> с уровнем сложности <%= @question.test.level %>
+  </p>
+</div>
+
+<h2>Варианты ответов</h2>
+
+<% if @question.answers.any? %>
+<table class="mb">
+  <thead>
+    <tr>
+      <th>Текст ответа</th>
+      <th>Верный ответ?</th>
+      <th colspan="3" class="text-align-center">Действия</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @question.answers.each do |answer| %>
+      <tr>
+        <td><%= answer.body %></td>
+        <td><%= boolean_readable(answer.correct) %></td>
+        <td><%= link_to 'Просмотр', admin_answer_path(answer), class: "button small" %></td>
+        <td><%= link_to 'Редактировать', edit_admin_answer_path(answer), class: "button primary small" %></td>
+        <td><%= link_to 'Удалить', admin_answer_path(answer), method: :delete, class: "button danger small", data: { confirm: 'Вы действительно хотите удалить ответ?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<% else %>
+<p class="mb">Варианты ответов для вопроса ещё не созданы</p>
+<% end %>
+
+<br>
+
+<%= link_to 'Вернуться', admin_test_path(@question.test), class: "button" %>
+<%= link_to 'Добавить вариант ответа', new_admin_question_answer_path(@question), class: "button success" %>
