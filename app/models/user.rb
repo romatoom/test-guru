@@ -25,4 +25,8 @@ class User < ApplicationRecord
   def fullname
     "#{first_name} #{last_name}"
   end
+
+  def admin?
+    type == "Admin"
+  end
 end
