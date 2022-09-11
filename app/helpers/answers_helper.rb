@@ -1,9 +1,9 @@
 module AnswersHelper
   def answer_header(answer)
     if answer.new_record?
-      "Создание ответа на вопрос \"#{answer.question.body}\""
+      t(".create_answer", answer_text: answer.question.body)
     else
-      "Редактирование варианта ответа на вопрос \"#{answer.question.body}\""
+      t(".edit_answer", answer_text: answer.question.body)
     end
   end
 end

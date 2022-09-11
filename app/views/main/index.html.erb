@@ -1,7 +1,7 @@
 <div class="main-page">
   <span>TestGuru</span>
-  <span>Тестов - <%= @tests_count %></span>
-  <span>Категорий тестов - <%= @categories_count %></span>
+  <span><%= t(".number_of_tests") %> - <%= @tests_count %></span>
+  <span><%= t(".number_of_test_categories") %> - <%= @categories_count %></span>
 
-  <%= link_to "Выбрать тест для прохождения", tests_path, class: "button primary" %>
+  <%= link_to t(".select_test"), tests_path, class: "button primary" %>
 </div>

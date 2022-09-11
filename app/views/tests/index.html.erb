@@ -1,23 +1,23 @@
-<h1>Все тесты</h1>
+<h1><%= t("common.tests.all_tests") %></h1>
 
 <% if @tests.any? %>
-<table class="mb">
-  <thead>
-    <tr>
-      <th>ID</th>
-      <th>Название</th>
-      <th class="text-align-center">Уровень сложности</th>
-      <th>Категория</th>
-      <th>Автор</th>
-      <th class="text-align-center">Количество вопросов</th>
-      <th class="text-align-center">Действия</th>
-    </tr>
-  </thead>
+  <table class="mb">
+    <thead>
+      <tr>
+        <th><%= t("common.id") %></th>
+        <th><%= t("common.tests.title") %></th>
+        <th class="text-align-center"><%= t("common.tests.level") %></th>
+        <th><%= t("common.tests.category") %></th>
+        <th><%= t("common.tests.author") %></th>
+        <th class="text-align-center"><%= t("common.tests.questions_count") %></th>
+        <th class="text-align-center"><%= t("common.actions") %></th>
+      </tr>
+    </thead>
 
-  <tbody>
-    <%= render @tests %>
-  </tbody>
-</table>
+    <tbody>
+      <%= render @tests %>
+    </tbody>
+  </table>
 <% else %>
-<p class="mb">Ещё не создан ни один тест</p>
+  <p class="mb"><%= t("common.tests.no_tests") %></p>
 <% end %>

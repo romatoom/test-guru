@@ -1,33 +1,96 @@
-# Files in the config/locales directory are used for internationalization
-# and are automatically loaded by Rails. If you want to use locales other
-# than English, add the necessary files in this directory.
-#
-# To use the locales, use `I18n.t`:
-#
-#     I18n.t 'hello'
-#
-# In views, this is aliased to just `t`:
-#
-#     <%= t('hello') %>
-#
-# To use a different locale, set it with `I18n.locale`:
-#
-#     I18n.locale = :es
-#
-# This would use the information in config/locales/es.yml.
-#
-# The following keys must be escaped otherwise they will not be retrieved by
-# the default I18n backend:
-#
-# true, false, on, off, yes, no
-#
-# Instead, surround them with single quotes.
-#
-# en:
-#   'true': 'foo'
-#
-# To learn more, please read the Rails Internationalization guide
-# available at https://guides.rubyonrails.org/i18n.html.
-
 en:
-  hello: "Hello world"
+  common:
+    view: "View"
+    edit: "Edit"
+    delete: "Delete"
+    create: "Create"
+    back: "Back"
+    save: "Save"
+    actions: "Actions"
+    id: "ID"
+    tests:
+      all_test: "All tests"
+      title: "Title"
+      level: "Level"
+      category: "Category"
+      author: "Author"
+      questions_count: "Number of questions"
+      no_tests: "No test has been created yet"
+
+    questions:
+      answer_text: "Answer text"
+      true_answer: "Correct answer"
+      question_text: "Question text"
+
+    header:
+      title: "%{service_name} - admin panel"
+      login_at: "You logged in as <strong>%{username}</strong>"
+      login: "Sign in"
+      logout: "Sign out"
+      register: "Sign up"
+
+    footer:
+      description: "Service %{service_name_link}. Includes a system to manage tests (create, edit, delete). Created tests can be passed by users registered in the system."
+      school_ref: "Study project at %{school_name_link} online school"
+
+  helpers:
+    submit:
+      user:
+        create: "Sign in"
+
+    label:
+      user:
+        email: "Email"
+        password: "Password"
+        remember_me: "Remember me"
+
+  main:
+    index:
+      select_test: "Choose a test to take"
+      number_of_tests: "Number of tests"
+      number_of_test_categories: "Number of test categories"
+
+  tests:
+    test:
+      start: "Pass"
+
+  admin:
+    tests:
+      test:
+        confirm_delete: "Do you really want to delete the test?"
+      form:
+        create_new_test: "Create new test"
+        edit_test: 'Editing the "%{test_title}" test'
+      index:
+        create_test: "New test"
+      show:
+        title: 'The "%{test_title}" test'
+        add_question: "Add question"
+        questions: "Test questions"
+        no_questions: "No questions in the test yet"
+
+    questions:
+      show:
+        title: 'Question "%{question_title}"'
+        description: '<strong>Test:</strong> "%{test_title}" with difficulty level %{test_level}'
+        answer_options: "Answer options"
+        add_ansewer: "Add an answer choice"
+        no_answers: "Answer options for the question have not yet been created"
+
+      form:
+        create_question: 'Create a question for the test "%{test_title}" with a difficulty level of %{test_level}'
+        edit_question: 'Editing the question for the test "%{test_title}" with difficulty level %{test_level}'
+
+      question:
+        confirm_delete: "Do you really want to delete the question?"
+
+    answers:
+      answer:
+        confirm_delete: "Do you really want to delete your answer?"
+
+      show:
+        title: 'Viewing the answer choice to the question "%{answer_title}"'
+
+      form:
+        create_answer: 'Creating an answer to the question "%{question_title}"'
+        edit_answer: 'Editing the answer to the question "%{answer_text}"'

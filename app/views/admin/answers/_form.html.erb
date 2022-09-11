@@ -2,16 +2,16 @@
 
 <%= form_with model: [:admin, @question, @answer], local: true do |form| %>
   <div class="field">
-    <%= form.label :body, "Текст ответа" %>
+    <%= form.label :body, t("common.questions.answer_text") %>
     <%= form.text_area :body, id: :answer_body, rows: 10 %>
   </div>
 
   <div class="field checkbox">
-    <%= form.label :correct, "Правильный ответ?" %>
+    <%= form.label :correct, "#{t("common.questions.true_answer")}?" %>
     <%= form.check_box :correct, id: :answer_correct %>
   </div>
 
-  <%= link_to "Вернуться", admin_question_path(@answer.question), class: "button" %>
+  <%= link_to t("common.back"), admin_question_path(@answer.question), class: "button" %>
   <%= form.submit submit_text, class: "button primary" %>
 <% end %>
 
