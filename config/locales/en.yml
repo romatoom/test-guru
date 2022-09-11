@@ -33,6 +33,9 @@ en:
       description: "Service %{service_name_link}. Includes a system to manage tests (create, edit, delete). Created tests can be passed by users registered in the system."
       school_ref: "Study project at %{school_name_link} online school"
 
+  mail:
+    test_complete: "You have completed the TestGuru test"
+
   helpers:
     submit:
       user:
@@ -53,6 +56,19 @@ en:
   tests:
     test:
       start: "Pass"
+
+  users_tests:
+    show:
+      title: 'Passing the test "%{test_title}", difficulty level %{test_level}'
+      progress_bar: "The question %{position} of %{count}"
+      next_question: "Next question"
+
+    result:
+      test_completed: "Test completed"
+      result: "Your score"
+      back_to_tests: "Back to tests"
+      passed: "you passed the test"
+      failed: "you failed the test"
 
   admin:
     tests:

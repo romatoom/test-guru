@@ -1,10 +1,10 @@
-<h1>Прохождение теста "<%= @user_test.test.title %>", уроверь сложности <%= @user_test.test.level %></h1>
+<h1><%= t(".title", test_title: @user_test.test.title, test_level: @user_test.test.level) %></h1>
 
-<p><strong>Вопрос <%= @user_test.current_question.position %> из <%= @user_test.questions_count %>:</strong></p>
+<p><strong><%= t(".progress_bar", position: @user_test.current_question.position, count: @user_test.questions_count) %>:</strong>
 
 <p><%= @user_test.current_question.body %></p>
 
-<p><strong>Варианты ответов:</strong></p>
+<p><strong><%= t("admin.questions.show.answer_options") %>:</strong></p>
 
 <%= form_with url: users_test_path(@user_test), local: true, method: :put do |form| %>
   <%= form.collection_check_boxes :answer_ids, @user_test.current_question.answers, :id, :body, include_hidden: false do |b| %>
@@ -15,5 +15,5 @@
     </div>
   <% end %>
 
-  <%= form.submit "Следующий вопрос", class: "button primary" %>
+  <%= form.submit t(".next_question"), class: "button primary" %>
 <% end %>

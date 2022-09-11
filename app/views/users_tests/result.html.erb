@@ -1,7 +1,7 @@
-<h1>Тест завершён</h1>
+<h1><%= t(".test_completed") %></h1>
 
-<p>Ваш результат:</p>
+<p><%= t(".result") %>:</p>
 
 <%= paragraph_for_test_result(@user_test) %>
 
-<%= link_to "Вернуться к тестам", tests_path, class: "button primary" %>
+<%= link_to t(".back_to_tests"), tests_path, class: "button primary" %>

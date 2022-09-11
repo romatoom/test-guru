@@ -33,6 +33,9 @@ ru:
       description: "Сервис %{service_name_link}. Включает в себя систему управления тестами (создания, редактирования, удаления). Созданные тесты можно проходить пользователям, зарегистрированным в системе."
       school_ref: "Учебный проект в онлайн-школе %{school_name_link}"
 
+  mail:
+    test_complete: "Вы завершили тест TestGuru"
+
   helpers:
     submit:
       user:
@@ -53,6 +56,19 @@ ru:
   tests:
     test:
       start: "Пройти"
+
+  users_tests:
+    show:
+      title: 'Прохождение теста "%{test_title}", уроверь сложности %{test_level}'
+      progress_bar: "Вопрос %{position} из %{count}"
+      next_question: "Следующий вопрос"
+
+    result:
+      test_completed: "Тест завершён"
+      result: "Ваш результат"
+      back_to_tests: "Вернуться к тестам"
+      passed: "вы прошли тест"
+      failed: "вы не прошли тест"
 
   admin:
     tests:
