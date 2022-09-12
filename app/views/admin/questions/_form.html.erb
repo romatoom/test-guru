@@ -1,6 +1,8 @@
 <h1><%= question_header(@question) %></h1>
 
 <%= form_with model: [:admin, @test, @question], local: true do |form| %>
+  <%= render 'shared/errors', resource: @question %>
+
   <div class="field">
     <%= form.label :body, t("common.questions.question_text") %>
     <%= form.text_field :body, id: :question_body %>
@@ -9,5 +11,3 @@
   <%= link_to t("common.back"), admin_test_path(@question.test), class: "button" %>
   <%= form.submit submit_text, class: "button primary" %>
 <% end %>
-
-<%= render 'shared/errors', resource: @question %>

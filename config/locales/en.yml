@@ -33,8 +33,8 @@ en:
       description: "Service %{service_name_link}. Includes a system to manage tests (create, edit, delete). Created tests can be passed by users registered in the system."
       school_ref: "Study project at %{school_name_link} online school"
 
-  mail:
-    test_complete: "You have completed the TestGuru test"
+  tests_mailer:
+    subject: "You have completed the TestGuru test"
 
   helpers:
     submit:
@@ -46,6 +46,32 @@ en:
         email: "Email"
         password: "Password"
         remember_me: "Remember me"
+
+  activerecord:
+    models:
+      test: "Test"
+      question: "Question"
+      answer: "Answer"
+
+    attributes:
+      test:
+        title: "Title"
+        level: "Level"
+        category_id: "Category"
+
+      question:
+        body: "Question text"
+
+      answer:
+        body: "Answer text"
+
+    errors:
+      validation:
+        one: "%{resource}: %{count} validation error"
+        other: "%{resource}: %{count} validation errors"
+
+      messages:
+        taken: "- there can only be one test with this title and level"
 
   main:
     index:
@@ -90,7 +116,7 @@ en:
         title: 'Question "%{question_title}"'
         description: '<strong>Test:</strong> "%{test_title}" with difficulty level %{test_level}'
         answer_options: "Answer options"
-        add_ansewer: "Add an answer choice"
+        add_answer: "Add an answer choice"
         no_answers: "Answer options for the question have not yet been created"
 
       form:

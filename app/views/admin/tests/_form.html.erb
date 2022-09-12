@@ -1,6 +1,8 @@
 <h1><%= test_header(@test) %></h1>
 
 <%= form_with model: [:admin, @test], local: true do |form| %>
+  <%= render 'shared/errors', resource: @test %>
+
   <div class="field">
     <%= form.label :title, t("common.tests.title") %>
     <%= form.text_field :title, id: :test_title %>
@@ -20,4 +22,3 @@
   <%= form.submit submit_text, class: "button primary" %>
 <% end %>
 
-<%= render 'shared/errors', resource: @test %>

@@ -23,7 +23,7 @@ class Test < ApplicationRecord
   scope :tests_by_category_title, ->(category_title) { joins(:category).where(category: { title: category_title}) }
 
   validates :title, presence: true,
-                    uniqueness: { scope: :level, message: "There can only be one test with this title and level" }
+                    uniqueness: { scope: :level }
   validates :level, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
 
   class << self

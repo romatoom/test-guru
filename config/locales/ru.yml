@@ -33,8 +33,8 @@ ru:
       description: "Сервис %{service_name_link}. Включает в себя систему управления тестами (создания, редактирования, удаления). Созданные тесты можно проходить пользователям, зарегистрированным в системе."
       school_ref: "Учебный проект в онлайн-школе %{school_name_link}"
 
-  mail:
-    test_complete: "Вы завершили тест TestGuru"
+  tests_mailer:
+    subject: "Вы завершили тест TestGuru"
 
   helpers:
     submit:
@@ -46,6 +46,34 @@ ru:
         email: "Email"
         password: "Пароль"
         remember_me: "Запомнить меня"
+
+  activerecord:
+    models:
+      test: "Тест"
+      question: "Вопрос"
+      answer: "Ответ"
+
+    attributes:
+      test:
+        title: "Название"
+        level: "Уровень сложности"
+        category_id: "Категория"
+
+      question:
+        body: "Текст вопроса"
+
+      answer:
+        body: "Тест ответа"
+
+    errors:
+      validation:
+        one: "%{resource}: %{count} ошибка валидации"
+        few: "%{resource}: %{count} ошибки валидации"
+        many: "%{resource}: %{count} ошибок валидации"
+        other: "%{resource}: %{count} ошибки валидации"
+
+      messages:
+        taken: "- может быть только один тест с таким названием и уровнем"
 
   main:
     index:
@@ -90,7 +118,7 @@ ru:
         title: 'Вопрос "%{question_title}"'
         description: '<strong>Тест:</strong> "%{test_title}" с уровнем сложности %{test_level}'
         answer_options: "Варианты ответов"
-        add_ansewer: "Добавить вариант ответа"
+        add_answer: "Добавить вариант ответа"
         no_answers: "Варианты ответов для вопроса ещё не созданы"
 
       form:
