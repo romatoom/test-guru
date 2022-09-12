@@ -47,6 +47,9 @@ ru:
         password: "Пароль"
         remember_me: "Запомнить меня"
 
+    select:
+      prompt: "Выберите вариант"
+
   activerecord:
     models:
       test: "Тест"

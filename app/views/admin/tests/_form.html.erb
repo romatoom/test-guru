@@ -15,7 +15,7 @@
 
   <div class="field">
     <%= form.label :category, t("common.tests.category") %>
-    <%= form.collection_select :category_id, Category.order(:title), :id, :title, {}, { id: :test_category } %>
+    <%= form.collection_select :category_id, Category.order(:title), :id, :title, prompt: true %>
   </div>
 
   <%= link_to t("common.back"), admin_tests_path, class: "button" %>

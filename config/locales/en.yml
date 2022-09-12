@@ -47,6 +47,9 @@ en:
         password: "Password"
         remember_me: "Remember me"
 
+    select:
+      prompt: "Please select"
+
   activerecord:
     models:
       test: "Test"
