@@ -1,6 +1,6 @@
 <h1><%= t(".title", answer_title: @answer.question.body ) %></h1>
 
-<div class="mb">
+<div class="mb-5">
   <p>
     <strong><%= t("common.questions.answer_text") %>:</strong>
     <%= @answer.body %>
@@ -12,5 +12,5 @@
   </p>
 </div>
 
-<%= link_to t("common.back"), admin_question_path(@answer.question), class: "button" %>
-<%= link_to t("common.edit"), edit_admin_answer_path(@answer), class: "button primary" %>
+<%= link_to t("common.back"), admin_question_path(@answer.question), class: "btn btn-secondary" %>
+<%= link_to t("common.edit"), edit_admin_answer_path(@answer), class: "btn btn-primary" %>

@@ -12,7 +12,7 @@ class Answer < ApplicationRecord
   def validate_answers_count
     return if persisted?
     if question.answers.count >= 4
-      errors.add(:base, "You cannot create more than 4 answers for question")
+      errors.add(:base, I18n.t("activerecord.errors.answers_count_limit"))
     end
   end
 end

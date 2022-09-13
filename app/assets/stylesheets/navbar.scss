@@ -1,3 +1,11 @@
+@import "bootstrap/scss/variables";
+
+.navbar {
+  background-color: $indigo-400;
+  color: $indigo-100;
+}
+
+/*
 header {
   padding: 20px 0;
   color: #fff;
@@ -29,4 +37,4 @@ header {
       text-align: right;
     }
   }
-}
+}*/

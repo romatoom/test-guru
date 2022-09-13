@@ -1,14 +1,12 @@
-    <header class="admin">
-      <div class="container">
-        <a class="logo" href="<%= root_path %>"><%= t("common.header.title", service_name: "TestGuru") %></a>
+<nav class="navbar text-white">
+  <div class="container">
+    <%= link_to t("common.header.title", service_name: "TestGuru"), root_path, class: "navbar-brand text-white" %>
 
-        <div class="space"></div>
-
-        <div class="auth_block">
-
-        <span class="login-at"><%= t("common.header.login_at", username: "#{current_user.fullname}").html_safe %></span>
-        <%= link_to t("common.header.logout"), destroy_user_session_path, class: "button small", method: "delete" %>
-
-        </div>
-      </div>
-    </header>
+    <div>
+      <span class="me-2">
+        <%= t("common.header.login_at", username: "#{current_user.fullname}").html_safe %>
+      </span>
+      <%= link_to t("common.header.logout"), destroy_user_session_path, class: "btn btn-light", method: "delete" %>
+    </div>
+  </div>
+</nav>

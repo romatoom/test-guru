@@ -73,6 +73,8 @@ en:
         one: "%{resource}: %{count} validation error"
         other: "%{resource}: %{count} validation errors"
 
+      answers_count_limit: "You cannot create more than 4 answers for question"
+
       messages:
         taken: "- there can only be one test with this title and level"
 
@@ -105,9 +107,9 @@ en:
         confirm_delete: "Do you really want to delete the test?"
       form:
         create_new_test: "Create new test"
-        edit_test: 'Editing the "%{test_title}" test'
+        edit_test: "Editing the test"
       index:
-        create_test: "New test"
+        create_test: "Add new test"
       show:
         title: 'The "%{test_title}" test'
         add_question: "Add question"
@@ -137,5 +139,5 @@ en:
         title: 'Viewing the answer choice to the question "%{answer_title}"'
 
       form:
-        create_answer: 'Creating an answer to the question "%{question_title}"'
+        create_answer: 'Creating an answer to the question "%{answer_text}"'
         edit_answer: 'Editing the answer to the question "%{answer_text}"'

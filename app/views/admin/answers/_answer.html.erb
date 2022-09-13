@@ -1,7 +1,9 @@
 <tr>
   <td><%= answer.body %></td>
   <td><%= boolean_readable(answer.correct) %></td>
-  <td><%= link_to t("common.view"), admin_answer_path(answer), class: "button small" %></td>
-  <td><%= link_to t("common.edit"), edit_admin_answer_path(answer), class: "button primary small" %></td>
-  <td><%= link_to t("common.delete"), admin_answer_path(answer), method: :delete, class: "button danger small", data: { confirm: t(".confirm_delete")} %></td>
+  <td>
+    <%= link_to t("common.view"), admin_answer_path(answer), class: "btn btn-outline-dark btn-sm" %>
+    <%= link_to t("common.edit"), edit_admin_answer_path(answer), class: "btn btn-outline-primary btn-sm" %>
+    <%= link_to t("common.delete"), admin_answer_path(answer), method: :delete, class: "btn btn-outline-danger btn-sm", data: { confirm: t(".confirm_delete")} %>
+  </td>
 </tr>

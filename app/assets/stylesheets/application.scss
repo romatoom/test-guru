@@ -1,4 +1,15 @@
-@import "bootstrap";
+@import "bootstrap/scss/bootstrap";
+
+@import "vars";
+
+@import "navbar";
+@import "footer";
+@import "links";
+@import "errors";
+
+h1 {
+  margin-bottom: 30px;
+}
 
 /*
 body {
@@ -180,7 +191,7 @@ table td {
   border: 1px
 }
 
-.text-align-center {
+.text-center {
   text-align: center;
 }
 
@@ -197,4 +208,5 @@ table td {
   pointer-events: none;
   cursor: default;
   text-decoration: none;
-} */
+}
+*/
