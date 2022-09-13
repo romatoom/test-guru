@@ -1,9 +1,9 @@
 module QuestionsHelper
   def question_header(question)
     if question.new_record?
-      "Создание вопроса для теста \"#{question.test.title}\" с уровнем сложности #{question.test.level}"
+      t(".create_question", test_title: question.test.title, test_level: question.test.level)
     else
-      "Редактирование вопроса для теста \"#{question.test.title}\" с уровнем сложности #{question.test.level}"
+      t(".edit_question", test_title: question.test.title, test_level: question.test.level)
     end
   end
 end

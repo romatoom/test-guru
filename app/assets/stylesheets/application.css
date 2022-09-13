@@ -82,6 +82,12 @@ ol>li:not(:last-child) {
   width: auto;
 }
 
+.field select {
+  box-sizing: border-box;
+  padding: 6px 12px;
+  width: 100%
+}
+
 .field textarea {
   width: 100%;
 }

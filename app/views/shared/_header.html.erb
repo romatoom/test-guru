@@ -6,11 +6,11 @@
 
         <div class="auth_block">
         <% if user_signed_in? %>
-          <span class="login-at">Вы вошли, как <strong><%= current_user.fullname %></strong></span>
-          <%= link_to "Выйти", destroy_user_session_path, class: "button small", method: "delete" %>
+          <span class="login-at"><%= t("common.header.login_at", username: "#{current_user.fullname}").html_safe %></span>
+          <%= link_to t("common.header.logout"), destroy_user_session_path, class: "button small", method: "delete" %>
         <% else %>
-          <%= link_to "Войти", new_user_session_path, class: "button small" %>
-          <%= link_to "Зарегистрироваться", new_user_registration_path, class: "button small" %>
+          <%= link_to t("common.header.login"), new_user_session_path, class: "button small" %>
+          <%= link_to t("common.header.register"), new_user_registration_path, class: "button small" %>
         <% end %>
         </div>
       </div>

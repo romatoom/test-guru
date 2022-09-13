@@ -1,2 +1,143 @@
 ru:
-  hello: "Привет, мир"
+  common:
+    view: "Просмотр"
+    edit: "Редактировать"
+    delete: "Удалить"
+    create: "Создать"
+    back: "Вернуться"
+    save: "Сохранить"
+    actions: "Действия"
+    id: "ID"
+    tests:
+      all_test: "Все тесты"
+      title: "Название"
+      level: "Уровень сложности"
+      category: "Категория"
+      author: "Автор"
+      questions_count: "Количество вопросов"
+      no_tests: "Ещё не создан ни один тест"
+
+    questions:
+      answer_text: "Текст ответа"
+      true_answer: "Верный ответ"
+      question_text: "Текст вопроса"
+
+    header:
+      title: "%{service_name} - панель администратора"
+      login_at: "Вы вошли, как <strong>%{username}</strong>"
+      login: "Войти"
+      logout: "Выйти"
+      register: "Зарегистрироваться"
+
+    footer:
+      description: "Сервис %{service_name_link}. Включает в себя систему управления тестами (создания, редактирования, удаления). Созданные тесты можно проходить пользователям, зарегистрированным в системе."
+      school_ref: "Учебный проект в онлайн-школе %{school_name_link}"
+
+  tests_mailer:
+    subject: "Вы завершили тест TestGuru"
+
+  helpers:
+    submit:
+      user:
+        create: "Войти"
+
+    label:
+      user:
+        email: "Email"
+        password: "Пароль"
+        remember_me: "Запомнить меня"
+
+    select:
+      prompt: "Выберите вариант"
+
+  activerecord:
+    models:
+      test: "Тест"
+      question: "Вопрос"
+      answer: "Ответ"
+
+    attributes:
+      test:
+        title: "Название"
+        level: "Уровень сложности"
+        category_id: "Категория"
+
+      question:
+        body: "Текст вопроса"
+
+      answer:
+        body: "Тест ответа"
+
+    errors:
+      validation:
+        one: "%{resource}: %{count} ошибка валидации"
+        few: "%{resource}: %{count} ошибки валидации"
+        many: "%{resource}: %{count} ошибок валидации"
+        other: "%{resource}: %{count} ошибки валидации"
+
+      messages:
+        taken: "- может быть только один тест с таким названием и уровнем"
+
+  main:
+    index:
+      select_test: "Выбрать тест для прохождения"
+      number_of_tests: "Количество тестов"
+      number_of_test_categories: "Количество категорий тестов"
+
+  tests:
+    test:
+      start: "Пройти"
+
+  users_tests:
+    show:
+      title: 'Прохождение теста "%{test_title}", уроверь сложности %{test_level}'
+      progress_bar: "Вопрос %{position} из %{count}"
+      next_question: "Следующий вопрос"
+
+    result:
+      test_completed: "Тест завершён"
+      result: "Ваш результат"
+      back_to_tests: "Вернуться к тестам"
+      passed: "вы прошли тест"
+      failed: "вы не прошли тест"
+
+  admin:
+    tests:
+      test:
+        confirm_delete: "Вы действительно хотите удалить тест?"
+      form:
+        create_new_test: "Создание нового теста"
+        edit_test: 'Редактирование теста "%{test_title}"'
+      index:
+        create_test: "Создать тест"
+      show:
+        title: 'Тест "%{test_title}"'
+        add_question: "Добавить вопрос"
+        questions: "Вопросы теста"
+        no_questions: "В тесте пока нет вопросов"
+
+    questions:
+      show:
+        title: 'Вопрос "%{question_title}"'
+        description: '<strong>Тест:</strong> "%{test_title}" с уровнем сложности %{test_level}'
+        answer_options: "Варианты ответов"
+        add_answer: "Добавить вариант ответа"
+        no_answers: "Варианты ответов для вопроса ещё не созданы"
+
+      form:
+        create_question: 'Создание вопроса для теста "%{test_title}" с уровнем сложности %{test_level}'
+        edit_question: 'Редактирование вопроса для теста "%{test_title}" с уровнем сложности %{test_level}'
+
+      question:
+        confirm_delete: "Вы действительно хотите удалить вопрос?"
+
+    answers:
+      answer:
+        confirm_delete: "Вы действительно хотите удалить ответ?"
+
+      show:
+        title: 'Просмотр варианта ответа на вопрос "%{answer_title}"'
+
+      form:
+        create_answer: 'Создание ответа на вопрос "%{answer_text}"'
+        edit_answer: 'Редактирование варианта ответа на вопрос "%{answer_text}"'
