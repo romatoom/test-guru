@@ -1,4 +1,9 @@
 module ApplicationHelper
+  ALERT_TYPES = {
+    notice: 'secondary',
+    alert: 'danger'
+  }.freeze
+
   def current_year
     Date.today.year
   end
@@ -13,9 +18,11 @@ module ApplicationHelper
 
   def flash_block
     flash.each do |key, message|
-      return content_tag :p, message, class: "flash #{key.to_s}" if flash[key]
+      ending_alert_class_name = ALERT_TYPES[key.to_sym] || key
+      return content_tag :div, message, class: "alert alert-#{ending_alert_class_name} mb-0" if flash[key]
     end
 
     return
   end
 end
+

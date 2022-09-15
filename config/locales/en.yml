@@ -81,6 +81,7 @@ en:
   main:
     index:
       select_test: "Choose a test to take"
+      manage_tests: "Manage tests"
       number_of_tests: "Number of tests"
       number_of_test_categories: "Number of test categories"
 

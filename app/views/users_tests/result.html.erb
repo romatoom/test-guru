@@ -1,7 +1,11 @@
 <h1><%= t(".test_completed") %></h1>
 
-<p><%= t(".result") %>:</p>
+<p class="mb-0 fs-3 lh-1">
+  <%= t(".result") %>:
+</p>
 
-<%= paragraph_for_test_result(@user_test) %>
+<div class="mb-5">
+  <%= paragraph_for_test_result(@user_test) %>
+</div>
 
-<%= link_to t(".back_to_tests"), tests_path, class: "button primary" %>
+<%= link_to t(".back_to_tests"), tests_path, class: "btn btn-primary" %>

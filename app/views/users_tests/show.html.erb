@@ -2,18 +2,19 @@
 
 <p><strong><%= t(".progress_bar", position: @user_test.current_question.position, count: @user_test.questions_count) %>:</strong>
 
-<p><%= @user_test.current_question.body %></p>
+<p class="mb-5"><%= @user_test.current_question.body %></p>
 
 <p><strong><%= t("admin.questions.show.answer_options") %>:</strong></p>
 
 <%= form_with url: users_test_path(@user_test), local: true, method: :put do |form| %>
-  <%= form.collection_check_boxes :answer_ids, @user_test.current_question.answers, :id, :body, include_hidden: false do |b| %>
-    <div class="field checkbox">
-      <%= b.check_box id: "answer_ids_#{b.object.id}" %>
+  <div class="mb-5">
+    <%= form.collection_check_boxes :answer_ids, @user_test.current_question.answers, :id, :body, include_hidden: false do |b| %>
+      <div class="form-check">
+        <%= b.check_box id: "answer_ids_#{b.object.id}", class: "form-check-input" %>
+        <%= b.label class: "form-check-label" %>
+      </div>
+    <% end %>
+  </div>
 
-      <%= b.label %>
-    </div>
-  <% end %>
-
-  <%= form.submit t(".next_question"), class: "button primary" %>
+  <%= form.submit t(".next_question"), class: "btn btn-primary" %>
 <% end %>

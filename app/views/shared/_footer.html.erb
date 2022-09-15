@@ -1,14 +1,14 @@
 <footer>
   <div class="container pt-3 pb-3">
-    <p class="pb-1">
+    <p class="mb-0">
       @ 2022 - <%= current_year %>, <%= Rails.application.config.author %>
     </p>
 
-    <p class="pb-1">
+    <p class="mb-0">
       <%= t("common.footer.description", service_name_link: github_url("TestGuru", "romatoom", "test-guru", target: "_blank")).html_safe %>
     </p>
 
-    <p class="pb-1">
+    <p class="mb-0">
       <%= t("common.footer.school_ref", school_name_link: link_to("Thinknetica", "https://thinknetica.com/", target: "_blank")).html_safe %>
     </p>
   </div>

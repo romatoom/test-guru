@@ -83,6 +83,7 @@ ru:
   main:
     index:
       select_test: "Выбрать тест для прохождения"
+      manage_tests: "Управление тестами"
       number_of_tests: "Количество тестов"
       number_of_test_categories: "Количество категорий тестов"
 

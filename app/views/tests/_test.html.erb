@@ -5,5 +5,5 @@
   <td><%= test.category.title %></td>
   <td><%= test.author.fullname %></td>
   <td class="text-center"><%= test.questions.count %></td>
-  <td><%= button_to t(".start"), start_test_path(test), class: "button small", disabled: test.questions.count == 0 %></td>
+  <td><%= button_to t(".start"), start_test_path(test), class: "btn btn-outline-dark btn-sm", disabled: test.questions.count == 0 %></td>
 </tr>
