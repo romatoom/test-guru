@@ -17,14 +17,10 @@ module ApplicationHelper
   end
 
   def flash_block
-    flashes = ""
-
-    flash.each do |key, message|
+    flash.map do |key, message|
       ending_alert_class_name = ALERT_TYPES[key.to_sym] || key
-      flashes += content_tag :div, message, class: "alert alert-#{ending_alert_class_name} mb-0" if flash[key]
-    end
-
-    return flashes.html_safe
+      content_tag :div, message, class: "alert alert-#{ending_alert_class_name} mb-0" if flash[key]
+    end.join.html_safe
   end
 end
 
