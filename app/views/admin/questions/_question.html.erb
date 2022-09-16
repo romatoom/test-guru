@@ -1,22 +1,18 @@
 <tr>
-  <td class="text-align-right">
+  <td>
     <%= question.id %>
   </td>
   <td>
     <%= question.body %>
   </td>
   <td>
-    <%= link_to t("common.view"), admin_question_path(question), class: "button small" %>
-  </td>
-  <td>
-    <%= link_to t("common.edit"), edit_admin_question_path(question), class: "button primary small" %>
-  </td>
-  <td>
+    <%= link_to t("common.view"), admin_question_path(question), class: "btn btn-outline-dark btn-sm" %>
+    <%= link_to t("common.edit"), edit_admin_question_path(question), class: "btn btn-outline-primary btn-sm" %>
     <%= link_to t("common.delete"),
                 admin_question_path(question),
                 method: :delete,
                 disabled: question.answers.any?,
-                class: "button small danger",
+                class: "btn btn-outline-danger btn-sm",
                 data: { confirm: t(".confirm_delete") } %>
   </td>
 </tr>

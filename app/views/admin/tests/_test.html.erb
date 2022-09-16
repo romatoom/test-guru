@@ -1,16 +1,17 @@
 <tr>
   <td><%= test.id %></td>
   <td><%= test.title %></td>
-  <td class="text-align-center"><%= test.level %></td>
+  <td class="text-center"><%= test.level %></td>
   <td><%= test.category.title %></td>
   <td><%= current_user.fullname %></td>
-  <td class="text-align-center"><%= test.questions.count %></td>
-  <td><%= link_to t("common.view"), admin_test_path(test), class: "button small" %></td>
-  <td><%= link_to t("common.edit"), edit_admin_test_path(test), class: "button primary small" %></td>
-  <td><%= link_to t("common.delete"),
-                  admin_test_path(test),
-                  method: :delete,
-                  class: "button danger small",
-                  data: { confirm: t(".confirm_delete") } %>
+  <td class="text-center"><%= test.questions.count %></td>
+  <td>
+    <%= link_to t("common.view"), admin_test_path(test), class: "btn btn-outline-dark btn-sm" %>
+    <%= link_to t("common.edit"), edit_admin_test_path(test), class: "btn btn-outline-primary btn-sm" %>
+    <%= link_to t("common.delete"),
+                    admin_test_path(test),
+                    method: :delete,
+                    class: "btn btn-outline-danger btn-sm",
+                    data: { confirm: t(".confirm_delete") } %>
   </td>
 </tr>

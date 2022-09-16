@@ -75,12 +75,15 @@ ru:
         many: "%{resource}: %{count} ошибок валидации"
         other: "%{resource}: %{count} ошибки валидации"
 
+      answers_count_limit: "Вы не можете создать более 4 ответов на вопрос"
+
       messages:
         taken: "- может быть только один тест с таким названием и уровнем"
 
   main:
     index:
       select_test: "Выбрать тест для прохождения"
+      manage_tests: "Управление тестами"
       number_of_tests: "Количество тестов"
       number_of_test_categories: "Количество категорий тестов"
 
@@ -107,7 +110,7 @@ ru:
         confirm_delete: "Вы действительно хотите удалить тест?"
       form:
         create_new_test: "Создание нового теста"
-        edit_test: 'Редактирование теста "%{test_title}"'
+        edit_test: 'Редактирование теста'
       index:
         create_test: "Создать тест"
       show:

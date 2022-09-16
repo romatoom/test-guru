@@ -1,7 +1,11 @@
-<div class="main-page">
-  <span>TestGuru</span>
-  <span><%= t(".number_of_tests") %> - <%= @tests_count %></span>
-  <span><%= t(".number_of_test_categories") %> - <%= @categories_count %></span>
+<div class="flex-center" style="height: calc(100vh - 300px)">
+  <span class="fs-1 fw-bold mb-3">TestGuru</span>
+  <span class="fs-1 fw-bold mb-3"><%= t(".number_of_tests") %> - <%= @tests_count %></span>
+  <span class="fs-1 fw-bold mb-3"><%= t(".number_of_test_categories") %> - <%= @categories_count %></span>
 
-  <%= link_to t(".select_test"), tests_path, class: "button primary" %>
+  <% if user_signed_in? && current_user.admin? %>
+    <%= link_to t(".manage_tests"), admin_tests_path, class: "btn btn-primary" %>
+  <% else %>
+    <%= link_to t(".select_test"), tests_path, class: "btn btn-primary" %>
+  <% end %>
 </div>

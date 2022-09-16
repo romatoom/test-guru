@@ -1,17 +1,25 @@
-    <header>
-      <div class="container">
-        <a class="logo" href="<%= root_path %>">TestGuru</a>
+<nav class="navbar text-white">
+  <div class="container">
+    <%= link_to "TestGuru", root_path, class: "navbar-brand text-white" %>
 
-        <div class="space"></div>
+    <div>
+      <% if user_signed_in? %>
+        <span class="me-2">
+          <%= t("common.header.login_at", username: "#{current_user.fullname}").html_safe %>
+        </span>
 
-        <div class="auth_block">
-        <% if user_signed_in? %>
-          <span class="login-at"><%= t("common.header.login_at", username: "#{current_user.fullname}").html_safe %></span>
-          <%= link_to t("common.header.logout"), destroy_user_session_path, class: "button small", method: "delete" %>
-        <% else %>
-          <%= link_to t("common.header.login"), new_user_session_path, class: "button small" %>
-          <%= link_to t("common.header.register"), new_user_registration_path, class: "button small" %>
+        <% if current_user.admin? %>
+          <%= link_to admin_tests_path, class: "btn btn-light me-2" do %>
+            <i class="bi bi-gear"></i>
+          <% end %>
         <% end %>
-        </div>
-      </div>
-    </header>
+
+        <%= link_to t("common.header.logout"), destroy_user_session_path, class: "btn btn-light", method: "delete" %>
+      <% else %>
+        <%= link_to t("common.header.login"), new_user_session_path, class: "btn btn-light" %>
+
+        <%= link_to t("common.header.register"), new_user_registration_path, class: "btn btn-light" %>
+      <% end %>
+    </div>
+  </div>
+</nav>

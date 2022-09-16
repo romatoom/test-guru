@@ -3,7 +3,7 @@ module TestsHelper
     if test.new_record?
       t(".create_new_test")
     else
-      t(".edit_test", test_title: test.title)
+      t(".edit_test")
     end
   end
 end
