@@ -21,7 +21,7 @@ class UsersTestsController < ApplicationController
   end
 
   def gist
-    octokit_client = Octokit::Client.new(access_token: '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')
+    octokit_client = Octokit::Client.new(access_token: ENV['ACCESS_TOKEN_FOR_CREATE_GISTS'])
 
     success, gist_url = GistQuestionService
       .new(@user_test.current_question, client: octokit_client)
