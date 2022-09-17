@@ -148,3 +148,7 @@ ru:
       form:
         create_answer: 'Создание ответа на вопрос "%{answer_text}"'
         edit_answer: 'Редактирование варианта ответа на вопрос "%{answer_text}"'
+
+  services:
+    gist_question_service:
+      description: "Вопрос теста \"%{test_title}\""
