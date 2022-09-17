@@ -102,6 +102,10 @@ en:
       passed: "you passed the test"
       failed: "you failed the test"
 
+    gist:
+      success: "Gist successfully saved"
+      failure: "An error occurred while saving the gist"
+
   admin:
     tests:
       test:

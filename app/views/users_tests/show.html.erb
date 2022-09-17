@@ -16,5 +16,6 @@
     <% end %>
   </div>
 
-  <%= form.submit t(".next_question"), class: "btn btn-primary" %>
+  <%= form.submit t(".next_question"), class: "btn btn-primary me-1" %>
+  <%= link_to "#{t('common.save')} Gist", gist_users_test_path(@user_test), method: :post, class: "btn btn-secondary" %>
 <% end %>

@@ -104,6 +104,10 @@ ru:
       passed: "вы прошли тест"
       failed: "вы не прошли тест"
 
+    gist:
+      success: "Gist успешно сохранён"
+      failure: "Во время сохранения gist произошла ошибка"
+
   admin:
     tests:
       test:

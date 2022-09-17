@@ -1,5 +1,5 @@
 class UsersTestsController < ApplicationController
-  before_action :set_user_test, only: %i(show update result)
+  before_action :set_user_test, only: %i(show update result gist)
 
   def show
     redirect_to result_users_test_path(@user_test) if @user_test.finished?
@@ -18,6 +18,19 @@ class UsersTestsController < ApplicationController
     else
       render :show
     end
+  end
+
+  def gist
+    octokit_client = Octokit::Client.new(access_token: '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')
+    result = GistQuestionService.new(@user_test.current_question, client: octokit_client).call
+
+    flash_options = if result[:success]
+      { notice: t(".success", link: result[:gist_url]) }
+    else
+      { notice: t(".failure") }
+    end
+
+    redirect_to @user_test, flash_options
   end
 
   private
