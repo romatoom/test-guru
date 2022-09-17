@@ -22,10 +22,14 @@ class UsersTestsController < ApplicationController
 
   def gist
     octokit_client = Octokit::Client.new(access_token: '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')
-    result = GistQuestionService.new(@user_test.current_question, client: octokit_client).call
 
-    flash_options = if result[:success]
-      { notice: t(".success", link: result[:gist_url]) }
+    success, gist_url = GistQuestionService
+      .new(@user_test.current_question, client: octokit_client)
+      .call
+      .values_at(:success, :gist_url)
+
+    flash_options = if success
+      { notice: t(".success", link: helpers.link_to("Gist", gist_url, target: "_blank")) }
     else
       { notice: t(".failure") }
     end

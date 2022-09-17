@@ -103,7 +103,7 @@ en:
       failed: "you failed the test"
 
     gist:
-      success: "Gist successfully saved"
+      success: "%{link} successfully saved"
       failure: "An error occurred while saving the gist"
 
   admin:

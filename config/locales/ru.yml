@@ -105,7 +105,7 @@ ru:
       failed: "вы не прошли тест"
 
     gist:
-      success: "Gist успешно сохранён"
+      success: "%{link} успешно сохранён"
       failure: "Во время сохранения gist произошла ошибка"
 
   admin:
