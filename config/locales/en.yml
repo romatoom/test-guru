@@ -28,6 +28,9 @@ en:
       login: "Sign in"
       logout: "Sign out"
       register: "Sign up"
+      pages: "Pages"
+      manage_tests: "Manage tests"
+      view_gists: "Viewing gists"
 
     footer:
       description: "Service %{service_name_link}. Includes a system to manage tests (create, edit, delete). Created tests can be passed by users registered in the system."
@@ -146,6 +149,14 @@ en:
       form:
         create_answer: 'Creating an answer to the question "%{answer_text}"'
         edit_answer: 'Editing the answer to the question "%{answer_text}"'
+
+    gists:
+      index:
+        all_gists: "All gists"
+        question: "Question"
+        url: "Link to gist"
+        user_email: "User Email"
+        no_gists: "No gist has been created"
 
   services:
     gist_question_service:

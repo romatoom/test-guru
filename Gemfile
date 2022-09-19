@@ -76,3 +76,6 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'normalize-rails'
+gem 'bootstrap', '~> 5.2'
+gem 'sprockets-rails'
+gem 'jquery-rails'

@@ -23,15 +23,22 @@ class UsersTestsController < ApplicationController
   def gist
     octokit_client = Octokit::Client.new(access_token: ENV['ACCESS_TOKEN_FOR_CREATE_GISTS'])
 
-    success, gist_url = GistQuestionService
-      .new(@user_test.current_question, client: octokit_client)
-      .call
-      .values_at(:success, :gist_url)
+    gist_question_service = GistQuestionService.new(@user_test.current_question, client: octokit_client)
+    gist_question_service.call
 
-    flash_options = if success
-      { notice: t(".success", link: helpers.link_to("Gist", gist_url, target: "_blank")) }
+    if gist_question_service.gist_successfully_created?
+
+      gist = Gist.new(
+        user: @user_test.user,
+        question: @user_test.current_question,
+        link_url: gist_question_service.gist_url
+      )
+
+      gist.save
+
+      flash_options = { notice: t(".success", link: helpers.link_to("Gist", gist_question_service.gist_url, target: "_blank")) }
     else
-      { notice: t(".failure") }
+      flash_options = { notice: t(".failure") }
     end
 
     redirect_to @user_test, flash_options
@@ -41,5 +48,9 @@ class UsersTestsController < ApplicationController
 
   def set_user_test
     @user_test = UsersTest.find(params[:id])
+  end
+
+  def gist_params
+    params.require(:gist).permit(:user, :question, :url)
   end
 end

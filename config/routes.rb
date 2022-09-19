@@ -6,10 +6,6 @@ Rails.application.routes.draw do
                      controllers: { sessions: 'user/sessions' }
 
   resources :tests, only: :index do
-    #resources :questions, shallow: true, except: :index do
-    #  resources :answers, shallow: true, except: :index
-    #end
-
     member do
       post :start
     end
@@ -28,5 +24,7 @@ Rails.application.routes.draw do
         resources :answers, shallow: true, except: :index
       end
     end
+
+    resources :gists, only: :index
   end
 end

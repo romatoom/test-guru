@@ -1,6 +1,24 @@
-<nav class="navbar text-white">
+<nav class="navbar navbar-expand-lg text-white">
   <div class="container">
     <%= link_to t("common.header.title", service_name: "TestGuru"), root_path, class: "navbar-brand text-white" %>
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <%= t("common.header.pages") %>
+          </a>
+          <ul class="dropdown-menu">
+            <li><%= link_to t("common.header.manage_tests"), admin_tests_path, class: "dropdown-item" %></li>
+            <li><%= link_to t("common.header.view_gists"), admin_gists_path, class: "dropdown-item" %></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
 
     <div>
       <span class="me-2">
