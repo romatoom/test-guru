@@ -10,7 +10,6 @@ class GistQuestionService
 
   def call
     self.gist = client.create_gist(gist_params)
-    p self.gist
   rescue
     self.gist = nil
   end
