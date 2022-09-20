@@ -1,26 +1,27 @@
 class GistQuestionService
-  attr_reader :question, :client, :test, :gist
-
   def initialize(question, client: nil)
     @question = question
     @client = client || GitHubClient.new
     @test = @question.test
-    @gist = nil
+    @response = nil
   end
 
   def call
-    self.gist = client.create_gist(gist_params)
-  rescue
-    self.gist = nil
+    self.response = client.create_gist(gist_params)
   end
 
-  def gist_attr_value(attr_name)
-    gist[attr_name] || gist[attr_name.to_sym] if gist.present?
+  def success?
+    response&.status == 201
+  end
+
+  def gist
+    JSON.parse(response&.body)
   end
 
   private
 
-  attr_writer :gist
+  attr_accessor :response
+  attr_reader :question, :client, :test
 
   def gist_params
     {

@@ -6,16 +6,16 @@ class GitHubClient
   end
 
   def create_gist(params)
-    result = @http_client.post('gists') do |request|
+    http_client.post('gists') do |request|
       request.headers['Authorization'] = "token #{ENV['ACCESS_TOKEN_FOR_CREATE_GISTS']}"
       request.headers['Content-Type'] = 'application/json'
       request.body = params.to_json
     end
-
-    JSON.parse(result.body) if result.success?
   end
 
   private
+
+  attr_reader :http_client
 
   def setup_http_client
     Faraday.new(url: ROOT_ENDPOINT)

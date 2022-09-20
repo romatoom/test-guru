@@ -22,13 +22,13 @@ class UsersTestsController < ApplicationController
 
   def gist
     octokit_client = Octokit::Client.new(access_token: ENV['ACCESS_TOKEN_FOR_CREATE_GISTS'])
+    octokit_client_adapter = OctokitClientAdapter.new(octokit_client)
 
-    gist_question_service = GistQuestionService.new(@user_test.current_question, client: octokit_client)
+    gist_question_service = GistQuestionService.new(@user_test.current_question, client: octokit_client_adapter)
     gist_question_service.call
 
-    gist_url = gist_question_service.gist_attr_value("html_url")
-
-    if gist_url.present?
+    if gist_question_service.success?
+      gist_url = gist_question_service.gist["html_url"]
 
       gist = Gist.new(
         user: @user_test.user,
