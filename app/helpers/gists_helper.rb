@@ -2,7 +2,7 @@ module GistsHelper
   MAX_LENGHT_QUESTION_BODY = 25.freeze
 
   def question_link(question)
-    link_text = question.body.slice(0..MAX_LENGHT_QUESTION_BODY - 1) + "..."
+    link_text = question.body.truncate(MAX_LENGHT_QUESTION_BODY)
 
     link_to link_text, admin_question_path(question), target: "_blank"
   end

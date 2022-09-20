@@ -12,7 +12,7 @@ class GitHubClient
       request.body = params.to_json
     end
 
-    JSON.parse(result.body)
+    JSON.parse(result.body) if result.success?
   end
 
   private

@@ -26,17 +26,19 @@ class UsersTestsController < ApplicationController
     gist_question_service = GistQuestionService.new(@user_test.current_question, client: octokit_client)
     gist_question_service.call
 
-    if gist_question_service.gist_successfully_created?
+    gist_url = gist_question_service.gist_attr_value("html_url")
+
+    if gist_url.present?
 
       gist = Gist.new(
         user: @user_test.user,
         question: @user_test.current_question,
-        link_url: gist_question_service.gist_url
+        link_url: gist_url
       )
 
       gist.save
 
-      flash_options = { notice: t(".success", link: helpers.link_to("Gist", gist_question_service.gist_url, target: "_blank")) }
+      flash_options = { notice: t(".success", link: helpers.link_to("Gist", gist_url, target: "_blank")) }
     else
       flash_options = { notice: t(".failure") }
     end

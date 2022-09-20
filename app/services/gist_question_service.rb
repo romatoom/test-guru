@@ -9,19 +9,14 @@ class GistQuestionService
   end
 
   def call
-    result = client.create_gist(gist_params)
-
-    self.gist = { success: true, gist_url: result["html_url"] }
+    self.gist = client.create_gist(gist_params)
+    p self.gist
   rescue
-    self.gist = { success: false, gist_url: nil }
+    self.gist = nil
   end
 
-  def gist_successfully_created?
-    gist[:success] if gist.present?
-  end
-
-  def gist_url
-    gist[:gist_url] if gist.present?
+  def gist_attr_value(attr_name)
+    gist[attr_name] || gist[attr_name.to_sym] if gist.present?
   end
 
   private
