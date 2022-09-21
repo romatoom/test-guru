@@ -1,5 +1,5 @@
-let sortDirection = 'none'
-let sortColumn = 'title'
+let sortDirection = 'asc'
+let sortColumn = 'id'
 const compareValue = () => sortDirection === 'asc' ? -1 : 1
 let arrows, table, thead
 
