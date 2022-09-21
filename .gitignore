@@ -39,5 +39,7 @@
 yarn-debug.log*
 .yarn-integrity
 
+.env
+
 # VS Code
 /.vscode/*

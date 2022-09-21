@@ -3,6 +3,9 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '3.1.2'
 
+# Shim to load environment variables from .env into ENV in development.
+gem 'dotenv-rails', groups: [:development, :test]
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails', branch: 'main'
 gem 'rails', '~> 6.1.6', '>= 6.1.6.1'
 # Use sqlite3 as the database for Active Record
@@ -24,6 +27,12 @@ gem 'jbuilder', '~> 2.7'
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
+
+# NETWORKING
+gem 'faraday'
+
+# Official client for GitHub API
+gem "octokit", "~> 5.0"
 
 gem 'net-smtp', require: false
 
@@ -67,3 +76,6 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'normalize-rails'
+gem 'bootstrap', '~> 5.2'
+gem 'sprockets-rails'
+gem 'jquery-rails'
