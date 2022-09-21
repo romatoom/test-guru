@@ -1,9 +1,9 @@
 <tr>
-  <td><%= test.id %></td>
-  <td><%= test.title %></td>
-  <td class="text-center"><%= test.level %></td>
-  <td><%= test.category.title %></td>
-  <td><%= test.author.fullname %></td>
-  <td class="text-center"><%= test.questions.count %></td>
+  <td class="id"><%= test.id %></td>
+  <td class="title"><%= test.title %></td>
+  <td class="level text-center"><%= test.level %></td>
+  <td class="category"><%= test.category.title %></td>
+  <td class="author"><%= test.author.fullname %></td>
+  <td class="question-count text-center"><%= test.questions.count %></td>
   <td><%= button_to t(".start"), start_test_path(test), class: "btn btn-outline-dark btn-sm", disabled: test.questions.count == 0 %></td>
 </tr>

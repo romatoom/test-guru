@@ -4,13 +4,51 @@
   <table class="table table-bordered table-striped table-hover mb-5">
     <thead>
       <tr>
-        <th><%= t("common.id") %></th>
-        <th><%= t("common.tests.title") %></th>
-        <th class="text-center"><%= t("common.tests.level") %></th>
-        <th><%= t("common.tests.category") %></th>
-        <th><%= t("common.tests.author") %></th>
-        <th class="text-center"><%= t("common.tests.questions_count") %></th>
-        <th class="text-center"><%= t("common.actions") %></th>
+        <th class="sort-by-column" data-sort-column="id">
+          <%= t("common.id") %>
+
+          <i class="bi bi-arrow-up-short d-none"></i>
+          <i class="bi bi-arrow-down-short d-none"></i>
+        </th>
+
+        <th class="sort-by-column" data-sort-column="title">
+          <%= t("common.tests.title") %>
+
+          <i class="bi bi-arrow-up-short d-none"></i>
+          <i class="bi bi-arrow-down-short d-none"></i>
+        </th>
+
+        <th class="sort-by-column text-center" data-sort-column="level">
+          <%= t("common.tests.level") %>
+
+          <i class="bi bi-arrow-up-short d-none"></i>
+          <i class="bi bi-arrow-down-short d-none"></i>
+        </th>
+
+        <th class="sort-by-column" data-sort-column="category">
+          <%= t("common.tests.category") %>
+
+          <i class="bi bi-arrow-up-short d-none"></i>
+          <i class="bi bi-arrow-down-short d-none"></i>
+        </th>
+
+        <th class="sort-by-column" data-sort-column="author">
+          <%= t("common.tests.author") %>
+
+          <i class="bi bi-arrow-up-short d-none"></i>
+          <i class="bi bi-arrow-down-short d-none"></i>
+        </th>
+
+        <th class="sort-by-column text-center" data-sort-column="question-count">
+          <%= t("common.tests.questions_count") %>
+
+          <i class="bi bi-arrow-up-short d-none"></i>
+          <i class="bi bi-arrow-down-short d-none"></i>
+        </th>
+
+        <th class="text-center">
+          <%= t("common.actions") %>
+        </th>
       </tr>
     </thead>
 
@@ -19,5 +57,7 @@
     </tbody>
   </table>
 <% else %>
-  <p class="mb-5"><%= t("common.tests.no_tests") %></p>
+  <p class="mb-5">
+    <%= t("common.tests.no_tests") %>
+  </p>
 <% end %>
