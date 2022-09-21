@@ -4,9 +4,11 @@ const compareValue = () => sortDirection === 'asc' ? -1 : 1
 let arrows, table, thead
 
 document.addEventListener('turbolinks:load', function() {
-  arrows = document.querySelectorAll('.sort-by-column > i')
+  arrows = document.querySelectorAll('.sort-by-column > .arrow-container > i')
+
   table = document.querySelector('.table')
-  thead = table.querySelector('thead')
+
+  if (table) thead = table.querySelector('thead')
 
   const controls = document.querySelectorAll('.sort-by-column')
 
