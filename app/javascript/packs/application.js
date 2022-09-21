@@ -13,7 +13,7 @@ import "channels"
 
 import "bootstrap"
 
-import "../utilites/table_sorting"
+import "../utilites"
 
 Rails.start()
 Turbolinks.start()
