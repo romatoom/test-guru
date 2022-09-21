@@ -23,12 +23,24 @@
     <% if @minimum_password_length %>
     <em>(<%= @minimum_password_length %> characters minimum)</em>
     <% end %>
-    <%= f.password_field :password, autocomplete: "new-password", class: "form-control" %>
+    <%= f.password_field :password, autocomplete: "new-password", class: "form-control password" %>
   </div>
 
   <div class="mb-3">
     <%= f.label :password_confirmation, "Подтверждение пароля", class: "form-label" %>
-    <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control" %>
+    <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control password-confirmation" %>
+
+    <div class="form-text">
+      <span id="passwords-match" class="text-success d-none">
+        <i class="bi bi-check-lg"></i>
+        Значение совпадает с паролем
+      </span>
+
+      <span id="passwords-not-match" class="text-danger d-none">
+        <i class="bi bi-x-lg"></i>
+        Значение не совпадает с паролем
+      </span>
+    </div>
   </div>
 
   <div class="mb-3">
