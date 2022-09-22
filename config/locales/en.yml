@@ -96,11 +96,13 @@ en:
   users_tests:
     show:
       title: 'Passing the test "%{test_title}", difficulty level %{test_level}'
-      progress_bar: "The question %{position} of %{count}"
+      progress_bar: "Answers given are %{position} of %{count}"
       next_question: "Next question"
+      question_number: "Question №%{number}"
 
     result:
       test_completed: "Test completed"
+      progress_bar: "Answers given are %{position} of %{count}"
       result: "Your score"
       back_to_tests: "Back to tests"
       passed: "you passed the test"
