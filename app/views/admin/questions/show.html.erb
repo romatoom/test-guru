@@ -4,24 +4,28 @@
   <p>
     <%= t(".description", test_title:@question.test.title, test_level: @question.test.level).html_safe %>
   </p>
+
+    <%= link_to t("common.edit"), edit_admin_question_path(@question), class: "btn btn-primary" %>
 </div>
 
 <h2><%= t(".answer_options") %></h2>
 
 <% if @question.answers.any? %>
-  <table class="table table-bordered table-striped table-hover mb-5">
-    <thead>
-      <tr>
-        <th><%= t("common.questions.answer_text") %></th>
-        <th><%= t("common.questions.true_answer") %>?</th>
-        <th><%= t("common.actions") %></th>
-      </tr>
-    </thead>
+  <div class="table-responsive mb-5">
+    <table class="table table-bordered table-striped table-hover">
+      <thead>
+        <tr>
+          <th><%= t("common.questions.answer_text") %></th>
+          <th><%= t("common.questions.true_answer") %>?</th>
+          <th><%= t("common.actions") %></th>
+        </tr>
+      </thead>
 
-    <tbody>
-      <%= render @question.answers %>
-    </tbody>
-  </table>
+      <tbody>
+        <%= render @question.answers %>
+      </tbody>
+    </table>
+  </div>
 <% else %>
   <p class="mb-5"><%= t(".no_answers") %></p>
 <% end %>

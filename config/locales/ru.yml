@@ -2,6 +2,7 @@ ru:
   common:
     view: "Просмотр"
     edit: "Редактировать"
+    cancel: "Отменить"
     delete: "Удалить"
     create: "Создать"
     back: "Вернуться"

@@ -2,6 +2,7 @@ en:
   common:
     view: "View"
     edit: "Edit"
+    cancel: "Cancel"
     delete: "Delete"
     create: "Create"
     back: "Back"

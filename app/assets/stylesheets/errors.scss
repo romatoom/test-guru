@@ -14,3 +14,13 @@
     color: $red;
   }
 }
+
+.input-group {
+  flex-wrap: nowrap;
+
+  & .field_with_errors {
+    &>.form-control {
+      border-radius: 0;
+    }
+  }
+}

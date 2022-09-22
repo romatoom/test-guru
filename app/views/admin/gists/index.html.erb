@@ -1,19 +1,21 @@
 <h1><%= t(".all_gists") %></h1>
 
 <% if @gists.any? %>
-  <table class="table table-bordered table-striped table-hover mb-5">
-    <thead>
-      <tr>
-        <th><%= t(".question") %></th>
-        <th><%= t(".url") %></th>
-        <th><%= t(".user_email") %></th>
-      </tr>
-    </thead>
+  <div class="table-responsive mb-5">
+    <table class="table table-bordered table-striped table-hover">
+      <thead>
+        <tr>
+          <th><%= t(".question") %></th>
+          <th><%= t(".url") %></th>
+          <th><%= t(".user_email") %></th>
+        </tr>
+      </thead>
 
-    <tbody>
-      <%= render @gists %>
-    </tbody>
-  </table>
+      <tbody>
+        <%= render @gists %>
+      </tbody>
+    </table>
+  </div>
 <% else %>
   <p class="mb-5"><%= t(".no_gists") %></p>
 <% end %>
