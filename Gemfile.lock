@@ -150,6 +150,7 @@ GEM
       faraday (>= 1, < 3)
       sawyer (~> 0.9)
     orm_adapter (0.5.0)
+    pg (1.4.3)
     popper_js (2.11.6)
     pry (0.14.1)
       coderay (~> 1.1)
@@ -237,7 +238,6 @@ GEM
       actionpack (>= 5.2)
       activesupport (>= 5.2)
       sprockets (>= 3.0.0)
-    sqlite3 (1.4.4)
     thor (1.2.1)
     tilt (2.0.10)
     timeout (0.2.0)
@@ -291,6 +291,7 @@ DEPENDENCIES
   net-smtp
   normalize-rails
   octokit (~> 5.0)
+  pg
   pry-doc
   pry-rails
   puma (~> 5.0)
@@ -301,7 +302,6 @@ DEPENDENCIES
   selenium-webdriver (>= 4.0.0.rc1)
   spring
   sprockets-rails
-  sqlite3 (~> 1.4)
   turbolinks (~> 5)
   tzinfo-data
   web-console (>= 4.1.0)
@@ -312,4 +312,4 @@ RUBY VERSION
    ruby 3.1.2p20
 
 BUNDLED WITH
-   2.3.7
+   2.3.22

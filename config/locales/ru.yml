@@ -81,8 +81,16 @@ ru:
 
       answers_count_limit: "Вы не можете создать более 4 ответов на вопрос"
 
-      messages:
-        taken: "- может быть только один тест с таким названием и уровнем"
+      models:
+        question:
+          attributes:
+            body:
+              taken: "повторяется, он уже есть в этом тесте."
+
+        test:
+          attributes:
+            title:
+              taken: "- может быть только один тест с таким названием и уровнем"
 
   main:
     index:

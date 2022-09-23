@@ -79,8 +79,16 @@ en:
 
       answers_count_limit: "You cannot create more than 4 answers for question"
 
-      messages:
-        taken: "- there can only be one test with this title and level"
+      models:
+        question:
+          attributes:
+            body:
+              taken: "is repeated, it is already in this test."
+
+        test:
+          attributes:
+            title:
+              taken: "- there can only be one test with this title and level"
 
   main:
     index:

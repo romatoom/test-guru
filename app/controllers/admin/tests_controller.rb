@@ -2,8 +2,6 @@ class Admin::TestsController < Admin::BaseController
   before_action :set_test, only: %i(show edit update destroy start update_inline)
   before_action :set_tests, only: %i(index update_inline)
 
-  rescue_from SQLite3::ConstraintException, with: :rescue_with_constraint_error
-
   def index
   end
 
@@ -56,21 +54,6 @@ class Admin::TestsController < Admin::BaseController
 
     def set_tests
       @tests = Test.all
-    end
-
-    def rescue_with_constraint_error(e)
-      flash.now[:danger] = "Произошла ошибка: #{e.message}"
-
-      actions = {
-        "create" => :new,
-        "update" => :edit
-      }
-
-      if actions[action_name].nil?
-        render :index
-      else
-        render actions[action_name]
-      end
     end
 
     def test_params
