@@ -63,3 +63,12 @@ a:hover {
   height: 19px;
   overflow: hidden
 }
+
+.table {
+  width: max-content;
+
+  & td.title {
+    width: 250px;
+  }
+}
+

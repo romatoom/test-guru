@@ -1,73 +1,75 @@
 <h1><%= t("common.tests.all_tests") %></h1>
 
 <% if @tests.any? %>
-  <table class="table table-bordered table-striped table-hover mb-5">
-    <thead>
-      <tr>
-        <th class="sort-by-column pointer" data-sort-column="id">
-          <%= t("common.id") %>
+  <div class="table-responsive mb-5">
+    <table class="table table-bordered table-striped table-hover">
+      <thead>
+        <tr>
+          <th class="sort-by-column pointer" data-sort-column="id">
+            <%= t("common.id") %>
 
-          <div class="arrow-container">
-            <i class="bi bi-arrow-up-short"></i>
-            <i class="bi bi-arrow-down-short d-none"></i>
-          <div>
-        </th>
+            <div class="arrow-container">
+              <i class="bi bi-arrow-up-short"></i>
+              <i class="bi bi-arrow-down-short d-none"></i>
+            <div>
+          </th>
 
-        <th class="sort-by-column pointer" data-sort-column="title">
-          <%= t("common.tests.title") %>
+          <th class="sort-by-column pointer" data-sort-column="title">
+            <%= t("common.tests.title") %>
 
-          <div class="arrow-container">
-            <i class="bi bi-arrow-up-short d-none"></i>
-            <i class="bi bi-arrow-down-short d-none"></i>
-          </div>
-        </th>
+            <div class="arrow-container">
+              <i class="bi bi-arrow-up-short d-none"></i>
+              <i class="bi bi-arrow-down-short d-none"></i>
+            </div>
+          </th>
 
-        <th class="sort-by-column pointer text-center" data-sort-column="level">
-          <%= t("common.tests.level") %>
+          <th class="sort-by-column pointer text-center" data-sort-column="level">
+            <%= t("common.tests.level") %>
 
-          <div class="arrow-container">
-            <i class="bi bi-arrow-up-short d-none"></i>
-            <i class="bi bi-arrow-down-short d-none"></i>
-          </div>
-        </th>
+            <div class="arrow-container">
+              <i class="bi bi-arrow-up-short d-none"></i>
+              <i class="bi bi-arrow-down-short d-none"></i>
+            </div>
+          </th>
 
-        <th class="sort-by-column pointer" data-sort-column="category">
-          <%= t("common.tests.category") %>
+          <th class="sort-by-column pointer" data-sort-column="category">
+            <%= t("common.tests.category") %>
 
-          <div class="arrow-container">
-            <i class="bi bi-arrow-up-short d-none"></i>
-            <i class="bi bi-arrow-down-short d-none"></i>
-          </div>
-        </th>
+            <div class="arrow-container">
+              <i class="bi bi-arrow-up-short d-none"></i>
+              <i class="bi bi-arrow-down-short d-none"></i>
+            </div>
+          </th>
 
-        <th class="sort-by-column pointer" data-sort-column="author">
-          <%= t("common.tests.author") %>
+          <th class="sort-by-column pointer" data-sort-column="author">
+            <%= t("common.tests.author") %>
 
-          <div class="arrow-container">
-            <i class="bi bi-arrow-up-short d-none"></i>
-            <i class="bi bi-arrow-down-short d-none"></i>
-          </div>
-        </th>
+            <div class="arrow-container">
+              <i class="bi bi-arrow-up-short d-none"></i>
+              <i class="bi bi-arrow-down-short d-none"></i>
+            </div>
+          </th>
 
-        <th class="sort-by-column pointer text-center" data-sort-column="question-count">
-          <%= t("common.tests.questions_count") %>
+          <th class="sort-by-column pointer text-center" data-sort-column="question-count">
+            <%= t("common.tests.questions_count") %>
 
-          <div class="arrow-container">
-            <i class="bi bi-arrow-up-short d-none"></i>
-            <i class="bi bi-arrow-down-short d-none"></i>
-          </div>
-        </th>
+            <div class="arrow-container">
+              <i class="bi bi-arrow-up-short d-none"></i>
+              <i class="bi bi-arrow-down-short d-none"></i>
+            </div>
+          </th>
 
-        <th class="text-center">
-          <%= t("common.actions") %>
-        </th>
-      </tr>
-    </thead>
+          <th class="text-center">
+            <%= t("common.actions") %>
+          </th>
+        </tr>
+      </thead>
 
-    <tbody>
-      <%= render @tests %>
-    </tbody>
-  </table>
+      <tbody>
+        <%= render @tests %>
+      </tbody>
+    </table>
+  </div>
 <% else %>
   <p class="mb-5">
     <%= t("common.tests.no_tests") %>

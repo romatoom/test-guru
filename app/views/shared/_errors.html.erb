@@ -1,5 +1,10 @@
-<% if resource.errors.any? %>
-  <div id="error_explanation" class="alert alert-danger mb" role="alert">
+<% if resource&.errors&.any? %>
+  <div
+    id="error_explanation"
+    class="alert alert-danger mb"
+    data-resource-id="<%= resource.id %>"
+    role="alert"
+  >
     <h2>
       <%= t("activerecord.errors.validation", count: resource.errors.count, resource: resource.class.model_name.human) %>
     </h2>

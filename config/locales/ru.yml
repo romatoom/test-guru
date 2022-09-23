@@ -2,6 +2,7 @@ ru:
   common:
     view: "Просмотр"
     edit: "Редактировать"
+    cancel: "Отменить"
     delete: "Удалить"
     create: "Создать"
     back: "Вернуться"
@@ -97,11 +98,13 @@ ru:
   users_tests:
     show:
       title: 'Прохождение теста "%{test_title}", уроверь сложности %{test_level}'
-      progress_bar: "Вопрос %{position} из %{count}"
+      progress_bar: "Дано ответов %{position} из %{count}"
       next_question: "Следующий вопрос"
+      question_number: "Вопрос №%{number}"
 
     result:
       test_completed: "Тест завершён"
+      progress_bar: "Дано ответов %{position} из %{count}"
       result: "Ваш результат"
       back_to_tests: "Вернуться к тестам"
       passed: "вы прошли тест"

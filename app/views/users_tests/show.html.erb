@@ -1,8 +1,18 @@
 <h1><%= t(".title", test_title: @user_test.test.title, test_level: @user_test.test.level) %></h1>
 
-<p><strong><%= t(".progress_bar", position: @user_test.current_question.position, count: @user_test.questions_count) %>:</strong>
+<p><strong><%= t(".progress_bar", position: @user_test.current_question.position - 1, count: @user_test.questions_count) %></strong>
 
-<p class="mb-5"><%= @user_test.current_question.body %></p>
+<%= content_tag :div,
+  class: "tg-progress-bar mb-5",
+  data: {
+    position: @user_test.current_question.position,
+    count: @user_test.questions_count
+  } do %>
+  <div class="tg-progress"></div>
+<% end %>
+
+<p class="mb-0 fs-5"> <%= t(".question_number", number: @user_test.current_question.position) %>
+<p class="mb-5 fs-2"><%= @user_test.current_question.body %></p>
 
 <p><strong><%= t("admin.questions.show.answer_options") %>:</strong></p>
 

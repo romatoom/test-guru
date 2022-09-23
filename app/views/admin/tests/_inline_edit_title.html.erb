@@ -1,0 +1,19 @@
+<%= form_with model: [:admin, test],
+  url: update_inline_admin_test_path(test),
+  class: "inline-edit-title d-none",
+  data: { test_id: test.id },
+  local: true do |form| %>
+  <div class="input-group">
+    <%= form.text_field :title, id: :test_title, class: "form-control" %>
+
+    <%= button_tag(
+      type: 'submit',
+      class: "btn btn-primary save-inline-text-btn",
+      data: {
+        bs_toggle: "tooltip",
+        bs_title: "#{t("common.save")}"
+      }) do %>
+      <i class="bi bi-save"></i>
+    <% end %>
+  </div>
+<% end %>

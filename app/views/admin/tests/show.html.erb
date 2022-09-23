@@ -20,29 +20,33 @@
     <strong><%= t("common.tests.author") %>:</strong>
     <%= @test.author.fullname %>
   </p>
+
+  <%= link_to t("common.edit"), edit_admin_test_path(@test), class: "btn btn-primary" %>
 </div>
 
 <h2><%= t(".questions") %></h2>
 
 <% if @test.questions.any? %>
-<table class="table table-bordered table-striped table-hover mb-5">
-  <thead>
-    <tr>
-      <th class="text-align-right">
-        <%= t("common.id") %>
-      </th>
-      <th>
-        <%= t("common.questions.question_text") %>
-      </th>
-      <th>
-        <%= t("common.actions") %>
-      </th>
-    </tr>
-  </thead>
-  <tbody>
-    <%= render partial: 'admin/questions/question', collection: @test.questions %>
-  </tbody>
-</table>
+  <div class="table-responsive mb-5">
+    <table class="table table-bordered table-striped table-hover">
+      <thead>
+        <tr>
+          <th class="text-align-right">
+            <%= t("common.id") %>
+          </th>
+          <th>
+            <%= t("common.questions.question_text") %>
+          </th>
+          <th>
+            <%= t("common.actions") %>
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <%= render partial: 'admin/questions/question', collection: @test.questions %>
+      </tbody>
+    </table>
+  </div>
 <% else %>
 <p class="mb-5"><%= t(".no_questions") %></p>
 <% end %>

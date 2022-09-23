@@ -1,13 +1,31 @@
-<tr>
-  <td><%= test.id %></td>
-  <td><%= test.title %></td>
-  <td class="text-center"><%= test.level %></td>
-  <td><%= test.category.title %></td>
-  <td><%= current_user.fullname %></td>
-  <td class="text-center"><%= test.questions.count %></td>
+<tr class="align-middle">
+  <td class="id"><%= test.id %></td>
+
+  <td class="title">
+    <%= content_tag :span, test.title, class: "test-title", data: { test_id: test.id } %>
+    <%= render 'inline_edit_title', test: test == @test ? @test : test %>
+  </td>
+
+  <td class="level text-center"><%= test.level %></td>
+
+  <td class="category">
+    <%= test.category.title %>
+  </td>
+
+  <td class="author"><%= current_user.fullname %></td>
+
+  <td class="question-count text-center"><%= test.questions.count %></td>
+
   <td>
     <%= link_to t("common.view"), admin_test_path(test), class: "btn btn-outline-dark btn-sm" %>
-    <%= link_to t("common.edit"), edit_admin_test_path(test), class: "btn btn-outline-primary btn-sm" %>
+
+    <%= link_to t("common.edit"),
+      edit_admin_test_path(test),
+      class: "btn btn-outline-primary btn-sm inline-edit-title-link",
+      data: {
+        test_id: test.id
+      } %>
+
     <%= link_to t("common.delete"),
                     admin_test_path(test),
                     method: :delete,
