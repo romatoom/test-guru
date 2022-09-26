@@ -32,6 +32,7 @@ ru:
       pages: "Страницы"
       manage_tests: "Управление тестами"
       view_gists: "Просмотр gist-ов"
+      feedback: "Обратная связь"
 
     footer:
       description: "Сервис %{service_name_link}. Включает в себя систему управления тестами (создания, редактирования, удаления). Созданные тесты можно проходить пользователям, зарегистрированным в системе."
@@ -39,6 +40,9 @@ ru:
 
   tests_mailer:
     subject: "Вы завершили тест TestGuru"
+
+  feedback_mailer:
+    subject: "Обратная связь от пользователя TestGuru"
 
   helpers:
     submit:
@@ -121,6 +125,16 @@ ru:
     gist:
       success: "%{link} успешно сохранён"
       failure: "Во время сохранения gist произошла ошибка"
+
+  feedback:
+    index:
+      header: "Обратная связь"
+      theme: "Тема"
+      text: "Текст обращения"
+      send: "Отправить"
+
+    send_feedback:
+      feedback_sent: "Обращение отправлено"
 
   admin:
     tests:

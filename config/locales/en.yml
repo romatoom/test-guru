@@ -32,6 +32,7 @@ en:
       pages: "Pages"
       manage_tests: "Manage tests"
       view_gists: "Viewing gists"
+      feedback: "Feedback"
 
     footer:
       description: "Service %{service_name_link}. Includes a system to manage tests (create, edit, delete). Created tests can be passed by users registered in the system."
@@ -39,6 +40,9 @@ en:
 
   tests_mailer:
     subject: "You have completed the TestGuru test"
+
+  feedback_mailer:
+    subject: "Feedback from TestGuru user"
 
   helpers:
     submit:
@@ -119,6 +123,16 @@ en:
     gist:
       success: "%{link} successfully saved"
       failure: "An error occurred while saving the gist"
+
+  feedback:
+    index:
+      header: "Feedback"
+      theme: "Topic"
+      text: "Feedback text"
+      send: "Send"
+
+    send_feedback:
+      feedback_sent: "Feedback sent"
 
   admin:
     tests:

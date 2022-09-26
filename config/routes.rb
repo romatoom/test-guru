@@ -29,4 +29,7 @@ Rails.application.routes.draw do
 
     resources :gists, only: :index
   end
+
+  get 'feedback', to: 'feedback#index'
+  post 'feedback', to: 'feedback#send_feedback'
 end
