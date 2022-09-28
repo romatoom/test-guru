@@ -2,7 +2,7 @@ class TestsController < ApplicationController
   before_action :set_test, only: :start
 
   def index
-    @tests = Test.all
+    @tests = Test.available
   end
 
   def start

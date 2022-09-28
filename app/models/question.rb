@@ -1,5 +1,5 @@
 class Question < ApplicationRecord
-  belongs_to :test
+  belongs_to :test, counter_cache: true
   has_many :answers, dependent: :destroy
   has_many :users_tests, foreign_key: "current_question_id", dependent: :destroy
 

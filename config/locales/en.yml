@@ -17,6 +17,7 @@ en:
       author: "Author"
       questions_count: "Number of questions"
       no_tests: "No test has been created yet"
+      no_tests_available: "No tests available to take"
 
     questions:
       answer_text: "Answer text"
@@ -138,6 +139,8 @@ en:
     tests:
       test:
         confirm_delete: "Do you really want to delete the test?"
+        confirm_publish: "Do you really want to make this test available to users?"
+        confirm_unpublish: "Do you really want to make this test unavailable to users?"
       form:
         create_new_test: "Create new test"
         edit_test: "Editing the test"
