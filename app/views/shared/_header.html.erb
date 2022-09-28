@@ -1,6 +1,28 @@
-<nav class="navbar text-white">
+<nav class="navbar navbar-expand-lg text-white">
   <div class="container">
     <%= link_to "TestGuru", root_path, class: "navbar-brand text-white" %>
+
+    <% if user_signed_in? %>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <%= link_to t("common.header.feedback"), feedback_path, class: "nav-link text-white" %>
+          </li>
+        </ul>
+      </div>
+    <% end %>
 
     <div>
       <% if user_signed_in? %>

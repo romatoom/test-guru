@@ -25,8 +25,14 @@ Rails.application.routes.draw do
       end
 
       patch :update_inline, on: :member
+
+      patch :publish, on: :member
+      patch :unpublish, on: :member
     end
 
     resources :gists, only: :index
   end
+
+  get 'feedback', to: 'feedback#index'
+  post 'feedback', to: 'feedback#send_feedback'
 end

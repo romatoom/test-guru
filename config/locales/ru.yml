@@ -17,6 +17,7 @@ ru:
       author: "Автор"
       questions_count: "Количество вопросов"
       no_tests: "Ещё не создан ни один тест"
+      no_tests_available: "Нет тестов, доступных для прохождения"
 
     questions:
       answer_text: "Текст ответа"
@@ -32,6 +33,7 @@ ru:
       pages: "Страницы"
       manage_tests: "Управление тестами"
       view_gists: "Просмотр gist-ов"
+      feedback: "Обратная связь"
 
     footer:
       description: "Сервис %{service_name_link}. Включает в себя систему управления тестами (создания, редактирования, удаления). Созданные тесты можно проходить пользователям, зарегистрированным в системе."
@@ -39,6 +41,9 @@ ru:
 
   tests_mailer:
     subject: "Вы завершили тест TestGuru"
+
+  feedback_mailer:
+    subject: "Обратная связь от пользователя TestGuru"
 
   helpers:
     submit:
@@ -81,8 +86,16 @@ ru:
 
       answers_count_limit: "Вы не можете создать более 4 ответов на вопрос"
 
-      messages:
-        taken: "- может быть только один тест с таким названием и уровнем"
+      models:
+        question:
+          attributes:
+            body:
+              taken: "повторяется, он уже есть в этом тесте."
+
+        test:
+          attributes:
+            title:
+              taken: "- может быть только один тест с таким названием и уровнем"
 
   main:
     index:
@@ -114,10 +127,22 @@ ru:
       success: "%{link} успешно сохранён"
       failure: "Во время сохранения gist произошла ошибка"
 
+  feedback:
+    index:
+      header: "Обратная связь"
+      theme: "Тема"
+      text: "Текст обращения"
+      send: "Отправить"
+
+    send_feedback:
+      feedback_sent: "Обращение отправлено"
+
   admin:
     tests:
       test:
         confirm_delete: "Вы действительно хотите удалить тест?"
+        confirm_publish: "Вы действительно хотите сделать этот тест доступным для прохождения пользователям?"
+        confirm_unpublish: "Вы действительно хотите сделать этот тест недоступным для прохождения пользователям?"
       form:
         create_new_test: "Создание нового теста"
         edit_test: "Редактирование теста"

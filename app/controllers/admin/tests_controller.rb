@@ -1,8 +1,6 @@
 class Admin::TestsController < Admin::BaseController
-  before_action :set_test, only: %i(show edit update destroy start update_inline)
-  before_action :set_tests, only: %i(index update_inline)
-
-  rescue_from SQLite3::ConstraintException, with: :rescue_with_constraint_error
+  before_action :set_test, only: %i(show edit update destroy start update_inline publish unpublish)
+  before_action :set_tests, only: %i(index update_inline publish unpublish)
 
   def index
   end
@@ -43,6 +41,18 @@ class Admin::TestsController < Admin::BaseController
     end
   end
 
+  def publish
+    @test.published_at = Time.now
+    @test.save
+    redirect_to admin_tests_path
+  end
+
+  def unpublish
+    @test.published_at = nil
+    @test.save
+    redirect_to admin_tests_path
+  end
+
   def destroy
     @test.destroy
 
@@ -50,30 +60,16 @@ class Admin::TestsController < Admin::BaseController
   end
 
   private
-    def set_test
-      @test = Test.find(params[:id])
-    end
 
-    def set_tests
-      @tests = Test.all
-    end
+  def set_test
+    @test = Test.find(params[:id])
+  end
 
-    def rescue_with_constraint_error(e)
-      flash.now[:danger] = "Произошла ошибка: #{e.message}"
+  def set_tests
+    @tests = Test.all
+  end
 
-      actions = {
-        "create" => :new,
-        "update" => :edit
-      }
-
-      if actions[action_name].nil?
-        render :index
-      else
-        render actions[action_name]
-      end
-    end
-
-    def test_params
-      params.require(:test).permit(:title, :level, :category_id)
-    end
+  def test_params
+    params.require(:test).permit(:title, :level, :category_id)
+  end
 end

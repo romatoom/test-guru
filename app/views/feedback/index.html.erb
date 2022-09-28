@@ -1,0 +1,17 @@
+<h1><%= t(".header") %></h1>
+
+<%= form_with model: @feedback, url: feedback_path, method: :post, local: true do |form| %>
+  <!-- <%= render 'shared/errors', resource: @test %> -->
+
+  <div class="mb-3">
+    <%= form.label :theme, t(".theme"), class: "form-label" %>
+    <%= form.text_field :theme, id: :feedback_theme, class: "form-control" %>
+  </div>
+
+  <div class="mb-5">
+    <%= form.label :text, t(".text"), class: "form-label" %>
+    <%= form.text_area :text, id: :feedback_text, rows: 15, class: "form-control" %>
+  </div>
+
+  <%= form.submit t(".send"), class: "btn btn-primary" %>
+<% end %>

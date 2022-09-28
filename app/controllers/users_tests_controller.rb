@@ -51,8 +51,4 @@ class UsersTestsController < ApplicationController
   def set_user_test
     @user_test = UsersTest.find(params[:id])
   end
-
-  def gist_params
-    params.require(:gist).permit(:user, :question, :url)
-  end
 end

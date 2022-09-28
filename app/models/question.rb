@@ -1,9 +1,9 @@
 class Question < ApplicationRecord
-  belongs_to :test
+  belongs_to :test, counter_cache: true
   has_many :answers, dependent: :destroy
   has_many :users_tests, foreign_key: "current_question_id", dependent: :destroy
 
-  validates :body, presence: true
+  validates :body, presence: true, uniqueness: { scope: :test }
 
   def position
     questions_ids_in_test = test.questions.pluck(:id).sort

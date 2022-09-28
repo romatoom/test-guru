@@ -135,6 +135,14 @@ GEM
     mini_mime (1.1.2)
     minitest (5.16.2)
     msgpack (1.5.3)
+    net-imap (0.2.3)
+      digest
+      net-protocol
+      strscan
+    net-pop (0.1.1)
+      digest
+      net-protocol
+      timeout
     net-protocol (0.1.2)
       io-wait
       timeout
@@ -145,11 +153,14 @@ GEM
     nio4r (2.5.8)
     nokogiri (1.13.7-x86_64-darwin)
       racc (~> 1.4)
+    nokogiri (1.13.7-x86_64-linux)
+      racc (~> 1.4)
     normalize-rails (8.0.1)
     octokit (5.6.1)
       faraday (>= 1, < 3)
       sawyer (~> 0.9)
     orm_adapter (0.5.0)
+    pg (1.4.3)
     popper_js (2.11.6)
     pry (0.14.1)
       coderay (~> 1.1)
@@ -237,7 +248,7 @@ GEM
       actionpack (>= 5.2)
       activesupport (>= 5.2)
       sprockets (>= 3.0.0)
-    sqlite3 (1.4.4)
+    strscan (3.0.1)
     thor (1.2.1)
     tilt (2.0.10)
     timeout (0.2.0)
@@ -275,6 +286,7 @@ GEM
 
 PLATFORMS
   x86_64-darwin-20
+  x86_64-linux
 
 DEPENDENCIES
   bootsnap (>= 1.4.4)
@@ -288,9 +300,12 @@ DEPENDENCIES
   jquery-rails
   letter_opener
   listen (~> 3.3)
+  net-imap
+  net-pop
   net-smtp
   normalize-rails
   octokit (~> 5.0)
+  pg
   pry-doc
   pry-rails
   puma (~> 5.0)
@@ -301,7 +316,6 @@ DEPENDENCIES
   selenium-webdriver (>= 4.0.0.rc1)
   spring
   sprockets-rails
-  sqlite3 (~> 1.4)
   turbolinks (~> 5)
   tzinfo-data
   web-console (>= 4.1.0)
@@ -312,4 +326,4 @@ RUBY VERSION
    ruby 3.1.2p20
 
 BUNDLED WITH
-   2.3.7
+   2.3.22
