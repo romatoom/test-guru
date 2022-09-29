@@ -15,7 +15,12 @@
 
   <div class="mb-5">
     <%= form.label :category, t("common.tests.category"), class: "form-label" %>
-    <%= form.collection_select :category_id, Category.order(:title), :id, :title, { prompt: true }, { class: "form-select" } %>
+    <%= form.collection_select :category, Category.order(:title), :id, :title, { prompt: true, selected: @test.category&.id }, { class: "form-select" } %>
+  </div>
+
+  <div class="form-check mb-5">
+    <%= form.label :published, "#{t("common.tests.published")}?", class: "form-check-label" %>
+    <%= form.check_box :published, id: :test_published, class: "form-check-input" %>
   </div>
 
   <%= link_to t("common.back"), admin_tests_path, class: "btn btn-secondary" %>

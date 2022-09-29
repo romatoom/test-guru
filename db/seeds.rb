@@ -27,7 +27,7 @@ admin = Admin.new(
 admin.skip_confirmation!
 admin.save!
 
-test = category.tests.create!(title: "HTML", author_id: admin.id, published_at: Time.now)
+test = category.tests.create!(title: "HTML", author_id: admin.id, published: true)
 
 question = test.questions.create!(body: "Как оформляется комментарий в HTML?")
 wrong_answers = ["/* комментарий */", "// комментарий"]
@@ -42,7 +42,7 @@ add_answers_for_question(["Абсолютным"], "Относительным",
 question = test.questions.create!(body: "С помощью какого тега нужно задавать подписи к полям формы?")
 add_answers_for_question(%w(type id field), "label", question)
 
-test = category.tests.create!(title: "CSS", author_id: admin.id, published_at: Time.now)
+test = category.tests.create!(title: "CSS", author_id: admin.id, published: true)
 
 question = test.questions.create!(body: "Какое свойство CSS определяет размер текста?")
 add_answers_for_question(%w(text-size font-style text-style), "font-size", question)
@@ -54,7 +54,7 @@ question = test.questions.create!(body: "Каков правильный син�
 wrong_answers = ["{body:color=black;}", "{body;color:black;}", "body:color=black;"]
 add_answers_for_question(wrong_answers, "body {color: black;}", question)
 
-test = category.tests.create!(title: "Javascript", author_id: admin.id, published_at: Time.now)
+test = category.tests.create!(title: "Javascript", author_id: admin.id, published: true)
 
 question = test.questions.create!(body: "Какие циклы есть в языке JavaScript?")
 wrong_answers = [
@@ -72,7 +72,7 @@ add_answers_for_question(wrong_answers, "Строки, числа с точко�
 
 category = Category.create!(title: "Backend")
 
-test = category.tests.create!(title: "Ruby", level: 1, author_id: admin.id, published_at: Time.now)
+test = category.tests.create!(title: "Ruby", level: 1, author_id: admin.id, published: true)
 
 question = test.questions.create!(body: "Название самого популярного фреймворка Ruby?")
 

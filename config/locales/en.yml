@@ -1,5 +1,7 @@
 en:
   common:
+    yes: "Да"
+    no: "Нет"
     view: "View"
     edit: "Edit"
     cancel: "Cancel"
@@ -16,6 +18,7 @@ en:
       category: "Category"
       author: "Author"
       questions_count: "Number of questions"
+      published: "Published"
       no_tests: "No test has been created yet"
       no_tests_available: "No tests available to take"
 

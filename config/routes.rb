@@ -25,9 +25,6 @@ Rails.application.routes.draw do
       end
 
       patch :update_inline, on: :member
-
-      patch :publish, on: :member
-      patch :unpublish, on: :member
     end
 
     resources :gists, only: :index
