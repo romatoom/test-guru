@@ -130,4 +130,20 @@ user.save!
 
 user.tests.push(test_html_0)
 
+badges_path = Rails.application.config.badges_path
+
+badge = Badge.new(
+  title: "Backend-мастер",
+  description: "За успешное прохождение всех тестов категории Backend",
+  url: "#{badges_path}/backend.png"
+)
+badge.save
+
+badge = Badge.new(
+  title: "Frontend-мастер",
+  description: "За успешное прохождение всех тестов категории Frontend",
+  url: "#{badges_path}/frontend.png"
+)
+badge.save
+
 puts "Seeds has been created successfully!"
