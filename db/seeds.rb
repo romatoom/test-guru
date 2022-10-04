@@ -130,20 +130,51 @@ user.save!
 
 user.tests.push(test_html_0)
 
+# Create default badges list
 badges_path = Rails.application.config.badges_path
 
-badge = Badge.new(
+available_badges = []
+
+badge_levels = (0..7).map do |level|
+  {
+    title: "Покоритель уровней - #{level}",
+    description: "За успешное прохождение всех тестов с уровнем сложности #{level}",
+    filename: "level-#{level}.png"
+  }
+end
+
+badge_levels << {
+  title: "Покоритель уровней - EXPERT",
+  description: "За успешное прохождение всех тестов с уровнем сложности 8 и выше",
+  filename: "level-hardest.png"
+}
+
+available_badges += badge_levels
+
+available_badges << {
   title: "Backend-мастер",
   description: "За успешное прохождение всех тестов категории Backend",
-  url: "#{badges_path}/backend.png"
-)
-badge.save
+  filename: "backend.png"
+}
 
-badge = Badge.new(
+available_badges << {
   title: "Frontend-мастер",
   description: "За успешное прохождение всех тестов категории Frontend",
-  url: "#{badges_path}/frontend.png"
-)
-badge.save
+  filename: "frontend.png"
+}
+
+available_badges.each do |b|
+  badge = Badge.new(
+    title: b[:title],
+    description: b[:description],
+    url: "#{badges_path}/#{b[:filename]}"
+  )
+  badge.save
+end
+
+user_with_badges = User.where.not(type: "Admin").first
+user_with_badges.badges << Badge.find_by(title: "Frontend-мастер")
+user_with_badges.badges << Badge.find_by(title: "Покоритель уровней - 0")
+user_with_badges.badges << Badge.find_by(title: "Покоритель уровней - 1")
 
 puts "Seeds has been created successfully!"
