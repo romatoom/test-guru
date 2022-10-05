@@ -35,8 +35,10 @@ en:
       register: "Sign up"
       pages: "Pages"
       manage_tests: "Manage tests"
+      tests: "Tests"
       view_gists: "Viewing gists"
       feedback: "Feedback"
+      badges: "Badges"
 
     footer:
       description: "Service %{service_name_link}. Includes a system to manage tests (create, edit, delete). Created tests can be passed by users registered in the system."
@@ -137,6 +139,10 @@ en:
 
     send_feedback:
       feedback_sent: "Feedback sent"
+
+  badges:
+    index:
+      header: "Badges"
 
   admin:
     tests:

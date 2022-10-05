@@ -18,6 +18,14 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
+            <%= link_to t("common.header.tests"), tests_path, class: "nav-link text-white" %>
+          </li>
+
+          <li class="nav-item">
+            <%= link_to t("common.header.badges"), badges_path, class: "nav-link text-white" %>
+          </li>
+
+          <li class="nav-item">
             <%= link_to t("common.header.feedback"), feedback_path, class: "nav-link text-white" %>
           </li>
         </ul>

@@ -1,0 +1,50 @@
+// Place all the styles related to the Badges controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+
+.tg-badge {
+  display: flex;
+  flex-direction: row;
+  color: #000;
+  border: 1px solid #eee;
+  border-radius: 6px;
+  overflow: hidden;
+
+  .tg-badge-img {
+    width: 100px;
+    height: 100px;
+
+    & img {
+      filter: grayscale(100%);
+      width: 100px;
+      height: 100px;
+    }
+  }
+
+  &.enabled {
+    .tg-badge-img img {
+      filter: grayscale(0%);
+    }
+  }
+
+  .tg-badge-body {
+    width: 100%;
+    height: 100px;
+    padding: 15px;
+    overflow-y: auto;
+  }
+
+  .tg-badge-title,
+  .tg-badge-description {
+    display: block;
+  }
+
+  .tg-badge-title {
+    font-size: 14px;
+  }
+
+  .tg-badge-description {
+    font-size: 12px;
+    color: #888;
+  }
+}

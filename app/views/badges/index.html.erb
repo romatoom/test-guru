@@ -1,0 +1,24 @@
+<h1>Badges</h1>
+
+<div class="grid">
+  <% @badges.each do |badge| %>
+  <div class="g-col-12 g-col-md-6 g-col-xl-4">
+    <div class="tg-badge<%= ' enabled' if @user_badges.include?(badge) %>">
+      <div class="tg-badge-img">
+        <img src="<%= badge.url %>" alt="...">
+      </div>
+
+      <div class="tg-badge-body">
+        <span class="tg-badge-title">
+          <%= badge.title %>
+        </span>
+
+        <span class="tg-badge-description">
+          <%= badge.description %>
+        </span>
+      </div>
+    </div>
+  </div>
+  <% end %>
+</div>
+

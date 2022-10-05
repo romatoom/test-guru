@@ -18,6 +18,8 @@ Rails.application.routes.draw do
     end
   end
 
+  get 'badges', to: 'badges#index'
+
   namespace :admin do
     resources :tests do
       resources :questions, shallow: true, except: :index do

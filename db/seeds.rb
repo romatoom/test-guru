@@ -146,7 +146,7 @@ end
 badge_levels << {
   title: "Покоритель уровней - EXPERT",
   description: "За успешное прохождение всех тестов с уровнем сложности 8 и выше",
-  filename: "level-hardest.png"
+  filename: "level-expert.png"
 }
 
 available_badges += badge_levels
