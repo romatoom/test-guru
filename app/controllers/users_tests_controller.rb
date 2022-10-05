@@ -13,6 +13,11 @@ class UsersTestsController < ApplicationController
     @user_test.accept!(params[:answer_ids])
 
     if @user_test.finished?
+      @user_test.successfully = @user_test.result_in_persent >= UsersTest::MIN_PERCENT_SUCCESS_PASSED_TEST
+      @user_test.save!
+
+      # @all_successful_user_tests = UsersTest.successfully_by_user(@user_test.user)
+
       TestsMailer.completed_test(@user_test).deliver_now
       redirect_to result_users_test_path(@user_test)
     else

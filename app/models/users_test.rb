@@ -1,11 +1,13 @@
 class UsersTest < ApplicationRecord
+  MIN_PERCENT_SUCCESS_PASSED_TEST = 85
+
   belongs_to :user
   belongs_to :test
   belongs_to :current_question, class_name: 'Question', optional: true
 
   before_validation :before_validation_set_сurrent_question
 
-  MIN_PERCENT_SUCCESS_PASSED_TEST = 85
+  scope :successfully_by_user, ->(user) { where(user: user).where(successfully: true) }
 
   def accept!(answers_ids)
     if correct_all_answers?(answers_ids)
@@ -28,7 +30,7 @@ class UsersTest < ApplicationRecord
   end
 
   def success?
-    result_in_persent >= MIN_PERCENT_SUCCESS_PASSED_TEST
+    successfully
   end
 
   private
