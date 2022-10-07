@@ -26,7 +26,7 @@ class UsersTest < ApplicationRecord
   end
 
   def result_in_persent
-    (correct_answers.to_f / questions_count * 100).round
+    result || (correct_answers.to_f / questions_count * 100).round
   end
 
   def success?
@@ -40,6 +40,13 @@ class UsersTest < ApplicationRecord
   end
 
   def before_validation_set_сurrent_question
-    self.current_question = current_question.nil? ? test.questions.first : current_question.next
+    self.current_question = current_question.nil? ?
+      test.questions.first :
+      current_question.next
+
+    if finished?
+      self.result = result_in_persent
+      self.successfully = result_in_persent >= MIN_PERCENT_SUCCESS_PASSED_TEST
+    end
   end
 end
