@@ -139,14 +139,16 @@ badge_levels = (0..7).map do |level|
   {
     title: "Покоритель уровней - #{level}",
     description: "За успешное прохождение всех тестов с уровнем сложности #{level}",
-    filename: "level-#{level}.png"
+    filename: "level-#{level}.png",
+    rule: "level_#{level}"
   }
 end
 
 badge_levels << {
   title: "Покоритель уровней - EXPERT",
   description: "За успешное прохождение всех тестов с уровнем сложности 8 и выше",
-  filename: "level-expert.png"
+  filename: "level-expert.png",
+  rule: "level_expert"
 }
 
 available_badges += badge_levels
@@ -154,27 +156,25 @@ available_badges += badge_levels
 available_badges << {
   title: "Backend-мастер",
   description: "За успешное прохождение всех тестов категории Backend",
-  filename: "backend.png"
+  filename: "backend.png",
+  rule: "backend"
 }
 
 available_badges << {
   title: "Frontend-мастер",
   description: "За успешное прохождение всех тестов категории Frontend",
-  filename: "frontend.png"
+  filename: "frontend.png",
+  rule: "frontend"
 }
 
 available_badges.each do |b|
   badge = Badge.new(
     title: b[:title],
     description: b[:description],
-    url: "#{badges_path}/#{b[:filename]}"
+    url: "#{badges_path}/#{b[:filename]}",
+    rule: b[:rule]
   )
   badge.save
 end
-
-user_with_badges = User.where.not(type: "Admin").first
-user_with_badges.badges << Badge.find_by(title: "Frontend-мастер")
-user_with_badges.badges << Badge.find_by(title: "Покоритель уровней - 0")
-user_with_badges.badges << Badge.find_by(title: "Покоритель уровней - 1")
 
 puts "Seeds has been created successfully!"
