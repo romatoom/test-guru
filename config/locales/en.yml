@@ -130,6 +130,11 @@ en:
       success: "%{link} successfully saved"
       failure: "An error occurred while saving the gist"
 
+    update:
+      got_badges:
+        one: "Hooray! You've earned the '%{badge_name}' badge!"
+        other: "Hooray! You got %{count} badges!"
+
   feedback:
     index:
       header: "Feedback"
