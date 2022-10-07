@@ -18,7 +18,7 @@ ActiveRecord::Schema.define(version: 2022_10_05_154929) do
   create_table "answers", force: :cascade do |t|
     t.text "body", null: false
     t.boolean "correct", default: false, null: false
-    t.integer "question_id"
+    t.bigint "question_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["question_id"], name: "index_answers_on_question_id"
@@ -28,8 +28,10 @@ ActiveRecord::Schema.define(version: 2022_10_05_154929) do
     t.string "title", null: false
     t.string "url", null: false
     t.string "description", null: false
+    t.string "rule", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["rule"], name: "index_badges_on_rule", unique: true
   end
 
   create_table "categories", force: :cascade do |t|
@@ -40,9 +42,9 @@ ActiveRecord::Schema.define(version: 2022_10_05_154929) do
   end
 
   create_table "gists", force: :cascade do |t|
-    t.integer "question_id", null: false
+    t.bigint "question_id", null: false
     t.string "link_url", null: false
-    t.integer "user_id", null: false
+    t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["question_id"], name: "index_gists_on_question_id"
@@ -51,7 +53,7 @@ ActiveRecord::Schema.define(version: 2022_10_05_154929) do
 
   create_table "questions", force: :cascade do |t|
     t.text "body", null: false
-    t.integer "test_id"
+    t.bigint "test_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["body", "test_id"], name: "index_questions_on_body_and_test_id", unique: true
@@ -61,10 +63,10 @@ ActiveRecord::Schema.define(version: 2022_10_05_154929) do
   create_table "tests", force: :cascade do |t|
     t.string "title", null: false
     t.integer "level", default: 0, null: false
-    t.integer "category_id"
+    t.bigint "category_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "author_id"
+    t.bigint "author_id"
     t.integer "questions_count"
     t.boolean "published", default: false, null: false
     t.index ["author_id"], name: "index_tests_on_author_id"
@@ -107,13 +109,14 @@ ActiveRecord::Schema.define(version: 2022_10_05_154929) do
   end
 
   create_table "users_tests", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "test_id"
+    t.bigint "user_id"
+    t.bigint "test_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "correct_answers", default: 0
-    t.integer "current_question_id"
+    t.bigint "current_question_id"
     t.boolean "successfully"
+    t.integer "result"
     t.index ["current_question_id"], name: "index_users_tests_on_current_question_id"
     t.index ["test_id"], name: "index_users_tests_on_test_id"
     t.index ["user_id"], name: "index_users_tests_on_user_id"
