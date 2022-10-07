@@ -7,6 +7,7 @@ ru:
     cancel: "Отменить"
     delete: "Удалить"
     create: "Создать"
+    add: "Добавить"
     back: "Вернуться"
     save: "Сохранить"
     actions: "Действия"
@@ -35,6 +36,7 @@ ru:
       register: "Зарегистрироваться"
       pages: "Страницы"
       manage_tests: "Управление тестами"
+      manage_badges: "Управление значками достижений"
       tests: "Тесты"
       view_gists: "Просмотр gist-ов"
       feedback: "Обратная связь"
@@ -81,6 +83,12 @@ ru:
 
       answer:
         body: "Тест ответа"
+
+      badge:
+        title: "Название"
+        description: "Описание"
+        url: "URL"
+        rule: "Правило выдачи значка"
 
     errors:
       validation:
@@ -203,6 +211,12 @@ ru:
         url: "Ссылка на gist"
         user_email: "Email пользователя"
         no_gists: "Не создано ни одного gist"
+
+    badges:
+      form:
+        create_badge: "Создание значка достижения"
+        edit_badge: "Редактирование значка достижения"
+        preview: "Предпросмотр"
 
   services:
     gist_question_service:

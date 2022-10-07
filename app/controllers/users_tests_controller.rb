@@ -15,10 +15,12 @@ class UsersTestsController < ApplicationController
     if @user_test.finished?
       TestsMailer.completed_test(@user_test).deliver_now
 
-      issue_badges = BadgeService.new.give_badges(@user_test.user)
+      if @user_test.success?
+        issue_badges = BadgeService.new.give_badges(@user_test.user)
 
-      if issue_badges.present?
-        flash[:notice] = t(".got_badges", badge_name: issue_badges.first.title, count: issue_badges.count)
+        if issue_badges.present?
+          flash[:notice] = t(".got_badges", badge_name: issue_badges.first.title, count: issue_badges.count)
+        end
       end
 
       redirect_to result_users_test_path(@user_test)

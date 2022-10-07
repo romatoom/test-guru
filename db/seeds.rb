@@ -131,7 +131,6 @@ user.save!
 user.tests.push(test_html_0)
 
 # Create default badges list
-badges_path = Rails.application.config.badges_path
 
 available_badges = []
 
@@ -171,7 +170,7 @@ available_badges.each do |b|
   badge = Badge.new(
     title: b[:title],
     description: b[:description],
-    url: "#{badges_path}/#{b[:filename]}",
+    url: b[:filename],
     rule: b[:rule]
   )
   badge.save

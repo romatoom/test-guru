@@ -10,7 +10,7 @@ class BadgeService
     self.all_successful_user_tests = UsersTest.successfully_by_user(user)
 
     available_badges.each do |badge|
-      if can_be_issued?(badge, user) && rule_worked?(badge)
+      if can_be_issued?(badge, user) && rule_worked?(badge, user)
         issue_badges << badge
       end
     end
@@ -23,11 +23,11 @@ class BadgeService
 
   attr_accessor :all_successful_user_tests, :issue_badges
 
-  def rule_worked?(badge)
-    rule_scope = get_rule_scope(badge.rule)
-    rule_scope_ids = rule_scope.ids
+  def rule_worked?(badge, user)
+    rule_scope = get_rule_scope(badge.rule, user)
+    return false if rule_scope.blank?
 
-    return false if rule_scope_ids.empty?
+    rule_scope_ids = rule_scope.ids
 
     successful_tests_ids = all_successful_user_tests.pluck(:test_id)
 
@@ -38,10 +38,10 @@ class BadgeService
     user.badges.exclude?(badge)
   end
 
-  def get_rule_scope(badge_rule)
+  def get_rule_scope(badge_rule, user)
     case badge_rule
     when "backend"
-      Test.tests_by_category_title("Backend").available
+      return Test.tests_by_category_title("Backend").available
     when "frontend"
       Test.tests_by_category_title("Frontend").available
     when "level_0"
@@ -63,7 +63,9 @@ class BadgeService
     when "level_expert"
       Test.tests_by_level_equal_or_more_then_8.available
     when "on_the_first_try"
-      # Test.tests_by_level_equal_or_more_then_8.available
+      curr_test = all_successful_user_tests.last&.test
+      same_tests = UsersTest.where(test: curr_test, user: user)
+      return same_tests.length == 1 ? Test.where(id: curr_test.id) : []
     end
   end
 end

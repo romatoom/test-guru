@@ -5,7 +5,7 @@
   <div class="g-col-12 g-col-md-6 g-col-xl-4">
     <div class="tg-badge<%= ' enabled' if @user_badges.include?(badge) %>">
       <div class="tg-badge-img">
-        <img src="<%= badge.url %>" alt="...">
+        <img src="<%= badge_url(badge) %>" alt="...">
       </div>
 
       <div class="tg-badge-body">

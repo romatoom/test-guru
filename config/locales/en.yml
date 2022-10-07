@@ -7,6 +7,7 @@ en:
     cancel: "Cancel"
     delete: "Delete"
     create: "Create"
+    add: "Add"
     back: "Back"
     save: "Save"
     actions: "Actions"
@@ -35,6 +36,7 @@ en:
       register: "Sign up"
       pages: "Pages"
       manage_tests: "Manage tests"
+      manage_badges: "Manage badges"
       tests: "Tests"
       view_gists: "Viewing gists"
       feedback: "Feedback"
@@ -81,6 +83,12 @@ en:
 
       answer:
         body: "Answer text"
+
+      badge:
+        title: "Title"
+        description: "Description"
+        url: "URL"
+        rule: "Badge rule"
 
     errors:
       validation:
@@ -199,6 +207,12 @@ en:
         url: "Link to gist"
         user_email: "User Email"
         no_gists: "No gist has been created"
+
+    badges:
+      form:
+        create_badge: "Create Badge"
+        edit_badge: "Edit Badge"
+        preview: "Preview"
 
   services:
     gist_question_service:
