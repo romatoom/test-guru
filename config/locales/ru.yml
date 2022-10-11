@@ -88,7 +88,9 @@ ru:
         title: "Название"
         description: "Описание"
         url: "URL"
-        rule: "Правило выдачи значка"
+        rule_name: "Название правила"
+        rule_condition: "Условие"
+        rule_param: "Значение"
 
     errors:
       validation:
@@ -142,10 +144,10 @@ ru:
 
     update:
       got_badges:
-        one: "Ура! Вы получили достижение '%{badge_name}'!"
-        few: "Ура! Вы получили %{count} достижения!"
-        many: "Ура! Вы получили %{count} достижений!"
-        other: "Ура! Получено достижений - %{count}"
+        one: "Ура! Вы получили достижение: %{badge_names}!"
+        few: "Ура! Вы получили %{count} достижения: %{badge_names}"
+        many: "Ура! Вы получили %{count} достижений: %{badge_names}"
+        other: "Ура! Получено достижений - %{count}: %{badge_names}"
 
   feedback:
     index:
@@ -217,6 +219,7 @@ ru:
         create_badge: "Создание значка достижения"
         edit_badge: "Редактирование значка достижения"
         preview: "Предпросмотр"
+        rule: "Правило выдачи значка"
 
   services:
     gist_question_service:

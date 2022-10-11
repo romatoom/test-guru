@@ -1,14 +1,12 @@
 en:
   badge_rules:
-    backend: 'For passing all tests in the Backend category'
-    frontend: 'For passing all tests in the Frontend category'
-    level_0: 'For successfully passing all tests with difficulty level 0'
-    level_1: 'For successfully passing all tests with difficulty level 1'
-    level_2: 'For successfully passing all tests with difficulty level 2'
-    level_3: 'For successfully passing all tests with difficulty level 3'
-    level_4: 'For successfully passing all tests with difficulty level 4'
-    level_5: 'For successfully passing all tests with difficulty level 5'
-    level_6: 'For successfully passing all tests with difficulty level 6'
-    level_7: 'For successfully passing all tests with difficulty level 7'
-    level_expert: 'For successfully passing all tests with difficulty level 8 and above'
-    on_the_first_try: 'For successfully passing the test on the first try'
+    names:
+      category: "All tests that have a category"
+      level: "All tests that have a level"
+      attempt_number: "The number of the attempt that passed the test"
+    conditions:
+      equal: "equal to"
+      more: "more than"
+      less: "less than"
+      more_or_equal: "greater than or equal to"
+      less_or_equal: "less than or equal to"

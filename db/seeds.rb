@@ -139,7 +139,9 @@ badge_levels = (0..7).map do |level|
     title: "Покоритель уровней - #{level}",
     description: "За успешное прохождение всех тестов с уровнем сложности #{level}",
     filename: "level-#{level}.png",
-    rule: "level_#{level}"
+    rule_name: "level",
+    rule_param: "#{level}",
+    rule_condition: "equal"
   }
 end
 
@@ -147,7 +149,9 @@ badge_levels << {
   title: "Покоритель уровней - EXPERT",
   description: "За успешное прохождение всех тестов с уровнем сложности 8 и выше",
   filename: "level-expert.png",
-  rule: "level_expert"
+  rule_name: "level",
+  rule_param: "8",
+  rule_condition: "more_or_equal"
 }
 
 available_badges += badge_levels
@@ -156,14 +160,18 @@ available_badges << {
   title: "Backend-мастер",
   description: "За успешное прохождение всех тестов категории Backend",
   filename: "backend.png",
-  rule: "backend"
+  rule_name: "category",
+  rule_param: "Backend",
+  rule_condition: "equal"
 }
 
 available_badges << {
   title: "Frontend-мастер",
   description: "За успешное прохождение всех тестов категории Frontend",
   filename: "frontend.png",
-  rule: "frontend"
+  rule_name: "category",
+  rule_param: "Frontend",
+  rule_condition: "equal"
 }
 
 available_badges.each do |b|
@@ -171,7 +179,9 @@ available_badges.each do |b|
     title: b[:title],
     description: b[:description],
     url: b[:filename],
-    rule: b[:rule]
+    rule_name: b[:rule_name],
+    rule_param: b[:rule_param],
+    rule_condition: b[:rule_condition]
   )
   badge.save
 end

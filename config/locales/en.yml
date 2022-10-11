@@ -88,7 +88,9 @@ en:
         title: "Title"
         description: "Description"
         url: "URL"
-        rule: "Badge rule"
+        rule_name: "Rule Name"
+        rule_condition: "Condition"
+        rule_param: "Value"
 
     errors:
       validation:
@@ -140,8 +142,8 @@ en:
 
     update:
       got_badges:
-        one: "Hooray! You've earned the '%{badge_name}' badge!"
-        other: "Hooray! You got %{count} badges!"
+        one: "Hooray! You've earned the '%{badge_names}' badge!"
+        other: "Hooray! You got %{count} badges: %{badge_names}"
 
   feedback:
     index:
@@ -213,6 +215,7 @@ en:
         create_badge: "Create Badge"
         edit_badge: "Edit Badge"
         preview: "Preview"
+        rule: "Badge rule"
 
   services:
     gist_question_service:

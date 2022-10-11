@@ -22,10 +22,6 @@ class Test < ApplicationRecord
 
   scope :tests_by_category_title, ->(category_title) { joins(:category).where(category: { title: category_title}) }
 
-  scope :tests_by_level, ->(level) { where(level: level) }
-
-  scope :tests_by_level_equal_or_more_then_8, -> { where("level >= ?", 8) }
-
   scope :available, -> { where(published: true).where("questions_count > ?", 0) }
 
   validates :title, presence: true, uniqueness: { scope: :level }

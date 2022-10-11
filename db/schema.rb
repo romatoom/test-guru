@@ -28,10 +28,13 @@ ActiveRecord::Schema.define(version: 2022_10_05_154929) do
     t.string "title", null: false
     t.string "url", null: false
     t.string "description", null: false
-    t.string "rule", null: false
+    t.string "rule_name", null: false
+    t.string "rule_param", null: false
+    t.string "rule_condition", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["rule"], name: "index_badges_on_rule", unique: true
+    t.index ["title"], name: "index_badges_on_title", unique: true
+    t.index ["url"], name: "index_badges_on_url", unique: true
   end
 
   create_table "categories", force: :cascade do |t|

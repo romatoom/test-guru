@@ -6,8 +6,7 @@ class UsersTest < ApplicationRecord
   belongs_to :current_question, class_name: 'Question', optional: true
 
   before_validation :before_validation_set_сurrent_question
-
-  scope :successfully_by_user, ->(user) { where(user: user).where(successfully: true) }
+  before_save :before_save_set_result_and_successfully, if: :finished?
 
   def accept!(answers_ids)
     if correct_all_answers?(answers_ids)
@@ -40,13 +39,11 @@ class UsersTest < ApplicationRecord
   end
 
   def before_validation_set_сurrent_question
-    self.current_question = current_question.nil? ?
-      test.questions.first :
-      current_question.next
+    self.current_question = current_question.nil? ? test.questions.first : current_question.next
+  end
 
-    if finished?
-      self.result = result_in_persent
-      self.successfully = result_in_persent >= MIN_PERCENT_SUCCESS_PASSED_TEST
-    end
+  def before_save_set_result_and_successfully
+    self.result = result_in_persent
+    self.successfully = result_in_persent >= MIN_PERCENT_SUCCESS_PASSED_TEST
   end
 end
