@@ -25,12 +25,12 @@
     <div class="grid">
       <div class="g-col-12 g-col-md-4 g-col-xl-4">
         <%= form.label :rule_name, class: "form-label" %>
-        <%= form.select :rule_name, Badge.rule_name_labels, { prompt: true, selected: @badge.rule_name }, { class: "form-select" } %>
+        <%= form.select :rule_name, rule_name_labels, { prompt: true, selected: @badge.rule_name }, { class: "form-select" } %>
       </div>
 
       <div class="g-col-12 g-col-md-4 g-col-xl-4">
         <%= form.label :rule_condition, class: "form-label" %>
-        <%= form.select :rule_condition, Badge.rule_condition_labels, { prompt: true, selected: @badge.rule_condition }, { class: "form-select" } %>
+        <%= form.select :rule_condition, rule_condition_labels, { prompt: true, selected: @badge.rule_condition }, { class: "form-select" } %>
       </div>
 
       <div class="g-col-12 g-col-md-4 g-col-xl-4">

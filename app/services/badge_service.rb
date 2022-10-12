@@ -1,4 +1,15 @@
 class BadgeService
+  RULE_FOLDER = "lib/badge_rules/rules".freeze
+
+  def self.rule_classes
+    @rules ||= Dir.entries(RULE_FOLDER)
+      .filter { |f| !File.directory? f }
+      .map { |f| File.basename(f, ".rb")
+      .camelize
+      .constantize
+    }
+  end
+
   attr_reader :available_badges
 
   def initialize(user_test)
@@ -27,7 +38,9 @@ class BadgeService
   attr_reader :user, :test
 
   def rule_worked?(badge)
-    rule_scope = badge.get_rule_scope({ user: user, test: test })
+    rule_scope = BadgeRule.class_by(badge.rule_name)
+      .get_scope(badge, { user: user, test: test })
+
     return false if rule_scope.blank?
 
     rule_scope_ids = rule_scope.ids
