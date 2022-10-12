@@ -5,6 +5,10 @@ class Test < ApplicationRecord
   has_many :users, through: :users_tests
   belongs_to :author, class_name: "User", foreign_key: "author_id"
 
+  before_save :before_save_set_time_to_pass
+
+  attr_reader :hours, :minutes, :seconds
+
   DIFFICULTY_LEVELS = %i(easy medium hard)
 
   DIFFICULTY_LEVEL_RANGES = {
@@ -32,4 +36,24 @@ class Test < ApplicationRecord
       tests_by_category_title(category_title).order(title: :desc).pluck(:title)
     end
   end
+
+  def hours
+    time_to_pass / 1200
+  end
+
+  def minutes
+    time_to_pass % 1200 / 60
+  end
+
+  def seconds
+    time_to_pass % 1200 % 60
+  end
+
+  private
+
+  def before_save_set_time_to_pass
+    self.time_to_pass = 1200 * hours + 60 * minutes + seconds
+  end
+
+  attr_writer :hours, :minutes, :seconds
 end

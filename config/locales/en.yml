@@ -16,6 +16,7 @@ en:
       category: "Category"
       author: "Author"
       questions_count: "Number of questions"
+      time_to_pass: "Time to pass"
       no_tests: "No test has been created yet"
       no_tests_available: "No tests available to take"
 
@@ -144,6 +145,9 @@ en:
       form:
         create_new_test: "Create new test"
         edit_test: "Editing the test"
+        hours: "Hours"
+        minutes: "Minutes"
+        seconds: "Seconds"
       index:
         create_test: "Add new test"
       show:

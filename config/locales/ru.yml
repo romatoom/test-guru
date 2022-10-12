@@ -16,6 +16,7 @@ ru:
       category: "Категория"
       author: "Автор"
       questions_count: "Количество вопросов"
+      time_to_pass: "Время на прохождение"
       no_tests: "Ещё не создан ни один тест"
       no_tests_available: "Нет тестов, доступных для прохождения"
 
@@ -146,6 +147,9 @@ ru:
       form:
         create_new_test: "Создание нового теста"
         edit_test: "Редактирование теста"
+        hours: "Часы"
+        minutes: "Минуты"
+        seconds: "Секунды"
       index:
         create_test: "Создать тест"
       show:

@@ -18,6 +18,27 @@
     <%= form.collection_select :category_id, Category.order(:title), :id, :title, { prompt: true }, { class: "form-select" } %>
   </div>
 
+  <div class="mb-5">
+    <p><%= t("common.tests.time_to_pass") %></p>
+
+    <div class="grid">
+      <div class="g-col-12 g-col-md-6 g-col-xl-4">
+        <%= form.label :hours, t(".hours"), class: "form-label" %>
+        <%= form.select :hours, (0..23), class: "form-select" %>
+      </div>
+
+      <div class="g-col-12 g-col-md-6 g-col-xl-4">
+        <%= form.label :minutes, t(".minutes"), class: "form-label" %>
+        <%= form.select :minutes, (0..59), class: "form-select" } %>
+      </div>
+
+      <div class="g-col-12 g-col-md-6 g-col-xl-4">
+        <%= form.label :seconds, t(".seconds"), class: "form-label" %>
+        <%= form.select :seconds, (0..59), class: "form-select" %>
+      </div>
+    </div>
+  </div>
+
   <%= link_to t("common.back"), admin_tests_path, class: "btn btn-secondary" %>
   <%= form.submit submit_text, class: "btn btn-primary" %>
 <% end %>
