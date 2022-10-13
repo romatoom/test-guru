@@ -20,10 +20,8 @@ class BadgeService
   end
 
   def give_badges
-    self.all_successful_user_tests = user.users_tests.where(successfully: true)
-
     available_badges.each do |badge|
-      if badge.can_be_issued?(user) && rule_worked?(badge)
+      if badge.can_be_issued?(user) && bage_rule_worked?(badge)
         issue_badges << badge
       end
     end
@@ -34,19 +32,10 @@ class BadgeService
 
   private
 
-  attr_accessor :all_successful_user_tests, :issue_badges
-  attr_reader :user, :test
-
-  def rule_worked?(badge)
-    rule_scope = BadgeRule.class_by(badge.rule_name)
-      .get_scope(badge, { user: user, test: test })
-
-    return false if rule_scope.blank?
-
-    rule_scope_ids = rule_scope.ids
-
-    successful_tests_ids = all_successful_user_tests.pluck(:test_id)
-
-    (rule_scope_ids - successful_tests_ids).empty?
+  def bage_rule_worked?(badge)
+    BadgeRule.class_by(badge.rule_name).worked?(badge, { user: user, test: test })
   end
+
+  attr_accessor :issue_badges
+  attr_reader :user, :test
 end

@@ -7,10 +7,6 @@ class BadgeRule
     less_or_equal: { value: "<=", title: I18n.t("badge_rules.conditions.less_or_equal") },
   }
 
-  def initialize(badge, options = {})
-    @badge, @options = badge, options
-  end
-
   def self.rule_name
     rule_name = self.name.underscore
     rule_name.slice!("badge_rule_")
@@ -21,11 +17,12 @@ class BadgeRule
     "badge_rule_#{rule_name}".camelize.constantize
   end
 
+  # Add translate badge_rules.names.{rule_name} in config/locales/badge_rules.{locale}.yml for your custom rule
   def self.rule_name_title
     I18n.t("badge_rules.names.#{self.rule_name}")
   end
 
-  def self.get_scope(badge, options)
+  def self.worked?(badge, options)
     raise NotImplementedError, "#{self.name} has not implemented method '#{__method__}'"
   end
 end
