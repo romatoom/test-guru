@@ -1,0 +1,12 @@
+ru:
+  badge_rules:
+    names:
+      category: "Все тесты, у которых категория"
+      level: "Все тесты, у которых уровень"
+      attempt_number: "Номер попытки, с которой сдан тест"
+    conditions:
+      equal: "равно (соответсвует)"
+      more: "больше"
+      less: "меньше"
+      more_or_equal: "больше или равно"
+      less_or_equal: "меньше или равно"

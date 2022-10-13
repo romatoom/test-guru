@@ -18,6 +18,8 @@ Rails.application.routes.draw do
     end
   end
 
+  get 'badges', to: 'badges#index'
+
   namespace :admin do
     resources :tests do
       resources :questions, shallow: true, except: :index do
@@ -25,12 +27,11 @@ Rails.application.routes.draw do
       end
 
       patch :update_inline, on: :member
-
-      patch :publish, on: :member
-      patch :unpublish, on: :member
     end
 
     resources :gists, only: :index
+
+    resources :badges, except: :show
   end
 
   get 'feedback', to: 'feedback#index'

@@ -21,6 +21,11 @@
     <%= @test.author.fullname %>
   </p>
 
+  <p>
+    <strong><%= t("common.tests.published") %>:</strong>
+    <%= boolean_readable(@test.published) %>
+  </p>
+
   <%= link_to t("common.edit"), edit_admin_test_path(@test), class: "btn btn-primary" %>
 </div>
 

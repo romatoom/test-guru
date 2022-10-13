@@ -27,7 +27,7 @@ admin = Admin.new(
 admin.skip_confirmation!
 admin.save!
 
-test = category.tests.create!(title: "HTML", author_id: admin.id, published_at: Time.now)
+test = category.tests.create!(title: "HTML", author_id: admin.id, published: true)
 
 question = test.questions.create!(body: "Как оформляется комментарий в HTML?")
 wrong_answers = ["/* комментарий */", "// комментарий"]
@@ -42,7 +42,7 @@ add_answers_for_question(["Абсолютным"], "Относительным",
 question = test.questions.create!(body: "С помощью какого тега нужно задавать подписи к полям формы?")
 add_answers_for_question(%w(type id field), "label", question)
 
-test = category.tests.create!(title: "CSS", author_id: admin.id, published_at: Time.now)
+test = category.tests.create!(title: "CSS", author_id: admin.id, published: true)
 
 question = test.questions.create!(body: "Какое свойство CSS определяет размер текста?")
 add_answers_for_question(%w(text-size font-style text-style), "font-size", question)
@@ -54,7 +54,7 @@ question = test.questions.create!(body: "Каков правильный син�
 wrong_answers = ["{body:color=black;}", "{body;color:black;}", "body:color=black;"]
 add_answers_for_question(wrong_answers, "body {color: black;}", question)
 
-test = category.tests.create!(title: "Javascript", author_id: admin.id, published_at: Time.now)
+test = category.tests.create!(title: "Javascript", author_id: admin.id, published: true)
 
 question = test.questions.create!(body: "Какие циклы есть в языке JavaScript?")
 wrong_answers = [
@@ -72,7 +72,7 @@ add_answers_for_question(wrong_answers, "Строки, числа с точко�
 
 category = Category.create!(title: "Backend")
 
-test = category.tests.create!(title: "Ruby", level: 1, author_id: admin.id, published_at: Time.now)
+test = category.tests.create!(title: "Ruby", level: 1, author_id: admin.id, published: true)
 
 question = test.questions.create!(body: "Название самого популярного фреймворка Ruby?")
 
@@ -129,5 +129,61 @@ user.skip_confirmation!
 user.save!
 
 user.tests.push(test_html_0)
+
+# Create default badges list
+
+available_badges = []
+
+badge_levels = (0..7).map do |level|
+  {
+    title: "Покоритель уровней - #{level}",
+    description: "За успешное прохождение всех тестов с уровнем сложности #{level}",
+    filename: "level-#{level}.png",
+    rule_name: "level",
+    rule_param: "#{level}",
+    rule_condition: "equal"
+  }
+end
+
+badge_levels << {
+  title: "Покоритель уровней - EXPERT",
+  description: "За успешное прохождение всех тестов с уровнем сложности 8 и выше",
+  filename: "level-expert.png",
+  rule_name: "level",
+  rule_param: "8",
+  rule_condition: "more_or_equal"
+}
+
+available_badges += badge_levels
+
+available_badges << {
+  title: "Backend-мастер",
+  description: "За успешное прохождение всех тестов категории Backend",
+  filename: "backend.png",
+  rule_name: "category",
+  rule_param: "Backend",
+  rule_condition: "equal"
+}
+
+available_badges << {
+  title: "Frontend-мастер",
+  description: "За успешное прохождение всех тестов категории Frontend",
+  filename: "frontend.png",
+  rule_name: "category",
+  rule_param: "Frontend",
+  rule_condition: "equal"
+}
+
+available_badges.each do |b|
+  badge = Badge.new(
+    title: b[:title],
+    description: b[:description],
+    url: b[:filename],
+    rule_name: b[:rule_name],
+    rule_param: b[:rule_param],
+    rule_condition: b[:rule_condition]
+  )
+  badge.save
+end
 
 puts "Seeds has been created successfully!"

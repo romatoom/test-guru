@@ -1,10 +1,13 @@
 ru:
   common:
+    yes: "Да"
+    no: "Нет"
     view: "Просмотр"
     edit: "Редактировать"
     cancel: "Отменить"
     delete: "Удалить"
     create: "Создать"
+    add: "Добавить"
     back: "Вернуться"
     save: "Сохранить"
     actions: "Действия"
@@ -17,6 +20,7 @@ ru:
       author: "Автор"
       questions_count: "Количество вопросов"
       time_to_pass: "Время на прохождение"
+      published: "Опубликовано"
       no_tests: "Ещё не создан ни один тест"
       no_tests_available: "Нет тестов, доступных для прохождения"
 
@@ -33,8 +37,11 @@ ru:
       register: "Зарегистрироваться"
       pages: "Страницы"
       manage_tests: "Управление тестами"
+      manage_badges: "Управление значками достижений"
+      tests: "Тесты"
       view_gists: "Просмотр gist-ов"
       feedback: "Обратная связь"
+      badges: "Достижения"
 
     footer:
       description: "Сервис %{service_name_link}. Включает в себя систему управления тестами (создания, редактирования, удаления). Созданные тесты можно проходить пользователям, зарегистрированным в системе."
@@ -77,6 +84,14 @@ ru:
 
       answer:
         body: "Тест ответа"
+
+      badge:
+        title: "Название"
+        description: "Описание"
+        url: "URL"
+        rule_name: "Название правила"
+        rule_condition: "Условие"
+        rule_param: "Значение"
 
     errors:
       validation:
@@ -128,6 +143,13 @@ ru:
       success: "%{link} успешно сохранён"
       failure: "Во время сохранения gist произошла ошибка"
 
+    update:
+      got_badges:
+        one: "Ура! Вы получили достижение: %{badge_names}!"
+        few: "Ура! Вы получили %{count} достижения: %{badge_names}"
+        many: "Ура! Вы получили %{count} достижений: %{badge_names}"
+        other: "Ура! Получено достижений - %{count}: %{badge_names}"
+
   feedback:
     index:
       header: "Обратная связь"
@@ -137,6 +159,10 @@ ru:
 
     send_feedback:
       feedback_sent: "Обращение отправлено"
+
+  badges:
+    index:
+      header: "Достижения"
 
   admin:
     tests:
@@ -191,6 +217,13 @@ ru:
         url: "Ссылка на gist"
         user_email: "Email пользователя"
         no_gists: "Не создано ни одного gist"
+
+    badges:
+      form:
+        create_badge: "Создание значка достижения"
+        edit_badge: "Редактирование значка достижения"
+        preview: "Предпросмотр"
+        rule: "Правило выдачи значка"
 
   services:
     gist_question_service:

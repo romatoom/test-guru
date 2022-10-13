@@ -13,7 +13,7 @@ module ApplicationHelper
   end
 
   def boolean_readable(bool)
-    bool ? "Да" : "Нет"
+    bool ? t("common.yes") : t("common.no")
   end
 
   def flash_block

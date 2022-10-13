@@ -1,10 +1,13 @@
 en:
   common:
+    yes: "Да"
+    no: "Нет"
     view: "View"
     edit: "Edit"
     cancel: "Cancel"
     delete: "Delete"
     create: "Create"
+    add: "Add"
     back: "Back"
     save: "Save"
     actions: "Actions"
@@ -16,6 +19,7 @@ en:
       category: "Category"
       author: "Author"
       questions_count: "Number of questions"
+      published: "Published"
       time_to_pass: "Time to pass"
       no_tests: "No test has been created yet"
       no_tests_available: "No tests available to take"
@@ -33,8 +37,11 @@ en:
       register: "Sign up"
       pages: "Pages"
       manage_tests: "Manage tests"
+      manage_badges: "Manage badges"
+      tests: "Tests"
       view_gists: "Viewing gists"
       feedback: "Feedback"
+      badges: "Badges"
 
     footer:
       description: "Service %{service_name_link}. Includes a system to manage tests (create, edit, delete). Created tests can be passed by users registered in the system."
@@ -77,6 +84,14 @@ en:
 
       answer:
         body: "Answer text"
+
+      badge:
+        title: "Title"
+        description: "Description"
+        url: "URL"
+        rule_name: "Rule Name"
+        rule_condition: "Condition"
+        rule_param: "Value"
 
     errors:
       validation:
@@ -126,6 +141,11 @@ en:
       success: "%{link} successfully saved"
       failure: "An error occurred while saving the gist"
 
+    update:
+      got_badges:
+        one: "Hooray! You've earned the '%{badge_names}' badge!"
+        other: "Hooray! You got %{count} badges: %{badge_names}"
+
   feedback:
     index:
       header: "Feedback"
@@ -135,6 +155,10 @@ en:
 
     send_feedback:
       feedback_sent: "Feedback sent"
+
+  badges:
+    index:
+      header: "Badges"
 
   admin:
     tests:
@@ -189,6 +213,13 @@ en:
         url: "Link to gist"
         user_email: "User Email"
         no_gists: "No gist has been created"
+
+    badges:
+      form:
+        create_badge: "Create Badge"
+        edit_badge: "Edit Badge"
+        preview: "Preview"
+        rule: "Badge rule"
 
   services:
     gist_question_service:
