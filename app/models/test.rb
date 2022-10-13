@@ -5,9 +5,9 @@ class Test < ApplicationRecord
   has_many :users, through: :users_tests
   belongs_to :author, class_name: "User", foreign_key: "author_id"
 
-  before_save :before_save_set_time_to_pass
+  attr_accessor :hours, :minutes, :seconds
 
-  attr_reader :hours, :minutes, :seconds
+  before_save :before_save_set_time_to_pass
 
   DIFFICULTY_LEVELS = %i(easy medium hard)
 
@@ -37,23 +37,13 @@ class Test < ApplicationRecord
     end
   end
 
-  def hours
-    time_to_pass / 1200
-  end
-
-  def minutes
-    time_to_pass % 1200 / 60
-  end
-
-  def seconds
-    time_to_pass % 1200 % 60
+  def time_test?
+    !time_to_pass.zero?
   end
 
   private
 
   def before_save_set_time_to_pass
-    self.time_to_pass = 1200 * hours + 60 * minutes + seconds
+    self.time_to_pass = 1200 * hours.to_i + 60 * minutes.to_i + seconds.to_i
   end
-
-  attr_writer :hours, :minutes, :seconds
 end

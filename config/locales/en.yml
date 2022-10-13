@@ -12,6 +12,7 @@ en:
     save: "Save"
     actions: "Actions"
     id: "ID"
+    not_set: "Not set"
     tests:
       all_test: "All tests"
       title: "Title"
@@ -21,6 +22,7 @@ en:
       questions_count: "Number of questions"
       published: "Published"
       time_to_pass: "Time to pass"
+      time_to_pass_hint: "When set to 00:00:00, there is no time limit to pass"
       no_tests: "No test has been created yet"
       no_tests_available: "No tests available to take"
 

@@ -24,22 +24,23 @@
   </div>
 
   <div class="mb-5">
-    <p><%= t("common.tests.time_to_pass") %></p>
+    <p class="mb-0"><%= t("common.tests.time_to_pass") %></p>
+    <p class="text-small text-gray"><%= t("common.tests.time_to_pass_hint") %></p>
 
     <div class="grid">
       <div class="g-col-12 g-col-md-6 g-col-xl-4">
         <%= form.label :hours, t(".hours"), class: "form-label" %>
-        <%= form.select :hours, (0..23), class: "form-select" %>
+        <%= form.select :hours, range_for(:hours), { selected: hours(@test.time_to_pass) }, { class: "form-select" } %>
       </div>
 
       <div class="g-col-12 g-col-md-6 g-col-xl-4">
         <%= form.label :minutes, t(".minutes"), class: "form-label" %>
-        <%= form.select :minutes, (0..59), class: "form-select" } %>
+        <%= form.select :minutes, range_for(:minutes), { selected: minutes(@test.time_to_pass) }, { class: "form-select" } %>
       </div>
 
       <div class="g-col-12 g-col-md-6 g-col-xl-4">
         <%= form.label :seconds, t(".seconds"), class: "form-label" %>
-        <%= form.select :seconds, (0..59), class: "form-select" %>
+        <%= form.select :seconds, range_for(:seconds), { selected: seconds(@test.time_to_pass) }, { class: "form-select" } %>
       </div>
     </div>
   </div>
