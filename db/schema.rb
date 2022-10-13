@@ -34,7 +34,6 @@ ActiveRecord::Schema.define(version: 2022_10_05_154929) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["title"], name: "index_badges_on_title", unique: true
-    t.index ["url"], name: "index_badges_on_url", unique: true
   end
 
   create_table "categories", force: :cascade do |t|
