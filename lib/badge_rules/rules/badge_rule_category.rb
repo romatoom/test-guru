@@ -1,6 +1,6 @@
 class BadgeRuleCategory < BadgeRule
-  def self.worked?(badge, options = {})
-    user = options[:user]
+  def self.worked?(badge, user_test)
+    user = user_test.user
     return false if user.nil?
 
     rule_scope = Test.tests_by_category_title(badge.rule_param).available

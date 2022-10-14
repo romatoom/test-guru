@@ -13,10 +13,9 @@ class BadgeService
   attr_reader :available_badges
 
   def initialize(user_test)
+    @user_test = user_test
     @available_badges = Badge.all
     @issue_badges = []
-    @user = user_test.user
-    @test = user_test.test
   end
 
   def give_badges
@@ -32,10 +31,14 @@ class BadgeService
 
   private
 
+  def user
+    user_test.user
+  end
+
   def bage_rule_worked?(badge)
-    BadgeRule.class_by(badge.rule_name).worked?(badge, { user: user, test: test })
+    BadgeRule.class_by(badge.rule_name).worked?(badge, user_test)
   end
 
   attr_accessor :issue_badges
-  attr_reader :user, :test
+  attr_reader :user_test
 end

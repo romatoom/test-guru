@@ -22,7 +22,7 @@ class BadgeRule
     I18n.t("badge_rules.names.#{self.rule_name}")
   end
 
-  def self.worked?(badge, options)
+  def self.worked?(badge, user_test)
     raise NotImplementedError, "#{self.name} has not implemented method '#{__method__}'"
   end
 end
