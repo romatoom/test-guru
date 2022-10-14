@@ -1,11 +1,12 @@
 class UsersTest < ApplicationRecord
+  MIN_PERCENT_SUCCESS_PASSED_TEST = 85
+
   belongs_to :user
   belongs_to :test
   belongs_to :current_question, class_name: 'Question', optional: true
 
   before_validation :before_validation_set_сurrent_question
-
-  MIN_PERCENT_SUCCESS_PASSED_TEST = 85
+  before_save :before_save_set_result_and_successfully, if: :finished?
 
   def accept!(answers_ids)
     if correct_all_answers?(answers_ids)
@@ -24,11 +25,11 @@ class UsersTest < ApplicationRecord
   end
 
   def result_in_persent
-    (correct_answers.to_f / questions_count * 100).round
+    result || (correct_answers.to_f / questions_count * 100).round
   end
 
   def success?
-    result_in_persent >= MIN_PERCENT_SUCCESS_PASSED_TEST
+    successfully
   end
 
   private
@@ -39,5 +40,10 @@ class UsersTest < ApplicationRecord
 
   def before_validation_set_сurrent_question
     self.current_question = current_question.nil? ? test.questions.first : current_question.next
+  end
+
+  def before_save_set_result_and_successfully
+    self.result = result_in_persent
+    self.successfully = result_in_persent >= MIN_PERCENT_SUCCESS_PASSED_TEST
   end
 end

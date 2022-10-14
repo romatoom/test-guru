@@ -1,0 +1,53 @@
+<h1><%= badge_header(@badge) %></h1>
+
+<%= form_with model: [:admin, @badge], local: true do |form| %>
+  <%= render 'shared/errors', resource: @answer %>
+
+  <div class="mb-3">
+    <%= form.label :title, class: "form-label" %>
+    <%= form.text_field :title, id: :badge_title, class: "form-control" %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :description, class: "form-label" %>
+    <%= form.text_field :description, id: :badge_description, class: "form-control" %>
+  </div>
+
+  <%= form.label :url, class: "form-label" %>
+  <div class="input-group mb-3">
+    <span class="input-group-text" id="badge-url-prefix">/images/badges/</span>
+    <%= form.text_field :url, id: :badge_url, class: "form-control", aria_describedby: "badge-url-prefix" %>
+  </div>
+
+  <div class="mb-3">
+    <h2><%= t(".rule") %></h2>
+
+    <div class="grid">
+      <div class="g-col-12 g-col-md-4 g-col-xl-4">
+        <%= form.label :rule_name, class: "form-label" %>
+        <%= form.select :rule_name, rule_name_labels, { prompt: true, selected: @badge.rule_name }, { class: "form-select" } %>
+      </div>
+
+      <div class="g-col-12 g-col-md-4 g-col-xl-4">
+        <%= form.label :rule_condition, class: "form-label" %>
+        <%= form.select :rule_condition, rule_condition_labels, { prompt: true, selected: @badge.rule_condition }, { class: "form-select" } %>
+      </div>
+
+      <div class="g-col-12 g-col-md-4 g-col-xl-4">
+        <%= form.label :rule_param, class: "form-label" %>
+        <%= form.text_field :rule_param, class: "form-control" %>
+      </div>
+    </div>
+  </div>
+
+  <div class="mb-5">
+    <div class="form-label">
+      <%= t(".preview") %>
+    </div>
+
+    <%= render 'preview', badge: @badge %>
+  </div>
+
+  <%= link_to t("common.back"), admin_badges_path, class: "btn btn-secondary" %>
+  <%= form.submit submit_text, class: "btn btn-primary" %>
+<% end %>

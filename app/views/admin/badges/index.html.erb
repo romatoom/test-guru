@@ -1,0 +1,36 @@
+<h1>Badges</h1>
+
+<div class="grid mb-5">
+  <% @badges.each do |badge| %>
+  <div class="g-col-12 g-col-md-6 g-col-xl-4">
+    <div class="tg-badge enabled">
+      <div class="tg-badge-img">
+        <img src="<%= badge_url(badge) %>" alt="...">
+      </div>
+
+      <div class="tg-badge-body">
+        <span class="tg-badge-title">
+          <%= badge.title %>
+        </span>
+
+        <span class="tg-badge-description">
+          <%= badge.description %>
+        </span>
+
+        <div class="tg-badge-panel">
+          <%= link_to edit_admin_badge_path(badge), class: "me-1" do %>
+            <i class="bi bi-pencil"></i>
+          <% end %>
+
+          <%= link_to admin_badge_path(badge), method: 'delete', class: "text-danger" do %>
+            <i class="bi bi-trash3"></i>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+  <% end %>
+</div>
+
+<%= link_to t("common.add"), new_admin_badge_path, class: "btn btn-primary" %>
+

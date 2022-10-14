@@ -14,6 +14,7 @@ import "channels"
 import "bootstrap"
 
 import "../utilites"
+import "../components"
 
 Rails.start()
 Turbolinks.start()

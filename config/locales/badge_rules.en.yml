@@ -1,0 +1,12 @@
+en:
+  badge_rules:
+    names:
+      category: "All tests that have a category"
+      level: "All tests that have a level"
+      attempt_number: "The number of the attempt that passed the test"
+    conditions:
+      equal: "equal to"
+      more: "more than"
+      less: "less than"
+      more_or_equal: "greater than or equal to"
+      less_or_equal: "less than or equal to"
