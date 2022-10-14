@@ -10,7 +10,7 @@ class UsersTestsController < ApplicationController
   end
 
   def update
-    @user_test.accept!(params[:answer_ids])
+    @user_test.accept!(params[:answer_ids]) if !@user_test.time_is_over?
 
     if @user_test.finished?
       TestsMailer.completed_test(@user_test).deliver_now
