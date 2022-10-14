@@ -1,14 +1,19 @@
-<h1><%= t(".title", test_title: @user_test.test.title, test_level: @user_test.test.level) %></h1>
+<h1>
+  <%= t(".title", test_title: @user_test.test.title, test_level: @user_test.test.level) %>
+</h1>
 
-<p><strong><%= t(".progress_bar", position: @user_test.current_question.position - 1, count: @user_test.questions_count) %></strong>
+<p class="fw-bold">
+  <%= t(".progress_bar", position: @user_test.current_question.position - 1, count: @user_test.questions_count) %>
+</p>
 
-<%= content_tag :div,
-  class: "tg-progress-bar mb-5",
-  data: {
-    position: @user_test.current_question.position,
-    count: @user_test.questions_count
-  } do %>
-  <div class="tg-progress"></div>
+<%= render 'progress_bar',
+  position: @user_test.current_question.position,
+  count: @user_test.questions_count,
+  time_is_over: false
+%>
+
+<% unless @user_test.test.time_to_pass.zero? %>
+  <%= render 'count_down', initial_seconds_left: time_left(@user_test) %>
 <% end %>
 
 <p class="mb-0 fs-5"> <%= t(".question_number", number: @user_test.current_question.position) %>
@@ -26,6 +31,6 @@
     <% end %>
   </div>
 
-  <%= form.submit t(".next_question"), class: "btn btn-primary me-1" %>
+  <%= form.submit t(".next_question"), id: "btn-next", class: "btn btn-primary me-1" %>
   <%= link_to "#{t('common.save')} Gist", gist_users_test_path(@user_test), method: :post, class: "btn btn-secondary" %>
 <% end %>

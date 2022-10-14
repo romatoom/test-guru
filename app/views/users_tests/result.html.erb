@@ -1,10 +1,22 @@
-<h1><%= t(".test_completed") %></h1>
+<h1>
+  <%= t(".test_completed") %>
+  <% if @user_test.time_is_over? && @user_test.current_question.present? %>
+    (<%= t(".time_is_over").downcase %>)
+  <% end %>
+</h1>
 
-<p><strong><%= t(".progress_bar", position: @user_test.questions_count, count: @user_test.questions_count) %></strong>
+<p class="fw-bold">
+  <%= t(".progress_bar",
+    position: @user_test.current_question.present? ? @user_test.current_question.position - 1 : @user_test.questions_count,
+    count: @user_test.questions_count)
+  %>
+</p>
 
-<%= content_tag :div, class: "tg-progress-bar mb-5" do %>
-  <div class="tg-progress"></div>
-<% end %>
+<%= render 'progress_bar',
+  position: @user_test.current_question.present? ? @user_test.current_question.position : @user_test.questions_count,
+  count: @user_test.questions_count,
+  time_is_over: true
+%>
 
 <p class="mb-0 fs-3 lh-1">
   <%= t(".result") %>:

@@ -133,6 +133,7 @@ en:
 
     result:
       test_completed: "Test completed"
+      time_is_over: "Time is over"
       progress_bar: "Answers given are %{position} of %{count}"
       result: "Your score"
       back_to_tests: "Back to tests"

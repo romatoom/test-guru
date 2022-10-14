@@ -135,6 +135,7 @@ ru:
 
     result:
       test_completed: "Тест завершён"
+      time_is_over: "Время вышло"
       progress_bar: "Дано ответов %{position} из %{count}"
       result: "Ваш результат"
       back_to_tests: "Вернуться к тестам"
