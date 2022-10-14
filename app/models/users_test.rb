@@ -6,7 +6,7 @@ class UsersTest < ApplicationRecord
   belongs_to :current_question, class_name: 'Question', optional: true
 
   before_validation :before_validation_set_сurrent_question
-  before_save :before_save_set_result_and_successfully, if: :finished?
+  before_save :before_save_set_result_and_successfully
 
   def accept!(answers_ids)
     if correct_all_answers?(answers_ids)
@@ -17,7 +17,12 @@ class UsersTest < ApplicationRecord
   end
 
   def finished?
-    current_question.nil?
+    current_question.nil? || time_is_over?
+  end
+
+  def time_is_over?
+    return false if test.time_to_pass.zero? || created_at.nil?
+    Time.now - created_at > test.time_to_pass
   end
 
   def questions_count
@@ -25,7 +30,7 @@ class UsersTest < ApplicationRecord
   end
 
   def result_in_persent
-    result || (correct_answers.to_f / questions_count * 100).round
+    (correct_answers.to_f / questions_count * 100).round
   end
 
   def success?
@@ -44,6 +49,6 @@ class UsersTest < ApplicationRecord
 
   def before_save_set_result_and_successfully
     self.result = result_in_persent
-    self.successfully = result_in_persent >= MIN_PERCENT_SUCCESS_PASSED_TEST
+    self.successfully = result >= MIN_PERCENT_SUCCESS_PASSED_TEST
   end
 end
