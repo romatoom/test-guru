@@ -5,6 +5,9 @@ module TestsHelper
     seconds: 0..59
   }
 
+  SECONDS_IN_HOUR = 3600
+  SECONDS_IN_MINUTE = 60
+
   def test_header(test)
     if test.new_record?
       t(".create_new_test")
@@ -31,15 +34,15 @@ module TestsHelper
   end
 
   def hours(time_in_seconds)
-    time_in_seconds / 1200
+    time_in_seconds / SECONDS_IN_HOUR
   end
 
   def minutes(time_in_seconds)
-    time_in_seconds % 1200 / 60
+    time_in_seconds % SECONDS_IN_HOUR / SECONDS_IN_MINUTE
   end
 
   def seconds(time_in_seconds)
-    time_in_seconds % 1200 % 60
+    time_in_seconds % SECONDS_IN_HOUR % SECONDS_IN_MINUTE
   end
 
   def range_for(part_time)
