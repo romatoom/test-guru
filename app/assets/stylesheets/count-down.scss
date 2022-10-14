@@ -1,0 +1,35 @@
+@import "bootstrap/scss/variables";
+
+.countdown {
+  display: flex;
+  padding: 10px 18px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  background-color: #fafafa;
+  color: $green-500;
+  font-weight: 200;
+  font-size: 20px;
+  width: min-content;
+
+  &.medium-time {
+    color: $yellow-500
+  }
+
+  &.little-time {
+    color: $red-500;
+  }
+
+  &>div {
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &.hours,
+    &.minutes,
+    &.seconds {
+      width: 35px;
+      font-size: 26px;
+    }
+  }
+}
