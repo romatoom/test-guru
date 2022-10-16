@@ -1,5 +1,4 @@
-const SECONDS_IN_HOUR = 3600;
-const SECONDS_IN_MINUTE = 60;
+const MILISECOND_TO_SECOND = 1000;
 const WARNING_TIME = 60
 const DANGER_TIME = 10
 
@@ -7,45 +6,31 @@ document.addEventListener('turbolinks:load', function() {
   const countdown = document.getElementById('countdown');
   if (!countdown) return;
 
-  hoursEl = countdown.querySelector(".hours");
-  minutesEl = countdown.querySelector(".minutes");
-  secondsEl = countdown.querySelector(".seconds");
-
   let time = countdown.dataset.initialSecondsLeft;
-  updateCountdown(countdown, time, hoursEl, minutesEl, secondsEl);
+  updateCountdown(countdown, time)
 
   timerId = setInterval(() => {
     if (time > 0) {
       time -= 1;
-    } else {
-      // document.getElementById("btn-next").click();
-      clearInterval(timerId);
+      updateCountdown(countdown, time)
+    }
 
+    if (time === 0) {
+      clearInterval(timerId);
       location.reload();
     }
 
-    if (time < 0) time = 0;
-
-    updateCountdown(countdown, time, hoursEl, minutesEl, secondsEl)
-  }, 1000);
+  }, MILISECOND_TO_SECOND);
 })
 
 function secondsToHMS(time_in_seconds) {
-  const h = Math.floor(time_in_seconds / SECONDS_IN_HOUR);
-  const m = Math.floor(time_in_seconds % SECONDS_IN_HOUR / SECONDS_IN_MINUTE);
-  const s = Math.floor(time_in_seconds % SECONDS_IN_HOUR % SECONDS_IN_MINUTE);
-
-  return [h, m, s].map((el) => formatter(el));
+  return new Date(time_in_seconds * MILISECOND_TO_SECOND)
+    .toISOString()
+    .slice(11, 19)
 }
 
-function formatter(value) {
-  if (value < 10) return `0${value}`
-  return `${value}`
-}
-
-function updateCountdown(countdown, time, hoursEl, minutesEl, secondsEl) {
-  console.log("Update");
-  const [h, m, s] = secondsToHMS(time);
+function updateCountdown(countdown, time) {
+  const time_hms = secondsToHMS(time);
 
   if (time >= DANGER_TIME && time < WARNING_TIME) {
     countdown.classList.add("medium-time")
@@ -54,9 +39,7 @@ function updateCountdown(countdown, time, hoursEl, minutesEl, secondsEl) {
     countdown.classList.add("little-time")
   }
 
-  hoursEl.innerText = h
-  minutesEl.innerText = m
-  secondsEl.innerText = s
+  countdown.innerText = time_hms
 }
 
 

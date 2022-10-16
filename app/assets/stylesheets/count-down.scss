@@ -8,7 +8,8 @@
   background-color: #fafafa;
   color: $green-500;
   font-weight: 200;
-  font-size: 20px;
+  font-size: 26px;
+  font-family: 'PT Mono', 'Lucida Console', 'Monaco', 'Courier New', 'Courier', monospace;
   width: min-content;
 
   &.medium-time {
@@ -17,19 +18,5 @@
 
   &.little-time {
     color: $red-500;
-  }
-
-  &>div {
-    height: 50px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    &.hours,
-    &.minutes,
-    &.seconds {
-      width: 35px;
-      font-size: 26px;
-    }
   }
 }

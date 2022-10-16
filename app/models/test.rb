@@ -1,13 +1,11 @@
 class Test < ApplicationRecord
+  extend Converter::Time
+
   belongs_to :category
   has_many :questions, dependent: :destroy
   has_many :users_tests, dependent: :destroy
   has_many :users, through: :users_tests
   belongs_to :author, class_name: "User", foreign_key: "author_id"
-
-  attr_accessor :hours, :minutes, :seconds
-
-  before_save :before_save_set_time_to_pass
 
   DIFFICULTY_LEVELS = %i(easy medium hard)
 
@@ -38,12 +36,10 @@ class Test < ApplicationRecord
   end
 
   def time_test?
-    !time_to_pass.zero?
+    time_to_pass != "00:00:00"
   end
 
-  private
-
-  def before_save_set_time_to_pass
-    self.time_to_pass = 1200 * hours.to_i + 60 * minutes.to_i + seconds.to_i
+  def time_to_pass_in_seconds
+    Test.hms_to_seconds(time_to_pass)
   end
 end

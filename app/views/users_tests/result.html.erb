@@ -13,9 +13,9 @@
 </p>
 
 <%= render 'progress_bar',
-  position: @user_test.current_question.present? ? @user_test.current_question.position : @user_test.questions_count,
+  position: @user_test.current_question.present? ? @user_test.current_question.position - 1 : @user_test.questions_count,
   count: @user_test.questions_count,
-  time_is_over: true
+  test_finished: true
 %>
 
 <p class="mb-0 fs-3 lh-1">

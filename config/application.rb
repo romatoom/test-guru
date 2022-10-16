@@ -17,6 +17,7 @@ module TestGuru
     config.autoload_paths << "#{Rails.root}/lib/clients"
     config.autoload_paths << "#{Rails.root}/lib/badge_rules"
     config.autoload_paths << "#{Rails.root}/lib/badge_rules/rules"
+    config.autoload_paths << "#{Rails.root}/lib/modules"
 
     # config.eager_load_paths << Rails.root.join("extras")
   end

@@ -71,7 +71,7 @@ ActiveRecord::Schema.define(version: 2022_10_12_102345) do
     t.bigint "author_id"
     t.integer "questions_count"
     t.boolean "published", default: false, null: false
-    t.integer "time_to_pass", default: 0
+    t.string "time_to_pass", default: "00:00:00"
     t.index ["author_id"], name: "index_tests_on_author_id"
     t.index ["category_id"], name: "index_tests_on_category_id"
     t.index ["title", "level"], name: "index_tests_on_title_and_level", unique: true

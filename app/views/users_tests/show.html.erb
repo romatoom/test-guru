@@ -7,13 +7,13 @@
 </p>
 
 <%= render 'progress_bar',
-  position: @user_test.current_question.position,
+  position: @user_test.current_question.position - 1,
   count: @user_test.questions_count,
-  time_is_over: false
+  test_finished: false
 %>
 
-<% unless @user_test.test.time_to_pass.zero? %>
-  <%= render 'count_down', initial_seconds_left: time_left(@user_test) %>
+<% if @user_test.test.time_test? %>
+  <%= render 'count_down', initial_seconds_left: time_left(@user_test).ceil %>
 <% end %>
 
 <p class="mb-0 fs-5"> <%= t(".question_number", number: @user_test.current_question.position) %>
