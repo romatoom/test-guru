@@ -9,7 +9,7 @@ module UsersTestsHelper
 
   def time_left(user_test)
     time_has_passed = Time.now - user_test.created_at
-    time_difference = user_test.test.time_to_pass_in_seconds - time_has_passed
+    time_difference = user_test.test.time_to_pass - time_has_passed
     [0, time_difference].max
   end
 

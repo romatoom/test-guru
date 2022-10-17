@@ -24,11 +24,11 @@
   </div>
 
   <div class="mb-5">
-    <%= form.label :time_to_pass, t("common.tests.time_to_pass"), class: "form-label" %>
+    <%= form.label :time_to_pass_str, t("common.tests.time_to_pass"), class: "form-label" %>
     <p class="text-small text-gray"><%= t("common.tests.time_to_pass_hint") %></p>
 
-    <%= form.time_field :time_to_pass,
-      value: @test.time_to_pass,
+    <%= form.time_field :time_to_pass_str,
+      value: time_to_pass_hms(@test),
       step: 1,
       class: "form-control time-select"
     %>

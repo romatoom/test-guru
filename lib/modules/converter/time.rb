@@ -1,11 +1,11 @@
 module Converter
-  module Time
-    def hms_to_seconds(hms_string)
-      time_arr = hms_string.split(':')
-      raise "Unsupported time format" unless time_arr.length == 3
+  class Time
+    def self.hms_to_seconds(time_in_hms)
+      DateTime.parse(time_in_hms).seconds_since_midnight.to_i
+    end
 
-      h, m, s = time_arr.map { |el| el.to_i }
-      h.hours.to_i + m.minutes.to_i + s.to_i
+    def self.seconds_to_hms(time_in_seconds)
+      DateTime.strptime(time_in_seconds.to_s, '%s').strftime("%H:%M:%S")
     end
   end
 end

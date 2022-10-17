@@ -1,6 +1,4 @@
 class Test < ApplicationRecord
-  extend Converter::Time
-
   belongs_to :category
   has_many :questions, dependent: :destroy
   has_many :users_tests, dependent: :destroy
@@ -36,10 +34,6 @@ class Test < ApplicationRecord
   end
 
   def time_test?
-    time_to_pass != "00:00:00"
-  end
-
-  def time_to_pass_in_seconds
-    Test.hms_to_seconds(time_to_pass)
+    time_to_pass > 0
   end
 end

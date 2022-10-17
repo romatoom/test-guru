@@ -22,7 +22,7 @@ class UsersTest < ApplicationRecord
 
   def time_is_over?
     return false if !test.time_test? || created_at.nil?
-    Time.now - created_at > test.time_to_pass_in_seconds
+    Time.now - created_at > test.time_to_pass
   end
 
   def questions_count
