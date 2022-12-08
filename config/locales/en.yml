@@ -12,6 +12,7 @@ en:
     save: "Save"
     actions: "Actions"
     id: "ID"
+    not_set: "Not set"
     tests:
       all_test: "All tests"
       title: "Title"
@@ -20,6 +21,8 @@ en:
       author: "Author"
       questions_count: "Number of questions"
       published: "Published"
+      time_to_pass: "Time to pass"
+      time_to_pass_hint: "When set to 00:00:00, there is no time limit to pass"
       no_tests: "No test has been created yet"
       no_tests_available: "No tests available to take"
 
@@ -130,6 +133,7 @@ en:
 
     result:
       test_completed: "Test completed"
+      time_is_over: "Time is over"
       progress_bar: "Answers given are %{position} of %{count}"
       result: "Your score"
       back_to_tests: "Back to tests"
@@ -168,6 +172,9 @@ en:
       form:
         create_new_test: "Create new test"
         edit_test: "Editing the test"
+        hours: "Hours"
+        minutes: "Minutes"
+        seconds: "Seconds"
       index:
         create_test: "Add new test"
       show:

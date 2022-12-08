@@ -12,6 +12,7 @@ ru:
     save: "Сохранить"
     actions: "Действия"
     id: "ID"
+    not_set: "Не задано"
     tests:
       all_test: "Все тесты"
       title: "Название"
@@ -19,6 +20,8 @@ ru:
       category: "Категория"
       author: "Автор"
       questions_count: "Количество вопросов"
+      time_to_pass: "Время на прохождение"
+      time_to_pass_hint: "При значении 00:00:00 время на прохождение не ограничено"
       published: "Опубликовано"
       no_tests: "Ещё не создан ни один тест"
       no_tests_available: "Нет тестов, доступных для прохождения"
@@ -132,6 +135,7 @@ ru:
 
     result:
       test_completed: "Тест завершён"
+      time_is_over: "Время вышло"
       progress_bar: "Дано ответов %{position} из %{count}"
       result: "Ваш результат"
       back_to_tests: "Вернуться к тестам"
@@ -172,6 +176,9 @@ ru:
       form:
         create_new_test: "Создание нового теста"
         edit_test: "Редактирование теста"
+        hours: "Часы"
+        minutes: "Минуты"
+        seconds: "Секунды"
       index:
         create_test: "Создать тест"
       show:

@@ -4,6 +4,10 @@
   background-color: #ccc;
   position: relative;
 
+  &.time-is-over {
+    background-color: #f66;
+  }
+
   & .tg-progress {
     height: 3px;
     position: absolute;

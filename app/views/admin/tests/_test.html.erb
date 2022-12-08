@@ -18,6 +18,8 @@
 
   <td class="published text-center"><%= boolean_readable(test.published) %></td>
 
+  <td class="published text-center"><%= time_to_pass_readable(test) %></td>
+
   <td>
     <%= link_to t("common.view"), admin_test_path(test), class: "btn btn-outline-dark btn-sm" %>
 

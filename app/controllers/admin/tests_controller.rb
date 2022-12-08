@@ -17,6 +17,7 @@ class Admin::TestsController < Admin::BaseController
 
   def create
     @test = current_user.created_tests.new(test_params)
+    set_time_to_pass
 
     if @test.save
       redirect_to admin_tests_path
@@ -26,6 +27,8 @@ class Admin::TestsController < Admin::BaseController
   end
 
   def update
+    set_time_to_pass
+
     if @test.update(test_params)
       redirect_to admin_tests_path
     else
@@ -57,7 +60,11 @@ class Admin::TestsController < Admin::BaseController
     @tests = Test.all
   end
 
+  def set_time_to_pass
+    @test.time_to_pass = Converter::Time.hms_to_seconds(params[:test][:time_to_pass_str]);
+  end
+
   def test_params
-    params.require(:test).permit(:title, :level, :category_id, :published)
+    params.require(:test).permit(:title, :level, :category_id, :published, :time_to_pass)
   end
 end

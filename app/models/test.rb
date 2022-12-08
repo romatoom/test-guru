@@ -32,4 +32,8 @@ class Test < ApplicationRecord
       tests_by_category_title(category_title).order(title: :desc).pluck(:title)
     end
   end
+
+  def time_test?
+    time_to_pass > 0
+  end
 end

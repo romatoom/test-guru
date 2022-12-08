@@ -26,6 +26,11 @@
     <%= boolean_readable(@test.published) %>
   </p>
 
+  <p>
+    <strong><%= t("common.tests.time_to_pass") %>:</strong>
+    <%= time_to_pass_readable(@test) %>
+  </p>
+
   <%= link_to t("common.edit"), edit_admin_test_path(@test), class: "btn btn-primary" %>
 </div>
 

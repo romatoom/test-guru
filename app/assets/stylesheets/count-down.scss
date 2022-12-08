@@ -1,0 +1,22 @@
+@import "bootstrap/scss/variables";
+
+.countdown {
+  display: flex;
+  padding: 10px 18px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  background-color: #fafafa;
+  color: $green-500;
+  font-weight: 200;
+  font-size: 26px;
+  font-family: 'PT Mono', 'Lucida Console', 'Monaco', 'Courier New', 'Courier', monospace;
+  width: min-content;
+
+  &.medium-time {
+    color: $yellow-500
+  }
+
+  &.little-time {
+    color: $red-500;
+  }
+}
